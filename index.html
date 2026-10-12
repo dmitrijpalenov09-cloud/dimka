@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="theme-color" content="#0E0D0C">
+  <meta name="color-scheme" content="dark">
+  <title>Velvet Room — демо</title>
+  <link rel="preload" href="img/hero.jpg" as="image">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+  <div id="app">
+    <main id="view" class="view"></main>
+    <div id="cta" class="cta" hidden><button type="button" class="btn" id="cta-btn"></button></div>
+    <nav id="tabs" class="tabs">
+      <button type="button" data-tab="home"><span class="ico">◆</span>Главная</button>
+      <button type="button" data-tab="services"><span class="ico">✦</span>Услуги</button>
+      <button type="button" data-tab="masters"><span class="ico">❖</span>Мастера</button>
+      <button type="button" data-tab="mine"><span class="ico">◷</span>Мои записи<i class="dot" hidden></i></button>
+    </nav>
+  </div>
+  <div id="toast" class="toast" hidden></div>
+  <div id="modal" class="modal" hidden></div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
