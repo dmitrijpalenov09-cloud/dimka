@@ -1,8 +1,14 @@
 (() => {
   'use strict';
 
-  const D = window.SALON_DATA;
   const tg = window.Telegram && window.Telegram.WebApp;
+
+  // Ссылка t.me/<бот>?startapp=komnata открывает персональный концепт для клиента из папки komnata/
+  const PITCHES = ['komnata'];
+  const startParam = tg && tg.initDataUnsafe && tg.initDataUnsafe.start_param;
+  if (PITCHES.includes(startParam)) { location.replace(`${startParam}/${location.hash}`); return; }
+
+  const D = window.SALON_DATA;
   const inTG = !!(tg && tg.initData);
   const tgAtLeast = (v) => inTG && typeof tg.isVersionAtLeast === 'function' && tg.isVersionAtLeast(v);
 
@@ -34,7 +40,7 @@
   if (inTG) {
     tg.ready();
     tg.expand();
-    if (tgAtLeast('6.1')) { tg.setHeaderColor('#0E0D0C'); tg.setBackgroundColor('#0E0D0C'); }
+    if (tgAtLeast('6.9')) { tg.setHeaderColor('#0E0D0C'); tg.setBackgroundColor('#0E0D0C'); } // свои HEX-цвета — с версии 6.9
     if (tgAtLeast('7.10') && tg.setBottomBarColor) tg.setBottomBarColor('#0E0D0C');
     if (tgAtLeast('7.7') && tg.disableVerticalSwipes) tg.disableVerticalSwipes();
   }
