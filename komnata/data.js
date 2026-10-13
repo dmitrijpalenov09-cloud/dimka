@@ -11,8 +11,8 @@ window.KOMNATA = {
   },
 
   branches: [
-    { id: 'nails', name: 'Маникюрная', ico: '💅', note: 'Маникюр, педикюр, наращивание', handle: '@komnata_nail', img: 'nails-pastel', slotLabel: 'Маникюр / педикюр' },
-    { id: 'hair', name: 'Парикмахерская', ico: '✂️', note: 'Стрижки, тонирование, биозавивка', handle: '@komnata_hair', img: 'hair-waves', slotLabel: 'Стрижка / тонирование' },
+    { id: 'nails', name: 'Маникюрная', ico: '💅', note: 'Маникюр, педикюр, наращивание', handle: '@komnata_nail', img: 'nails-dark', slotLabel: 'Маникюр / педикюр' },
+    { id: 'hair', name: 'Парикмахерская', ico: '✂️', note: 'Стрижки, тонирование, биозавивка', handle: '@komnata_hair', img: 'hair-styling', slotLabel: 'Стрижка / тонирование' },
   ],
 
   // options — уровни мастера (или длина волос) со своей ценой и длительностью, как в прайсе салона

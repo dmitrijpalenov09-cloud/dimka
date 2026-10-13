@@ -34,8 +34,8 @@
   if (inTG) {
     tg.ready();
     tg.expand();
-    if (tgAtLeast('6.9')) { tg.setHeaderColor('#F3E1E8'); tg.setBackgroundColor('#FBF6F2'); }
-    if (tgAtLeast('7.10') && tg.setBottomBarColor) tg.setBottomBarColor('#FBF6F2');
+    if (tgAtLeast('6.9')) { tg.setHeaderColor('#161310'); tg.setBackgroundColor('#0F0D0B'); }
+    if (tgAtLeast('7.10') && tg.setBottomBarColor) tg.setBottomBarColor('#0F0D0B');
     if (tgAtLeast('7.7') && tg.disableVerticalSwipes) tg.disableVerticalSwipes();
   }
   const tgUser = inTG && tg.initDataUnsafe && tg.initDataUnsafe.user;
@@ -102,7 +102,7 @@
     if (inTG) {
       cta.hidden = true;
       if (!text) { tg.MainButton.hide(); return; }
-      tg.MainButton.setParams({ text, color: enabled ? '#A8457A' : '#E4D3DA', text_color: enabled ? '#FFFFFF' : '#9A8790', is_active: enabled, is_visible: true });
+      tg.MainButton.setParams({ text, color: enabled ? '#C9A86A' : '#3A342C', text_color: enabled ? '#1A140B' : '#8A8278', is_active: enabled, is_visible: true });
     } else { cta.hidden = !text; ctaBtn.textContent = text || ''; ctaBtn.disabled = !enabled; }
     view.classList.toggle('tg-cta', inTG && !!text);
   }
@@ -155,7 +155,7 @@
     return `
       <div class="muted" style="margin-bottom:10px">${hello}${name}</div>
       <section class="hero">
-        <img src="${img('hair-waves')}" alt="">
+        <img src="${img('hero')}" alt="">
         <span class="tag">Салон красоты · ${D.salon.years} лет</span>
         <h1>${esc(D.salon.name)}</h1>
         <p>${esc(D.salon.tagline)}</p>
@@ -178,7 +178,7 @@
         <div><div class="t">Дизайны месяца</div><div class="s">${esc(drop.text)}</div></div>
       </button>
       <div class="h3">Пока сохнет лак</div>
-      <section class="partner" style="background:var(--card);border:1px solid var(--line)">
+      <section class="partner">
         <b>☕ Кофе или чай к визиту</b>
         <div class="muted" style="margin-top:4px">Pumpkin spice latte, кленовый, лесной орех, молочный улун… Выберите при записи — встретим с напитком.</div>
       </section>
@@ -210,7 +210,7 @@
   // ── Дизайны месяца ───────────────────────────────────
   function renderDesigns() {
     const drop = D.monthDrop;
-    return `<div class="drop-head"><div class="muted" style="color:#E9A9C3">${esc(drop.month)} · дизайны месяца</div><div class="t">${esc(drop.title)}</div><div style="font-size:13px;opacity:.85;margin-top:4px">${esc(drop.text)}</div></div>
+    return `<div class="drop-head"><div class="k">${esc(drop.month)} · дизайны месяца</div><div class="t">${esc(drop.title)}</div><div class="s">${esc(drop.text)}</div></div>
       ${drop.items.map((it) => `<article class="design"><div class="stage">${nailsArt(it)}</div><b>${esc(it.name)}</b><div class="muted">${esc(it.text)}</div>
         <button type="button" class="btn" data-act="want" data-id="${it.id}">Хочу этот · +${rub(designById('month').price)}</button></article>`).join('')}
       <p class="footnote">Иллюстрации нарисованы для концепта — в приложении будут фото ваших работ</p>`;
@@ -289,7 +289,7 @@
       · <span class="price">${rub(flowPrice(f))}</span></div></div>` : '';
 
     if (f.step === 1) {
-      const pref = f.prefTime != null ? `<div class="note" style="background:#FCF1F6;color:var(--plum)">Окошко ${fmtDay(f.date)}, ${hm(f.prefTime)} — выберите услугу</div>` : '';
+      const pref = f.prefTime != null ? `<div class="note gold">Окошко ${fmtDay(f.date)}, ${hm(f.prefTime)} — выберите услугу</div>` : '';
       return `${head}<h1 class="title">Что делаем?</h1>${pref}${f.prefTime != null ? '' : seg('f-branch')}${servicesList(f.branch, 'f-svc', f.service)}`;
     }
 
@@ -297,7 +297,7 @@
       const opts = s.options.length > 1 ? `<div class="h3" style="margin-top:0">${esc(s.optTitle || 'Уровень мастера')}</div>
         ${s.options.map((o, i) => `<button type="button" class="opt ${i === f.opt ? 'sel' : ''}" data-act="f-opt" data-id="${i}"><span><b>${esc(o.label)}</b><br><span class="muted">${fmtDur(o.dur)}</span></span><span class="price">${rub(o.price)}</span></button>`).join('')}` : '';
       const des = s.design ? `<div class="h3">Дизайн</div><div class="chips">${D.designs.map((d) => `<button type="button" class="chip ${d.id === f.design ? 'on' : ''}" data-act="f-design" data-id="${d.id}">${esc(d.name)}${d.price ? ` <small>+${rub(d.price)}</small>` : ''}</button>`).join('')}</div>
-        ${f.design === 'month' ? `<div class="chips" style="margin-top:8px">${D.monthDrop.items.map((it) => `<button type="button" class="chip ${it.name === f.designName ? 'on' : ''}" data-act="f-dname" data-id="${esc(it.name)}">${esc(it.name)}</button>`).join('')}</div>` : ''}` : '';
+        ${f.design === 'month' ? `<div class="muted" style="margin:12px 0 6px">Какой из октябрьских?</div><div class="chips">${D.monthDrop.items.map((it) => `<button type="button" class="chip ${it.name === f.designName ? 'on' : ''}" data-act="f-dname" data-id="${esc(it.name)}">${esc(it.name)}</button>`).join('')}</div>` : ''}` : '';
       return `${head}${summary}<h1 class="title">Детали</h1>${opts}${des}<div class="total"><span>Итого</span><span>${rub(flowPrice(f))} · ${fmtDur(flowDur(f))}</span></div>`;
     }
 
