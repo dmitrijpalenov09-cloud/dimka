@@ -85,7 +85,8 @@
 
   function feedFor(br, dKey) {
     const out = []; const nowMin = nowMinFor(dKey);
-    for (let t = D.salon.open; t + 60 <= D.salon.close; t += 30) if (t > nowMin && feedFree(br, dKey, t)) out.push(t);
+    // Показываем только окошки, куда помещается самая долгая популярная услуга (до 2 ч)
+    for (let t = D.salon.open; t + 120 <= D.salon.close; t += 30) if (t > nowMin && feedFree(br, dKey, t)) out.push(t);
     return out.slice(0, 6);
   }
 
