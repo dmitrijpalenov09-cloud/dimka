@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="theme-color" content="#0B1020">
+  <meta name="color-scheme" content="dark">
+  <meta name="robots" content="noindex">
+  <title>Будь собой — концепт приложения</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+  <div id="app">
+    <div class="concept">Концепт для студии «Будь собой» · не официальное приложение</div>
+    <main id="view" class="view"></main>
+    <div id="cta" class="cta" hidden><button type="button" class="btn" id="cta-btn"></button></div>
+    <nav id="tabs" class="tabs">
+      <button type="button" data-tab="home"><span class="ico">⌂</span>Главная</button>
+      <button type="button" data-tab="schedule"><span class="ico">▦</span>Расписание</button>
+      <button type="button" data-tab="prices"><span class="ico">✦</span>Абонементы</button>
+      <button type="button" data-tab="mine"><span class="ico">◷</span>Мои занятия<i class="dot" hidden></i></button>
+    </nav>
+  </div>
+  <div id="toast" class="toast" hidden></div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
