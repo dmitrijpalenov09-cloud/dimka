@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta name="robots" content="noindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jojo — кафе на крыше в Казани</title>
+<meta name="description" content="Jojo — кафе с летней террасой на крыше и панорамным видом на Казань. Чистопольская, 19г, 4 этаж. Рейтинг 5.0, «Лучшее кафе 2025» в 2ГИС. Банкеты до 260 гостей.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Golos+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --night: #120f1c;
+    --night-2: #1b1529;
+    --plum: #2a1838;
+    --sun: #ff7a45;
+    --sun-2: #ffb38a;
+    --rose: #e8577a;
+    --cream: #f7efe6;
+    --cream-dim: rgba(247, 239, 230, .64);
+    --line: rgba(247, 239, 230, .12);
+    --display: "Dela Gothic One", Impact, sans-serif;
+    --sans: "Golos Text", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --wrap: 1200px;
+    --gutter: clamp(16px, 4vw, 40px);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--night); color: var(--cream); font-family: var(--sans); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: inherit; text-decoration: none; }
+  button, input, select { font: inherit; color: inherit; }
+  .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter); }
+
+  .demo { background: var(--sun); color: var(--night); font-size: 13px; font-weight: 600; text-align: center; padding: 8px var(--gutter); }
+
+  header { position: sticky; top: 0; z-index: 50; background: rgba(18, 15, 28, .78); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+  .nav { display: flex; align-items: center; justify-content: space-between; gap: 20px; height: 72px; }
+  .logo { font-family: var(--display); font-size: 28px; letter-spacing: .04em; line-height: 1; }
+  .logo span { color: var(--sun); }
+  .menu { display: flex; gap: 30px; font-size: 15px; color: var(--cream-dim); }
+  .menu a:hover { color: var(--cream); }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 15px 26px; border-radius: 999px; font-weight: 700; font-size: 15px; border: 0; cursor: pointer; transition: transform .2s, background .2s, box-shadow .2s; white-space: nowrap; }
+  .btn:active { transform: scale(.97); }
+  .btn-sun { background: linear-gradient(135deg, var(--sun), var(--rose)); color: #fff; box-shadow: 0 10px 30px -10px rgba(255, 122, 69, .7); }
+  .btn-sun:hover { box-shadow: 0 14px 40px -10px rgba(255, 122, 69, .9); }
+  .btn-glass { background: rgba(247, 239, 230, .08); border: 1px solid rgba(247, 239, 230, .2); }
+  .btn-glass:hover { background: rgba(247, 239, 230, .16); }
+  .btn-sm { padding: 11px 20px; font-size: 14px; }
+
+  /* Hero: rooftop at sunset */
+  .hero { position: relative; min-height: min(88vh, 820px); display: flex; align-items: center; overflow: hidden; isolation: isolate; padding: 80px 0 200px; }
+  .sky { position: absolute; inset: 0; z-index: -3; background: linear-gradient(180deg, #120f1c 0%, #2a1838 38%, #7a2f55 64%, #e8577a 80%, #ff9a5c 92%, #ffc48a 100%); }
+  .sunball { position: absolute; z-index: -2; left: 50%; bottom: 92px; width: min(56vw, 520px); aspect-ratio: 1; translate: -50% 50%; border-radius: 50%; background: radial-gradient(circle, #ffd8a8 0%, #ff9a5c 45%, rgba(255, 122, 69, 0) 70%); filter: blur(2px); opacity: .9; }
+  .city { position: absolute; left: 0; right: 0; bottom: 0; z-index: -1; height: 230px; }
+  .city svg { width: 100%; height: 100%; display: block; }
+  .garland { position: absolute; left: 0; right: 0; top: 0; height: 120px; z-index: -1; pointer-events: none; }
+  .garland i { position: absolute; width: 7px; height: 7px; border-radius: 50%; background: #ffe2a8; box-shadow: 0 0 12px 3px rgba(255, 210, 140, .55); animation: twinkle 3.2s ease-in-out infinite; }
+  @keyframes twinkle { 50% { opacity: .35; } }
+  .hero-in { position: relative; text-align: center; width: 100%; }
+  .badge { display: inline-flex; align-items: center; gap: 10px; padding: 8px 16px 8px 8px; border-radius: 999px; background: rgba(18, 15, 28, .55); border: 1px solid var(--line); font-size: 14px; font-weight: 600; backdrop-filter: blur(8px); }
+  .badge b { background: var(--cream); color: var(--night); border-radius: 999px; padding: 3px 10px; font-size: 13px; }
+  h1 { font-family: var(--display); font-weight: 400; font-size: clamp(64px, 15vw, 210px); line-height: .86; letter-spacing: .01em; margin: 26px 0 18px; text-shadow: 0 10px 50px rgba(18, 15, 28, .45); }
+  .hero-sub { font-size: clamp(18px, 2vw, 24px); font-weight: 500; max-width: 640px; margin: 0 auto; }
+  .hero-sub em { font-style: normal; color: var(--sun-2); }
+  .cta { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 34px; }
+  .open { display: inline-flex; align-items: center; gap: 8px; margin-top: 22px; font-size: 14px; font-weight: 600; padding: 6px 14px; border-radius: 999px; background: rgba(18, 15, 28, .5); }
+  .dot { width: 9px; height: 9px; border-radius: 50%; background: #4cd685; box-shadow: 0 0 0 4px rgba(76, 214, 133, .2); }
+  .dot.closed { background: #ff6b6b; box-shadow: 0 0 0 4px rgba(255, 107, 107, .2); }
+
+  /* Facts */
+  .facts { display: grid; grid-template-columns: repeat(4, 1fr); border-block: 1px solid var(--line); background: var(--night-2); }
+  .fact { padding: 30px 24px; border-right: 1px solid var(--line); text-align: center; }
+  .fact:last-child { border-right: 0; }
+  .fact b { display: block; font-family: var(--display); font-weight: 400; font-size: clamp(30px, 3.4vw, 44px); line-height: 1; color: var(--sun-2); }
+  .fact span { display: block; margin-top: 10px; font-size: 14px; color: var(--cream-dim); }
+
+  section { padding: clamp(72px, 9vw, 120px) 0; }
+  .eyebrow { font-size: 13px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--sun); }
+  h2 { font-family: var(--display); font-weight: 400; font-size: clamp(34px, 5vw, 64px); line-height: 1; letter-spacing: .005em; margin-top: 14px; }
+  .sec-head { display: flex; justify-content: space-between; align-items: end; gap: 28px; flex-wrap: wrap; margin-bottom: 44px; }
+  .sec-head p { max-width: 420px; color: var(--cream-dim); }
+
+  /* Spaces */
+  .spaces { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 16px; }
+  .space { position: relative; border-radius: 28px; min-height: 380px; padding: 28px; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; isolation: isolate; border: 1px solid var(--line); }
+  .space::before { content: ""; position: absolute; inset: 0; z-index: -1; }
+  .space.roof::before { background: radial-gradient(120% 80% at 70% 0%, rgba(255, 154, 92, .55), transparent 60%), linear-gradient(180deg, #3b1f4a, #1b1529); }
+  .space.hall::before { background: radial-gradient(90% 70% at 20% 10%, rgba(232, 87, 122, .4), transparent 60%), linear-gradient(180deg, #24182f, #16121f); }
+  .space.balc::before { background: radial-gradient(90% 70% at 80% 20%, rgba(255, 196, 138, .35), transparent 60%), linear-gradient(180deg, #2a1838, #16121f); }
+  .space .num { position: absolute; top: 22px; left: 28px; font-family: var(--display); font-size: 15px; color: var(--sun-2); }
+  .space .tag { position: absolute; top: 20px; right: 20px; font-size: 12px; font-weight: 700; padding: 6px 12px; border-radius: 999px; background: rgba(247, 239, 230, .12); }
+  .space h3 { font-family: var(--display); font-weight: 400; font-size: clamp(28px, 2.8vw, 38px); line-height: 1.05; }
+  .space p { margin-top: 10px; color: var(--cream-dim); max-width: 360px; }
+  .space .lights { position: absolute; top: 70px; left: 0; right: 0; height: 60px; }
+
+  /* Menu */
+  .menu-sec { background: var(--cream); color: var(--night); }
+  .menu-sec .eyebrow { color: #c4492a; }
+  .menu-sec .sec-head p { color: rgba(18, 15, 28, .6); }
+  .dishes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .dish { border-radius: 24px; padding: 24px; background: #fff; border: 1px solid rgba(18, 15, 28, .08); transition: transform .3s cubic-bezier(.2,.7,.2,1); }
+  .dish:hover { transform: translateY(-5px) rotate(-.6deg); }
+  .dish .emo { font-size: 38px; line-height: 1; }
+  .dish h3 { font-family: var(--display); font-weight: 400; font-size: 21px; margin-top: 18px; }
+  .dish p { font-size: 14px; color: rgba(18, 15, 28, .6); margin-top: 6px; }
+  .dish.hl { background: var(--night); color: var(--cream); }
+  .dish.hl p { color: var(--cream-dim); }
+  .note { margin-top: 20px; font-size: 13px; color: rgba(18, 15, 28, .55); }
+
+  /* Booking */
+  .book { display: grid; grid-template-columns: .9fr 1.1fr; gap: 24px; align-items: stretch; }
+  .book-info { border-radius: 28px; padding: clamp(26px, 3.4vw, 40px); background: linear-gradient(160deg, #3b1f4a, #1b1529); border: 1px solid var(--line); }
+  .book-info ul { list-style: none; margin-top: 24px; display: grid; gap: 14px; }
+  .book-info li { display: flex; gap: 12px; color: var(--cream-dim); }
+  .book-info li b { color: var(--cream); display: block; }
+  .book-info li::before { content: "✦"; color: var(--sun); flex: none; }
+  .form { border-radius: 28px; padding: clamp(24px, 3.4vw, 40px); background: var(--night-2); border: 1px solid var(--line); display: grid; gap: 16px; }
+  .seg { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 6px; border-radius: 16px; background: rgba(247, 239, 230, .06); }
+  .seg button { border: 0; background: none; padding: 12px; border-radius: 12px; font-weight: 700; cursor: pointer; color: var(--cream-dim); }
+  .seg button[aria-pressed="true"] { background: var(--cream); color: var(--night); }
+  .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  label { display: grid; gap: 6px; font-size: 13px; font-weight: 600; color: var(--cream-dim); }
+  input, select { width: 100%; padding: 14px 16px; border-radius: 14px; border: 1px solid var(--line); background: rgba(247, 239, 230, .05); color: var(--cream); font-size: 16px; outline: none; transition: border-color .2s; }
+  input:focus, select:focus { border-color: var(--sun); }
+  select option { color: #111; }
+  .zones { display: flex; flex-wrap: wrap; gap: 8px; }
+  .zones button { border: 1px solid var(--line); background: none; padding: 10px 16px; border-radius: 999px; font-weight: 600; font-size: 14px; cursor: pointer; color: var(--cream-dim); transition: all .2s; }
+  .zones button[aria-pressed="true"] { border-color: var(--sun); color: var(--cream); background: rgba(255, 122, 69, .15); }
+  .form small { color: var(--cream-dim); font-size: 13px; }
+  .hide { display: none !important; }
+
+  /* Reviews */
+  .rev { display: grid; grid-template-columns: auto 1fr; gap: clamp(28px, 5vw, 64px); align-items: center; }
+  .rev-score { font-family: var(--display); font-size: clamp(110px, 16vw, 200px); line-height: .85; background: linear-gradient(180deg, var(--sun-2), var(--rose)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .rev h2 { margin-bottom: 16px; }
+  .rev p { color: var(--cream-dim); max-width: 560px; font-size: 17px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0 28px; }
+  .chip { padding: 8px 14px; border-radius: 999px; background: rgba(247, 239, 230, .08); font-size: 14px; font-weight: 600; }
+
+  /* Contacts */
+  .contact-sec { background: var(--night-2); border-top: 1px solid var(--line); }
+  .contacts { display: grid; grid-template-columns: .95fr 1.05fr; gap: 24px; }
+  .rows { display: grid; gap: 0; }
+  .row { padding: 22px 0; border-bottom: 1px solid var(--line); }
+  .row:first-child { padding-top: 0; }
+  .lbl { font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--sun); margin-bottom: 6px; }
+  .val { font-family: var(--display); font-size: clamp(20px, 2.2vw, 26px); line-height: 1.25; }
+  .row p { color: var(--cream-dim); font-size: 14px; margin-top: 4px; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+  .map { position: relative; min-height: 480px; border-radius: 28px; overflow: hidden; background: var(--plum); }
+  .map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; filter: invert(.92) hue-rotate(200deg) saturate(.6) brightness(.95); }
+  .map-mobile { display: none; }
+
+  footer { border-top: 1px solid var(--line); padding: 28px 0 36px; font-size: 13px; color: var(--cream-dim); }
+  .foot { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+  .callbar { display: none; position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 60; gap: 8px; padding: 8px; background: rgba(27, 21, 41, .92); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid var(--line); border-radius: 999px; box-shadow: 0 16px 40px rgba(0,0,0,.45); }
+  .callbar .btn { flex: 1; padding: 13px 10px; }
+
+  .reveal { opacity: 0; transform: translateY(26px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .garland i { animation: none; } .reveal { opacity: 1; transform: none; transition: none; } }
+
+  @media (max-width: 1000px) {
+    .menu { display: none; }
+    .spaces { grid-template-columns: 1fr 1fr; }
+    .space.roof { grid-column: 1 / -1; }
+    .dishes { grid-template-columns: 1fr 1fr; }
+    .book, .contacts { grid-template-columns: 1fr; }
+    .facts { grid-template-columns: 1fr 1fr; }
+    .fact:nth-child(2) { border-right: 0; }
+    .fact:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+  }
+  @media (max-width: 640px) {
+    .nav { height: 62px; }
+    .nav .btn { display: none; }
+    .hero { padding: 56px 0 170px; min-height: 0; }
+    .city { height: 170px; }
+    .sunball { bottom: 70px; width: 90vw; }
+    .cta .btn { flex: 1 1 100%; }
+    .spaces, .dishes { grid-template-columns: 1fr; }
+    .space { min-height: 260px; }
+    .fields { grid-template-columns: 1fr; }
+    .rev { grid-template-columns: 1fr; }
+    .callbar { display: flex; }
+    footer { padding-bottom: 110px; }
+    .map { display: none; }
+    .map-mobile { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 22px 24px; border-radius: 24px; background: linear-gradient(135deg, var(--sun), var(--rose)); font-weight: 700; color: #fff; }
+    .map-mobile small { display: block; font-weight: 500; font-size: 13px; opacity: .85; }
+    .map-mobile span:last-child { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+<div id="demo-ribbon" style="position:sticky;top:0;z-index:99999;background:#111;color:#E6CF9F;font:12px/1.4 -apple-system,Segoe UI,Roboto,sans-serif;text-align:center;padding:6px 10px">Демо-сайт для кафе Jojo из портфолио · не официальный сайт · <a href="../../" style="color:#E6CF9F">← в портфолио</a></div>
+
+<div class="demo">Демо-версия сайта · подготовлена для кафе Jojo · меню и фото подставим ваши</div>
+
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="logo" aria-label="Jojo — на главную">JO<span>JO</span></a>
+    <nav class="menu">
+      <a href="#spaces">Пространства</a>
+      <a href="#menu">Меню</a>
+      <a href="#book">Банкеты</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <a href="#book" class="btn btn-sun btn-sm">Забронировать стол</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="sky"></div>
+    <div class="sunball"></div>
+    <div class="garland" id="garland" aria-hidden="true"></div>
+    <div class="city" aria-hidden="true">
+      <svg viewBox="0 0 1440 230" preserveAspectRatio="none">
+        <path fill="#1b1529" d="M0 230V150h40v-30h30v-40h24v40h36v-60h20l10-24 10 24h20v90h40V90h60v60h30v-80h16V40h8v30h16v80h40v-50h70v70h30V60l40-30 40 30v130h30v-80h50v-40h20v40h30v100h40v-70h60V80h12V50h6V20h4v30h6v30h12v80h50v-40h30v-30h50v70h40v-90h20V30h10v70h20v90h40v-60h60v40h30v-70h40v40h30v-20h50v80h40v-40h40v80z"/>
+        <path fill="#120f1c" d="M0 230v-40h70v-30h50v20h60v-40h40v50h50v-30h80v40h40v-20h60v30h70v-50h30v60h60v-30h40v-20h60v40h50v-30h70v40h40v-60h40v50h60v-30h50v30h40v-40h60v60h50v-20h40v-30h60v40h40v40z"/>
+        <path fill="#2a1838" d="M0 230v-14h1440v14z"/>
+      </svg>
+    </div>
+    <div class="wrap hero-in">
+      <span class="badge"><b>5.0 ★</b> 7 913 оценок · «Лучшее кафе 2025» в 2ГИС</span>
+      <h1>JOJO</h1>
+      <p class="hero-sub">Кафе на крыше с <em>видом на Казань</em>. Летняя терраса под открытым небом, уютный зал и кухня, ради которой возвращаются.</p>
+      <div class="cta">
+        <a href="#book" class="btn btn-sun">Забронировать стол</a>
+        <a href="#menu" class="btn btn-glass">Смотреть меню</a>
+      </div>
+      <div><span class="open"><span class="dot" id="dot"></span><span id="status">Ежедневно с 11:00</span></span></div>
+    </div>
+  </section>
+
+  <div class="facts">
+    <div class="fact"><b>5.0</b><span>рейтинг · 1 531 отзыв</span></div>
+    <div class="fact"><b>4 этаж</b><span>терраса с панорамой</span></div>
+    <div class="fact"><b>260</b><span>гостей на банкете</span></div>
+    <div class="fact"><b>~1 500 ₽</b><span>средний чек</span></div>
+  </div>
+
+  <section id="spaces">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <span class="eyebrow">Пространства</span>
+          <h2>Выберите своё место</h2>
+        </div>
+        <p>Три зоны под любой вечер: от свидания на балконе до большой компании на крыше. Укажите зону при бронировании — придержим именно её.</p>
+      </div>
+      <div class="spaces">
+        <div class="space roof reveal"><span class="num">01</span><span class="tag">летом</span><div class="lights" data-lights></div><h3>Терраса на крыше</h3><p>Под открытым небом с панорамным видом на город. Лучшие закаты Ново-Савиновского района.</p></div>
+        <div class="space hall reveal"><span class="num">02</span><span class="tag">круглый год</span><h3>Зал</h3><p>Стильный интерьер, мягкие диваны, приглушённый свет и открытая барная стойка.</p></div>
+        <div class="space balc reveal"><span class="num">03</span><span class="tag">балкон открыт</span><h3>Балкон</h3><p>Камерные столики на свежем воздухе — для двоих или небольшой компании.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="menu-sec" id="menu">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <span class="eyebrow">Меню</span>
+          <h2>Сытно, красиво, быстро</h2>
+        </div>
+        <p>Большие порции и быстрая подача — то, что гости чаще всего отмечают в отзывах.</p>
+      </div>
+      <div class="dishes">
+        <div class="dish reveal"><div class="emo">🍕</div><h3>Пицца</h3><p>На компанию или на одного</p></div>
+        <div class="dish reveal"><div class="emo">🍝</div><h3>Паста</h3><p>Гости особенно хвалят пасту с креветками</p></div>
+        <div class="dish hl reveal"><div class="emo">🍜</div><h3>Том-ям</h3><p>Острый, ароматный, согревающий</p></div>
+        <div class="dish reveal"><div class="emo">🍔</div><h3>Бургеры</h3><p>С картофелем фри</p></div>
+        <div class="dish reveal"><div class="emo">🍣</div><h3>Роллы</h3><p>Порции на полноценный ужин</p></div>
+        <div class="dish reveal"><div class="emo">🥗</div><h3>Салаты и супы</h3><p>Для лёгкого обеда</p></div>
+        <div class="dish reveal"><div class="emo">🥤</div><h3>Смузи и лимонады</h3><p>Освежают в жаркий день на террасе</p></div>
+        <div class="dish hl reveal"><div class="emo">☕</div><h3>Кофе и чай</h3><p>В зале или с собой</p></div>
+      </div>
+      <p class="note">Демо: категории — по данным 2ГИС и отзывам гостей. Полное меню с ценами и фото подставим ваше.</p>
+    </div>
+  </section>
+
+  <section id="book">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <span class="eyebrow">Бронирование и банкеты</span>
+          <h2>Стол или весь этаж</h2>
+        </div>
+        <p>Заполните пару полей — заявка откроется в WhatsApp, администратор подтвердит бронь.</p>
+      </div>
+      <div class="book">
+        <div class="book-info reveal">
+          <h3 style="font-family:var(--display);font-weight:400;font-size:28px;line-height:1.1">Праздник на крыше</h3>
+          <ul>
+            <li><span><b>До 260 гостей</b>Дни рождения, корпоративы, выпускные</span></li>
+            <li><span><b>Терраса с панорамой</b>Летом — под открытым небом</span></li>
+            <li><span><b>Доступно всем</b>Пандус, широкий лифт, автоматические двери</span></li>
+            <li><span><b>Удобная оплата</b>Карта, наличные, QR-код и оплата частями</span></li>
+            <li><span><b>Бонусная программа</b>Без приложений — анкета по QR-коду за минуту</span></li>
+          </ul>
+        </div>
+        <form class="form reveal" id="bookForm" novalidate>
+          <div class="seg" role="group" aria-label="Тип заявки">
+            <button type="button" aria-pressed="true" data-type="table">Столик</button>
+            <button type="button" aria-pressed="false" data-type="banquet">Банкет</button>
+          </div>
+          <div class="fields">
+            <label>Дата<input type="date" id="fDate" required></label>
+            <label>Время<input type="time" id="fTime" value="19:00" required></label>
+            <label>Гостей<input type="number" id="fGuests" min="1" max="260" value="2" inputmode="numeric"></label>
+            <label>Имя<input type="text" id="fName" placeholder="Как к вам обращаться" autocomplete="given-name"></label>
+          </div>
+          <div id="zoneBox">
+            <label style="margin-bottom:8px">Зона</label>
+            <div class="zones" role="group" aria-label="Зона">
+              <button type="button" aria-pressed="true" data-zone="Терраса">Терраса</button>
+              <button type="button" aria-pressed="false" data-zone="Зал">Зал</button>
+              <button type="button" aria-pressed="false" data-zone="Балкон">Балкон</button>
+            </div>
+          </div>
+          <label id="fmtBox" class="hide">Формат
+            <select id="fFormat">
+              <option>День рождения</option>
+              <option>Корпоратив</option>
+              <option>Выпускной</option>
+              <option>Свадьба / помолвка</option>
+              <option>Другое</option>
+            </select>
+          </label>
+          <button type="submit" class="btn btn-sun">Отправить заявку в WhatsApp</button>
+          <small>Или позвоните: <a href="tel:+79274955535" style="color:var(--sun-2);font-weight:700">+7 927 495-55-35</a></small>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap rev reveal">
+      <div class="rev-score">5.0</div>
+      <div>
+        <span class="eyebrow">Отзывы</span>
+        <h2>7 913 оценок — и все в среднем пять</h2>
+        <p>Гости чаще всего пишут про атмосферу, красивую террасу, быструю подачу и внимательных официантов.</p>
+        <div class="chips"><span class="chip">Атмосфера</span><span class="chip">Терраса</span><span class="chip">Быстрая подача</span><span class="chip">Вежливые официанты</span><span class="chip">Большие порции</span></div>
+        <a class="btn btn-glass" href="https://2gis.ru/kazan/firm/70000001076767257/tab/reviews" target="_blank" rel="noopener">Читать отзывы в 2ГИС →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-sec" id="contacts">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <span class="eyebrow">Контакты</span>
+          <h2>Поднимайтесь на 4 этаж</h2>
+        </div>
+      </div>
+      <div class="contacts">
+        <div class="reveal">
+          <div class="rows">
+            <div class="row"><div class="lbl">Адрес</div><div class="val">Чистопольская улица, 19г</div><p>4 этаж · Ново-Савиновский район, Казань</p></div>
+            <div class="row"><div class="lbl">Телефон</div><div class="val"><a href="tel:+79274955535">+7 927 495-55-35</a></div><p>jojokzn@yandex.ru</p></div>
+            <div class="row"><div class="lbl">Часы работы</div><div class="val">11:00 — 00:00</div><p>Пятница и суббота — до 02:00</p></div>
+          </div>
+          <div class="links">
+            <a class="btn btn-glass btn-sm" href="https://wa.me/79274955535" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="btn btn-glass btn-sm" href="https://t.me/+79274955535" target="_blank" rel="noopener">Telegram</a>
+            <a class="btn btn-glass btn-sm" href="https://2gis.ru/kazan/firm/70000001076767257" target="_blank" rel="noopener">2ГИС</a>
+          </div>
+        </div>
+        <div class="map reveal">
+          <iframe title="Jojo на карте" loading="lazy" src="https://yandex.ru/map-widget/v1/?ll=49.114321%2C55.819678&z=16&pt=49.114321%2C55.819678%2Cpm2rdl"></iframe>
+        </div>
+        <a class="map-mobile" href="https://yandex.ru/maps/?pt=49.114321,55.819678&z=17" target="_blank" rel="noopener"><span>Открыть в Яндекс.Картах<small>Чистопольская, 19г · 4 этаж</small></span><span>→</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>Jojo · кафе на крыше · Казань</span>
+    <span>Чистопольская ул., 19г, 4 этаж · ежедневно с 11:00</span>
+  </div>
+</footer>
+
+<div class="callbar">
+  <a href="#book" class="btn btn-sun">Забронировать</a>
+  <a href="tel:+79274955535" class="btn btn-glass">Позвонить</a>
+</div>
+
+<script>
+  // Garland lights along a sagging curve
+  (function () {
+    function hang(el, n, sag, top) {
+      var html = '';
+      for (var i = 0; i <= n; i++) {
+        var t = i / n, x = t * 100, y = top + Math.sin(t * Math.PI) * sag;
+        html += '<i style="left:' + x.toFixed(2) + '%;top:' + y.toFixed(1) + 'px;animation-delay:' + (-(i % 7) * .45).toFixed(2) + 's"></i>';
+      }
+      el.innerHTML = html;
+    }
+    hang(document.getElementById('garland'), 28, 46, 6);
+    document.querySelectorAll('[data-lights]').forEach(function (el) { hang(el, 14, 26, 0); el.style.position = 'absolute'; });
+  })();
+
+  // Open/closed in Kazan time (Europe/Moscow). Mon–Thu, Sun 11–24; Fri–Sat 11–02.
+  (function () {
+    var parts = new Intl.DateTimeFormat('en-US', { timeZone: 'Europe/Moscow', weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: false }).formatToParts(new Date());
+    var get = function (t) { return (parts.find(function (p) { return p.type === t; }) || {}).value; };
+    var day = get('weekday'), m = (parseInt(get('hour'), 10) % 24) * 60 + parseInt(get('minute'), 10);
+    var lateNight = (day === 'Sat' || day === 'Sun') && m < 120;
+    var open = m >= 660 || lateNight;
+    var closeAt = (day === 'Fri' || day === 'Sat') ? '02:00' : '00:00';
+    document.getElementById('status').textContent = open ? 'Открыто сейчас · до ' + (lateNight ? '02:00' : closeAt) : 'Сейчас закрыто · откроемся в 11:00';
+    if (!open) document.getElementById('dot').classList.add('closed');
+  })();
+
+  // Booking form → prefilled WhatsApp message
+  (function () {
+    var type = 'table', zone = 'Терраса';
+    var d = document.getElementById('fDate');
+    d.valueAsDate = new Date();
+    document.querySelectorAll('.seg button').forEach(function (b) {
+      b.addEventListener('click', function () {
+        type = b.dataset.type;
+        document.querySelectorAll('.seg button').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+        document.getElementById('fmtBox').classList.toggle('hide', type !== 'banquet');
+        var g = document.getElementById('fGuests');
+        if (type === 'banquet' && +g.value < 10) g.value = 20;
+        if (type === 'table' && +g.value > 12) g.value = 2;
+      });
+    });
+    document.querySelectorAll('.zones button').forEach(function (b) {
+      b.addEventListener('click', function () {
+        zone = b.dataset.zone;
+        document.querySelectorAll('.zones button').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      });
+    });
+    document.getElementById('bookForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var date = d.value ? d.value.split('-').reverse().join('.') : '';
+      var lines = [
+        'Здравствуйте! Хочу ' + (type === 'banquet' ? 'заказать банкет' : 'забронировать столик') + ' в Jojo.',
+        'Дата: ' + date + ', время: ' + document.getElementById('fTime').value,
+        'Гостей: ' + document.getElementById('fGuests').value,
+        'Зона: ' + zone
+      ];
+      if (type === 'banquet') lines.push('Формат: ' + document.getElementById('fFormat').value);
+      var name = document.getElementById('fName').value.trim();
+      if (name) lines.push('Имя: ' + name);
+      window.open('https://wa.me/79274955535?text=' + encodeURIComponent(lines.join('\n')), '_blank', 'noopener');
+    });
+  })();
+
+  (function () {
+    var els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: .12, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(function (e) { io.observe(e); });
+  })();
+</script>
+</body>
+</html>

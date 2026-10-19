@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta name="robots" content="noindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Студия красоты и барбершоп на Елизарова</title>
+<meta name="description" content="Студия красоты (пр. Елизарова, 14) и барбершоп (пр. Елизарова, 15) у метро Елизаровская. Маникюр, ресницы, косметология, лазерная эпиляция, стрижки. Ежедневно 9:00–22:00.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f5f0e8;
+    --paper-2: #ece4d8;
+    --card: #fffdf9;
+    --ink: #1f1c19;
+    --ink-soft: rgba(31, 28, 25, .64);
+    --line: rgba(31, 28, 25, .12);
+    --terra: #b5543c;
+    --terra-soft: #f0d9cf;
+    --forest: #26332b;
+    --forest-2: #2f3f35;
+    --sage: #c9d3c4;
+    --serif: "Playfair Display", Georgia, serif;
+    --sans: "Inter Tight", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --wrap: 1200px;
+    --gutter: clamp(16px, 4vw, 40px);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+  .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter); }
+
+  .demo { background: var(--ink); color: var(--paper); font-size: 13px; text-align: center; padding: 8px var(--gutter); letter-spacing: .01em; }
+  .demo b { color: #f3b9a6; font-weight: 600; }
+
+  /* Header */
+  header { position: sticky; top: 0; z-index: 50; background: rgba(245, 240, 232, .86); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+  .nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 74px; }
+  .logo { display: flex; flex-direction: column; line-height: 1; }
+  .logo b { font-family: var(--serif); font-size: 28px; font-weight: 600; letter-spacing: -.01em; }
+  .logo b i { color: var(--terra); }
+  .logo small { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-soft); margin-top: 6px; font-weight: 500; }
+  .menu { display: flex; gap: 32px; font-size: 15px; color: var(--ink-soft); }
+  .menu a:hover { color: var(--ink); }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 15px 26px; border-radius: 999px; font-weight: 600; font-size: 15px; transition: transform .2s, background .2s, color .2s, border-color .2s; white-space: nowrap; }
+  .btn:active { transform: scale(.97); }
+  .btn-terra { background: var(--terra); color: #fff; }
+  .btn-terra:hover { background: #9e4430; }
+  .btn-line { border: 1.5px solid var(--ink); }
+  .btn-line:hover { background: var(--ink); color: var(--paper); }
+  .btn-sm { padding: 11px 20px; font-size: 14px; }
+
+  /* Hero */
+  .hero { padding: clamp(48px, 7vw, 96px) 0 clamp(56px, 7vw, 96px); }
+  .hero-top { display: grid; grid-template-columns: 1.25fr .75fr; gap: 48px; align-items: end; }
+  .eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: var(--terra); }
+  .eyebrow::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+  h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(46px, 7.2vw, 104px); line-height: .98; letter-spacing: -.025em; margin-top: 22px; }
+  h1 em { font-style: italic; color: var(--terra); }
+  .hero-side p { font-size: clamp(17px, 1.5vw, 19px); color: var(--ink-soft); }
+  .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+  .status { display: inline-flex; align-items: center; gap: 8px; margin-top: 22px; font-size: 14px; font-weight: 500; }
+  .dot { width: 9px; height: 9px; border-radius: 50%; background: #3e9b5f; box-shadow: 0 0 0 4px rgba(62, 155, 95, .18); }
+  .dot.closed { background: #c4574a; box-shadow: 0 0 0 4px rgba(196, 87, 74, .18); }
+
+  .doors { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: clamp(44px, 6vw, 72px); }
+  .door { position: relative; border-radius: 28px; padding: clamp(24px, 3vw, 36px); min-height: 360px; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; transition: transform .35s cubic-bezier(.2,.7,.2,1); }
+  .door:hover { transform: translateY(-6px); }
+  .door-studio { background: var(--terra-soft); }
+  .door-barber { background: var(--forest); color: var(--paper); }
+  .door-num { position: absolute; right: -10px; bottom: -48px; font-family: var(--serif); font-size: clamp(200px, 24vw, 320px); line-height: 1; font-weight: 600; letter-spacing: -.04em; pointer-events: none; }
+  .door-studio .door-num { color: rgba(181, 84, 60, .16); }
+  .door-barber .door-num { color: rgba(201, 211, 196, .1); }
+  .door-tag { display: inline-flex; align-self: flex-start; font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; padding: 7px 12px; border-radius: 999px; background: rgba(255,255,255,.6); }
+  .door-barber .door-tag { background: rgba(255,255,255,.1); }
+  .door h3 { font-family: var(--serif); font-size: clamp(32px, 3.4vw, 46px); font-weight: 500; line-height: 1.05; margin: 18px 0 10px; position: relative; }
+  .door p { position: relative; max-width: 340px; opacity: .78; }
+  .door-foot { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+  .rate { display: flex; align-items: baseline; gap: 8px; }
+  .rate b { font-family: var(--serif); font-size: 34px; font-weight: 600; line-height: 1; }
+  .rate span { font-size: 14px; opacity: .72; }
+  .door-link { font-weight: 600; font-size: 14px; border-bottom: 1.5px solid currentColor; padding-bottom: 2px; }
+  .award { position: absolute; top: 24px; right: 24px; width: 92px; height: 92px; border-radius: 50%; background: #e7c873; color: var(--forest); display: grid; place-items: center; text-align: center; font-size: 10.5px; font-weight: 700; line-height: 1.15; letter-spacing: .04em; text-transform: uppercase; transform: rotate(10deg); box-shadow: 0 10px 30px rgba(0,0,0,.25); }
+  .award b { display: block; font-family: var(--serif); font-size: 22px; letter-spacing: 0; }
+
+  /* Marquee */
+  .marquee { overflow: hidden; border-block: 1px solid var(--line); padding: 20px 0; }
+  .marquee-track { display: flex; width: max-content; animation: slide 46s linear infinite; }
+  .marquee-track span { font-family: var(--serif); font-style: italic; font-size: clamp(24px, 3vw, 36px); padding: 0 26px; white-space: nowrap; }
+  .marquee-track i { color: var(--terra); font-style: normal; align-self: center; }
+  @keyframes slide { to { transform: translateX(-50%); } }
+
+  section { padding: clamp(72px, 9vw, 120px) 0; }
+  h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(38px, 5.2vw, 68px); line-height: 1.02; letter-spacing: -.02em; margin-top: 16px; }
+  h2 em { font-style: italic; color: var(--terra); }
+  .sec-head { display: flex; justify-content: space-between; align-items: end; gap: 28px; flex-wrap: wrap; margin-bottom: 44px; }
+  .sec-head p { max-width: 400px; color: var(--ink-soft); }
+
+  /* Prices */
+  .tabs { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 6px; margin-bottom: 28px; scrollbar-width: none; }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab { flex: none; padding: 11px 18px; border-radius: 999px; border: 1.5px solid var(--line); font-size: 14px; font-weight: 600; color: var(--ink-soft); transition: all .2s; }
+  .tab:hover { border-color: var(--ink); color: var(--ink); }
+  .tab[aria-selected="true"] { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+  .panel { display: none; background: var(--card); border-radius: 28px; padding: clamp(20px, 3.4vw, 44px); box-shadow: 0 1px 0 var(--line), 0 30px 60px -40px rgba(31, 28, 25, .35); }
+  .panel.on { display: block; animation: fade .45s ease; }
+  @keyframes fade { from { opacity: 0; transform: translateY(10px); } }
+  .panel-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 10px; }
+  .panel-head h3 { font-family: var(--serif); font-size: clamp(26px, 2.6vw, 34px); font-weight: 500; }
+  .where { font-size: 13px; font-weight: 600; padding: 6px 12px; border-radius: 999px; background: var(--terra-soft); color: var(--terra); }
+  .where.b { background: var(--sage); color: var(--forest); }
+  .rows { display: grid; grid-template-columns: 1fr 1fr; column-gap: 56px; }
+  .row { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+  .row span { font-size: 16px; }
+  .row small { display: block; font-size: 13px; color: var(--ink-soft); }
+  .row b { font-family: var(--serif); font-size: 20px; font-weight: 600; white-space: nowrap; }
+  .row .hot { color: var(--terra); }
+  .note { margin-top: 22px; font-size: 13px; color: var(--ink-soft); }
+
+  /* Highlights */
+  .hl-sec { background: var(--forest); color: var(--paper); }
+  .hl-sec .eyebrow { color: #e7c873; }
+  .hl-sec h2 em { color: #e7c873; }
+  .hl { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .hl-card { background: var(--forest-2); border-radius: 24px; padding: 30px; border: 1px solid rgba(255,255,255,.06); }
+  .hl-card .big { font-family: var(--serif); font-size: clamp(48px, 5vw, 66px); line-height: 1; font-weight: 500; color: #e7c873; }
+  .hl-card h3 { font-size: 18px; margin: 16px 0 6px; font-weight: 600; }
+  .hl-card p { font-size: 15px; opacity: .7; }
+
+  /* Contacts */
+  .contacts { display: grid; grid-template-columns: .95fr 1.05fr; gap: 28px; }
+  .addr { background: var(--card); border-radius: 24px; padding: 28px; margin-bottom: 16px; box-shadow: 0 1px 0 var(--line); }
+  .addr-top { display: flex; align-items: center; gap: 14px; }
+  .pin { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; font-family: var(--serif); font-weight: 600; font-size: 18px; color: #fff; flex: none; }
+  .pin.s { background: var(--terra); }
+  .pin.b { background: var(--forest); }
+  .addr h3 { font-family: var(--serif); font-size: 24px; font-weight: 500; line-height: 1.15; }
+  .addr h3 small { display: block; font-family: var(--sans); font-size: 13px; color: var(--ink-soft); margin-top: 4px; }
+  .addr-links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+  .chip { padding: 9px 14px; border-radius: 999px; background: var(--paper); font-size: 14px; font-weight: 600; }
+  .chip:hover { background: var(--paper-2); }
+  .hours-card { background: var(--ink); color: var(--paper); border-radius: 24px; padding: 28px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .hours-card b { font-family: var(--serif); font-size: 34px; font-weight: 500; }
+  .hours-card span { opacity: .7; font-size: 14px; display: block; }
+  .map { position: relative; min-height: 520px; border-radius: 28px; overflow: hidden; background: var(--paper-2); }
+  .map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; filter: saturate(.55) sepia(.12); }
+  .map-mobile { display: none; }
+
+  .final { text-align: center; padding-bottom: clamp(80px, 10vw, 130px); }
+  .final h2 { font-size: clamp(44px, 7.4vw, 100px); max-width: 900px; margin: 18px auto 32px; }
+  .final .cta { justify-content: center; }
+  footer { border-top: 1px solid var(--line); padding: 28px 0 36px; font-size: 13px; color: var(--ink-soft); }
+  .foot { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+  .callbar { display: none; position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 60; gap: 8px; padding: 8px; background: rgba(31, 28, 25, .92); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-radius: 999px; box-shadow: 0 16px 40px rgba(0,0,0,.3); }
+  .callbar .btn { flex: 1; padding: 13px 10px; }
+  .callbar .btn-ghost { color: var(--paper); border: 1.5px solid rgba(245, 240, 232, .3); }
+
+  .reveal { opacity: 0; transform: translateY(26px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } .reveal { opacity: 1; transform: none; transition: none; } }
+
+  @media (max-width: 980px) {
+    .menu { display: none; }
+    .hero-top, .contacts { grid-template-columns: 1fr; }
+    .hero-top { gap: 20px; }
+    .rows { grid-template-columns: 1fr; }
+    .hl { grid-template-columns: 1fr 1fr; }
+    .map { min-height: 380px; }
+  }
+  @media (max-width: 640px) {
+    .nav { height: 64px; }
+    .nav .btn { display: none; }
+    .logo b { font-size: 24px; }
+    .doors { grid-template-columns: 1fr; }
+    .door { min-height: 300px; }
+    .award { width: 78px; height: 78px; font-size: 9px; top: 18px; right: 18px; }
+    .award b { font-size: 19px; }
+    .cta .btn { flex: 1 1 100%; }
+    .hl { grid-template-columns: 1fr; }
+    .callbar { display: flex; }
+    footer { padding-bottom: 110px; }
+    .row b { font-size: 18px; }
+    .map { display: none; }
+    .map-mobile { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 16px; padding: 22px 24px; border-radius: 24px; background: var(--terra-soft); font-weight: 600; }
+    .map-mobile small { display: block; font-weight: 400; font-size: 13px; color: var(--ink-soft); }
+    .map-mobile span:last-child { font-size: 22px; color: var(--terra); }
+  }
+</style>
+</head>
+<body>
+<div id="demo-ribbon" style="position:sticky;top:0;z-index:99999;background:#111;color:#E6CF9F;font:12px/1.4 -apple-system,Segoe UI,Roboto,sans-serif;text-align:center;padding:6px 10px">Демо-сайт для студии на Елизарова из портфолио · не официальный сайт · <a href="../../" style="color:#E6CF9F">← в портфолио</a></div>
+
+<div class="demo">Демо-версия сайта · <b>название «Елизарова» — рабочее</b>, подберём вместе с вами</div>
+
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="logo" aria-label="На главную"><b>Елизарова<i>.</i></b><small>студия красоты · барбершоп</small></a>
+    <nav class="menu">
+      <a href="#prices">Цены</a>
+      <a href="#why">Почему мы</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <a href="https://dikidi.ru/1377778" target="_blank" rel="noopener" class="btn btn-terra btn-sm">Записаться онлайн</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-top">
+        <div>
+          <span class="eyebrow">У метро Елизаровская</span>
+          <h1>Красота и стрижки <em>через дорогу</em> друг от друга</h1>
+        </div>
+        <div class="hero-side">
+          <p>Студия красоты на Елизарова, 14 и барбершоп на Елизарова, 15. Маникюр, ресницы, косметология, лазер — и мужские стрижки для всей семьи.</p>
+          <div class="cta">
+            <a href="https://dikidi.ru/1377778" target="_blank" rel="noopener" class="btn btn-terra">Записаться онлайн</a>
+            <a href="#contacts" class="btn btn-line">Позвонить</a>
+          </div>
+          <div class="status"><span class="dot" id="dot"></span><span id="status">Ежедневно 9:00–22:00</span></div>
+        </div>
+      </div>
+
+      <div class="doors">
+        <a href="#prices" class="door door-studio reveal" data-go="nails">
+          <span class="door-num" aria-hidden="true">14</span>
+          <div>
+            <span class="door-tag">пр. Елизарова, 14</span>
+            <h3>Студия<br>красоты</h3>
+            <p>Маникюр и педикюр, ресницы и брови, косметология, лазерная эпиляция, женские стрижки, солярий.</p>
+          </div>
+          <div class="door-foot">
+            <span class="rate"><b>4.9</b><span>★ · 499 отзывов</span></span>
+            <span class="door-link">Смотреть цены →</span>
+          </div>
+        </a>
+        <a href="#prices" class="door door-barber reveal" data-go="barber">
+          <span class="door-num" aria-hidden="true">15</span>
+          <span class="award" aria-label="Лучший барбершоп 2023"><span>Лучший<br>барбершоп<b>2023</b></span></span>
+          <div>
+            <span class="door-tag">пр. Елизарова, 15</span>
+            <h3>Барбершоп</h3>
+            <p>Модельные стрижки, фейд и кроп, борода, детские стрижки и комплекс «Папа + сын».</p>
+          </div>
+          <div class="door-foot">
+            <span class="rate"><b>4.9</b><span>★ · 280 отзывов</span></span>
+            <span class="door-link">Смотреть цены →</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track" id="marquee">
+      <span>Маникюр</span><i>✦</i><span>Наращивание ресниц</span><i>✦</i><span>Фейд и кроп</span><i>✦</i><span>Чистка лица</span><i>✦</i><span>Лазерная эпиляция</span><i>✦</i><span>Борода</span><i>✦</i><span>Ламинирование бровей</span><i>✦</i><span>Солярий</span><i>✦</i>
+    </div>
+  </div>
+
+  <section id="prices">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <span class="eyebrow">Цены</span>
+          <h2>Честный прайс <em>без звёздочек</em></h2>
+        </div>
+        <p>Все цены — актуальные из вашей карточки в 2ГИС. Запись онлайн в пару касаний или по телефону.</p>
+      </div>
+
+      <div class="tabs" role="tablist" id="tabs">
+        <button class="tab" role="tab" data-t="nails" aria-selected="true">Маникюр и педикюр</button>
+        <button class="tab" role="tab" data-t="lash" aria-selected="false">Ресницы и брови</button>
+        <button class="tab" role="tab" data-t="cosmo" aria-selected="false">Косметология</button>
+        <button class="tab" role="tab" data-t="laser" aria-selected="false">Лазерная эпиляция</button>
+        <button class="tab" role="tab" data-t="hair" aria-selected="false">Стрижки</button>
+        <button class="tab" role="tab" data-t="barber" aria-selected="false">Барбершоп</button>
+        <button class="tab" role="tab" data-t="more" aria-selected="false">Ещё</button>
+      </div>
+
+      <div class="panel on" data-p="nails">
+        <div class="panel-head"><h3>Маникюр и педикюр</h3><span class="where">Елизарова, 14</span></div>
+        <div class="rows">
+          <div class="row"><span>Маникюр</span><b>1 200 ₽</b></div>
+          <div class="row"><span>Маникюр + покрытие<small>Знакомство с мастером</small></span><b>1 800 ₽</b></div>
+          <div class="row"><span>Наращивание ногтей</span><b>3 500 ₽</b></div>
+          <div class="row"><span>Педикюр</span><b>2 000 ₽</b></div>
+          <div class="row"><span>Педикюр + покрытие</span><b>2 900 ₽</b></div>
+          <div class="row"><span>Мужской маникюр</span><b>1 500 ₽</b></div>
+          <div class="row"><span>Мужской педикюр</span><b>2 400 ₽</b></div>
+        </div>
+      </div>
+
+      <div class="panel" data-p="lash">
+        <div class="panel-head"><h3>Ресницы и брови</h3><span class="where">Елизарова, 14</span></div>
+        <div class="rows">
+          <div class="row"><span>Наращивание ресниц, классика</span><b>2 200 ₽</b></div>
+          <div class="row"><span>Наращивание ресниц 2D</span><b>2 400 ₽</b></div>
+          <div class="row"><span>Наращивание ресниц 3D</span><b>2 700 ₽</b></div>
+          <div class="row"><span>Ламинирование ресниц</span><b>2 500 ₽</b></div>
+          <div class="row"><span>Ботокс для ресниц</span><b>1 800 ₽</b></div>
+          <div class="row"><span>Реконструкция «Вельвет»</span><b>1 800 ₽</b></div>
+          <div class="row"><span>Архитектура бровей</span><b>500 ₽</b></div>
+          <div class="row"><span>Ламинирование бровей</span><b>2 500 ₽</b></div>
+        </div>
+      </div>
+
+      <div class="panel" data-p="cosmo">
+        <div class="panel-head"><h3>Косметология</h3><span class="where">Елизарова, 14</span></div>
+        <div class="rows">
+          <div class="row"><span>Чистка лица<small>Ультразвуковая, комбинированная, вакуумная · 1,5–2 часа</small></span><b>3 000 ₽</b></div>
+          <div class="row"><span>Пилинг фруктовый</span><b>1 500 ₽</b></div>
+          <div class="row"><span>Пилинг<small>Жёлтый, молочный, Джесснера</small></span><b>2 000 ₽</b></div>
+          <div class="row"><span>RF-омоложение лица и шеи</span><b>2 000 ₽</b></div>
+          <div class="row"><span>Фотоомоложение</span><b>4 000 ₽</b></div>
+          <div class="row"><span>Мезотерапия (Корея)</span><b>6 000 ₽</b></div>
+          <div class="row"><span>Биоревитализация (Корея)</span><b>7 500 ₽</b></div>
+          <div class="row"><span>Увеличение губ, 1 мл</span><b>7 500 ₽</b></div>
+        </div>
+      </div>
+
+      <div class="panel" data-p="laser">
+        <div class="panel-head"><h3>Лазерная эпиляция</h3><span class="where">Елизарова, 14</span></div>
+        <div class="rows">
+          <div class="row"><span>Над губой</span><b>500 ₽</b></div>
+          <div class="row"><span>Подмышки</span><b>700 ₽</b></div>
+          <div class="row"><span>Руки полностью</span><b>1 200 ₽</b></div>
+          <div class="row"><span>Глубокое бикини</span><b>1 400 ₽</b></div>
+          <div class="row"><span>Ноги полностью</span><b>2 000 ₽</b></div>
+          <div class="row"><span>3 зоны на выбор</span><b class="hot">3 500 ₽</b></div>
+        </div>
+      </div>
+
+      <div class="panel" data-p="hair">
+        <div class="panel-head"><h3>Стрижки и окрашивание</h3><span class="where">Елизарова, 14</span></div>
+        <div class="rows">
+          <div class="row"><span>Женская стрижка — короткая</span><b>1 000 ₽</b></div>
+          <div class="row"><span>Женская стрижка — средняя длина</span><b>1 200 ₽</b></div>
+          <div class="row"><span>Женская стрижка — каре</span><b>1 300 ₽</b></div>
+          <div class="row"><span>Мужская модельная стрижка</span><b>1 200 ₽</b></div>
+          <div class="row"><span>Окрашивание</span><b>от 1 700 ₽</b></div>
+        </div>
+      </div>
+
+      <div class="panel" data-p="barber">
+        <div class="panel-head"><h3>Барбершоп</h3><span class="where b">Елизарова, 15</span></div>
+        <div class="rows">
+          <div class="row"><span>Модельная + фейд / кроп / андеркат<small>Акция</small></span><b class="hot">990 ₽</b></div>
+          <div class="row"><span>Модельная + фейд / кроп / андеркат<small>VIP</small></span><b>1 390 ₽</b></div>
+          <div class="row"><span>Стрижка наголо<small>Одна насадка</small></span><b>800 ₽</b></div>
+          <div class="row"><span>Оформление бороды</span><b>800 ₽</b></div>
+          <div class="row"><span>Стрижка + борода<small>Акция</small></span><b class="hot">1 490 ₽</b></div>
+          <div class="row"><span>Стрижка + борода<small>VIP</small></span><b>1 800 ₽</b></div>
+          <div class="row"><span>Детская стрижка</span><b>900 ₽</b></div>
+          <div class="row"><span>Стрижка в кресле-машинке<small>Для самых маленьких</small></span><b>1 500 ₽</b></div>
+          <div class="row"><span>Комплекс «Папа + сын»</span><b class="hot">2 000 ₽</b></div>
+          <div class="row"><span>Тонировка волос и бороды</span><b>от 1 500 ₽</b></div>
+        </div>
+      </div>
+
+      <div class="panel" data-p="more">
+        <div class="panel-head"><h3>Ещё у нас</h3><span class="where">Елизарова, 14</span></div>
+        <div class="rows">
+          <div class="row"><span>Солярий</span><b>от 25 ₽</b></div>
+          <div class="row"><span>Лазерное удаление тату и перманента</span><b>от 1 000 ₽</b></div>
+          <div class="row"><span>Пирсинг пупка, носа, ушей</span><b>1 800 ₽</b></div>
+          <div class="row"><span>Обучение мастеров<small>Маникюр, педикюр, наращивание, ламинирование</small></span><b>по запросу</b></div>
+        </div>
+      </div>
+
+      <p class="note">Показана часть прайса. Цены предоставлены владельцем в 2ГИС и не являются публичной офертой.</p>
+    </div>
+  </section>
+
+  <section class="hl-sec" id="why">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <span class="eyebrow">Почему к нам возвращаются</span>
+          <h2>Почти 800 отзывов — <em>и всё 4.9</em></h2>
+        </div>
+      </div>
+      <div class="hl">
+        <div class="hl-card reveal"><div class="big">779</div><h3>отзывов в 2ГИС</h3><p>499 у студии и 280 у барбершопа. Средняя оценка у обоих — 4.9.</p></div>
+        <div class="hl-card reveal"><div class="big">9–22</div><h3>Каждый день</h3><p>Без выходных: удобно прийти до работы, после неё или в выходные.</p></div>
+        <div class="hl-card reveal"><div class="big">2 в 1</div><h3>Два адреса через дорогу</h3><p>Пока вы на маникюре — муж и сын стригутся напротив.</p></div>
+        <div class="hl-card reveal"><div class="big">2023</div><h3>Лучший барбершоп</h3><p>Отметка «Лучший барбершоп 2023» в карточке 2ГИС.</p></div>
+        <div class="hl-card reveal"><div class="big">🐾</div><h3>Можно с собакой</h3><p>Не с кем оставить питомца? Приходите вместе.</p></div>
+        <div class="hl-card reveal"><div class="big">QR</div><h3>Удобная оплата</h3><p>Наличные, QR-код, перевод, а в барбершопе — и карта.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacts">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <span class="eyebrow">Контакты</span>
+          <h2>Два адреса, <em>одна минута</em> от метро</h2>
+        </div>
+      </div>
+      <div class="contacts">
+        <div class="reveal">
+          <div class="addr">
+            <div class="addr-top"><span class="pin s">14</span><h3>Студия красоты<small>пр. Елизарова, 14 · помещение 8-Н</small></h3></div>
+            <div class="addr-links">
+              <a class="chip" href="tel:+79119242875">+7 911 924-28-75</a>
+              <a class="chip" href="https://wa.me/79119242875" target="_blank" rel="noopener">WhatsApp</a>
+              <a class="chip" href="https://vk.com/ledielizarova19" target="_blank" rel="noopener">ВКонтакте</a>
+            </div>
+          </div>
+          <div class="addr">
+            <div class="addr-top"><span class="pin b">15</span><h3>Барбершоп<small>пр. Елизарова, 15 · помещение 4-Н</small></h3></div>
+            <div class="addr-links">
+              <a class="chip" href="tel:+79219009462">+7 921 900-94-62</a>
+              <a class="chip" href="https://wa.me/79219009462" target="_blank" rel="noopener">WhatsApp</a>
+              <a class="chip" href="https://vk.com/club81009705" target="_blank" rel="noopener">ВКонтакте</a>
+            </div>
+          </div>
+          <div class="hours-card">
+            <div><span>Оба адреса, без выходных</span><b>9:00 — 22:00</b></div>
+            <a href="https://dikidi.ru/1377778" target="_blank" rel="noopener" class="btn btn-terra">Записаться онлайн</a>
+          </div>
+          <a class="map-mobile" href="https://yandex.ru/maps/?pt=30.422233,59.895702~30.422502,59.896333&z=17" target="_blank" rel="noopener"><span>Открыть в Яндекс.Картах<small>1 минута пешком от м. Елизаровская</small></span><span>→</span></a>
+        </div>
+        <div class="map reveal">
+          <iframe title="Студия и барбершоп на карте" loading="lazy" src="https://yandex.ru/map-widget/v1/?ll=30.42237%2C59.89602&z=17&pt=30.422233%2C59.895702%2Cpm2rdl1~30.422502%2C59.896333%2Cpm2dgl2"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="final">
+    <div class="wrap reveal">
+      <span class="eyebrow">Запись</span>
+      <h2>Выберите время — <em>остальное</em> мы сделаем сами</h2>
+      <div class="cta">
+        <a href="https://dikidi.ru/1377778" target="_blank" rel="noopener" class="btn btn-terra">Записаться онлайн</a>
+        <a href="tel:+79119242875" class="btn btn-line">Позвонить в студию</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>Студия красоты и барбершоп · Санкт-Петербург</span>
+    <span>пр. Елизарова, 14 и 15 · ежедневно 9:00–22:00</span>
+  </div>
+</footer>
+
+<div class="callbar">
+  <a href="https://dikidi.ru/1377778" target="_blank" rel="noopener" class="btn btn-terra">Записаться</a>
+  <a href="#contacts" class="btn btn-ghost">Позвонить</a>
+</div>
+
+<script>
+  // Seamless marquee
+  (function () { var t = document.getElementById('marquee'); t.innerHTML += t.innerHTML; })();
+
+  // Price tabs; the two hero cards jump to their own tab
+  (function () {
+    var tabs = document.querySelectorAll('.tab'), panels = document.querySelectorAll('.panel');
+    function show(name) {
+      tabs.forEach(function (t) { t.setAttribute('aria-selected', t.dataset.t === name ? 'true' : 'false'); });
+      panels.forEach(function (p) { p.classList.toggle('on', p.dataset.p === name); });
+    }
+    tabs.forEach(function (t) { t.addEventListener('click', function () { show(t.dataset.t); }); });
+    document.querySelectorAll('[data-go]').forEach(function (d) { d.addEventListener('click', function () { show(d.dataset.go); }); });
+  })();
+
+  // Open/closed status in Saint Petersburg time
+  (function () {
+    var parts = new Intl.DateTimeFormat('ru-RU', { timeZone: 'Europe/Moscow', hour: '2-digit', minute: '2-digit', hour12: false }).formatToParts(new Date());
+    var get = function (t) { return (parts.find(function (p) { return p.type === t; }) || {}).value; };
+    var m = parseInt(get('hour'), 10) * 60 + parseInt(get('minute'), 10);
+    var open = m >= 540 && m < 1320;
+    document.getElementById('status').textContent = open
+      ? 'Открыто сейчас · до 22:00'
+      : 'Сейчас закрыто · откроемся в 9:00';
+    if (!open) document.getElementById('dot').classList.add('closed');
+  })();
+
+  // Reveal on scroll
+  (function () {
+    var els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: .12, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(function (e) { io.observe(e); });
+  })();
+</script>
+</body>
+</html>
