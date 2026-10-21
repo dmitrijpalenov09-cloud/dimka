@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="theme-color" content="#000000">
+  <meta name="color-scheme" content="dark">
+  <meta name="robots" content="noindex">
+  <title>be fresh — приложение · концепт</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800;900&display=swap">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+  <div id="app">
+    <div class="concept">Концепт приложения для be fresh · не официальное</div>
+    <main id="view" class="view"></main>
+    <div id="cta" class="cta" hidden><button type="button" class="btn" id="cta-btn"></button></div>
+    <nav id="tabs" class="tabs">
+      <button type="button" data-tab="home"><svg viewBox="0 0 24 24"><path d="M4 11.5L12 5l8 6.5V20h-5v-5h-6v5H4z"/></svg>Главная</button>
+      <button type="button" data-tab="path"><svg viewBox="0 0 24 24"><path d="M5 19c3-1 3-5 7-6s4-5 7-6"/><circle cx="5" cy="19" r="1.8"/><circle cx="19" cy="7" r="1.8"/></svg>Путь</button>
+      <button type="button" data-tab="videos"><svg viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="3.5"/><path d="M10.5 9.5v5l4.2-2.5z"/></svg>Видео</button>
+      <button type="button" data-tab="club"><svg viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg>System</button>
+    </nav>
+  </div>
+  <div id="sheet" class="sheet" hidden></div>
+  <div id="toast" class="toast" hidden></div>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
