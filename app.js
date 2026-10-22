@@ -4,7 +4,7 @@
   const tg = window.Telegram && window.Telegram.WebApp;
 
   // Ссылка t.me/<бот>?startapp=komnata открывает персональный концепт для клиента из папки komnata/
-  const PITCHES = ['komnata', 'budsoboy', 'labuket', 'mmdance', 'tastudio', 'mara', 'portfolio', 'ochl', 'devchata', 'smallhit', 'simon', 'befresh'];
+  const PITCHES = ['komnata', 'budsoboy', 'labuket', 'mmdance', 'tastudio', 'mara', 'portfolio', 'ochl', 'devchata', 'smallhit', 'simon', 'befresh', 'grebenuk'];
   const startParam = tg && tg.initDataUnsafe && tg.initDataUnsafe.start_param;
   if (PITCHES.includes(startParam)) { location.replace(`${startParam}/${location.hash}`); return; }
 
