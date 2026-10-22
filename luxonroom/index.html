@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="theme-color" content="#FBF7F2">
+  <meta name="robots" content="noindex">
+  <title>Luxonroom — концепт приложения</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Manrope:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+  <div id="app">
+    <div class="concept">Концепт приложения для Luxonroom · не официальное</div>
+    <main id="view" class="view"></main>
+    <div id="cta" class="cta" hidden><button type="button" class="btn" id="cta-btn"></button></div>
+    <nav id="tabs" class="tabs">
+      <button type="button" data-tab="home"><svg viewBox="0 0 24 24"><path d="M4 11.5L12 5l8 6.5V20h-5v-5h-6v5H4z"/></svg>Витрина</button>
+      <button type="button" data-tab="catalog"><svg viewBox="0 0 24 24"><path d="M12 5a2 2 0 1 1 2 2c-1 0-2 .7-2 1.6v.4l8.4 6.2c.9.7.4 1.8-.7 1.8H4.3c-1.1 0-1.6-1.1-.7-1.8L12 9"/></svg>Каталог</button>
+      <button type="button" data-tab="holds"><svg viewBox="0 0 24 24"><path d="M6 8h12l-1 12H7z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>Брони<i class="badge" hidden></i></button>
+      <button type="button" data-tab="card"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="3"/><path d="M3 10h18M7 14.5h4"/></svg>Карта</button>
+    </nav>
+  </div>
+  <div id="sheet" class="sheet" hidden></div>
+  <div id="toast" class="toast" hidden></div>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
