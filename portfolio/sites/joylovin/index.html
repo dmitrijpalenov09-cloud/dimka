@@ -1,0 +1,666 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Joylovin — вечерние и свадебные платья, Самара</title>
+<meta name="description" content="Joylovin brand: вечерние и свадебные платья в Самаре. Более 1000 моделей в наличии, примерка по записи на Ново-Садовой, 162Д.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* Layout: boutique lookbook — ivory paper, ink text, one wine accent, serif display like a fashion magazine */
+  :root {
+    --ivory: #f6f0e8;
+    --paper: #fffcf8;
+    --ink: #1c1517;
+    --muted: #6f6266;
+    --wine: #6b2437;
+    --wine-2: #86304a;
+    --gold: #b08a55;
+    --line: rgba(28, 21, 23, .13);
+    --display: "Cormorant", "Playfair Display", Georgia, serif;
+    --sans: "Onest", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --wrap: 1200px;
+    --gutter: clamp(16px, 4vw, 40px);
+    --safe-b: env(safe-area-inset-bottom, 0px);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  [hidden] { display: none !important; }
+  html { scroll-behavior: smooth; scroll-padding-top: 110px; -webkit-text-size-adjust: 100%; }
+  body { background: var(--ivory); color: var(--ink); font: 400 16px/1.55 var(--sans); overflow-x: hidden; }
+  img { display: block; max-width: 100%; }
+  button, input, select, textarea { font: inherit; color: inherit; }
+  button { background: none; border: 0; cursor: pointer; }
+  a { color: inherit; }
+  .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter); }
+  .hero-grid > *, .book > *, .guide > *, .contacts > *, .grid > * { min-width: 0; }
+  :focus-visible { outline: 2px solid var(--wine); outline-offset: 2px; }
+  .eyebrow { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--wine); font-weight: 600; }
+  h1, h2, h3 { font-family: var(--display); font-weight: 600; line-height: 1.05; letter-spacing: -.01em; }
+  h2 { font-size: clamp(34px, 5vw, 56px); }
+  .btn { text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 26px; border-radius: 999px; font-weight: 600; font-size: 15px; background: var(--wine); color: #fff; transition: background .2s, transform .2s; }
+  .btn:hover { background: var(--wine-2); }
+  .btn:active { transform: scale(.98); }
+  .btn.ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--ink); }
+  .btn.ghost:hover { background: var(--ink); color: var(--paper); }
+  .btn.sm { padding: 10px 18px; font-size: 14px; }
+
+  .demo-bar { background: var(--ink); color: #e9dfd2; text-align: center; font-size: 12.5px; padding: 8px var(--gutter); }
+  .demo-bar b { color: #e5c48f; font-weight: 600; }
+
+  header { position: sticky; top: 0; z-index: 40; background: rgba(246, 240, 232, .92); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+  .bar { display: flex; align-items: center; gap: 24px; height: 68px; }
+  .logo { display: flex; flex-direction: column; text-decoration: none; line-height: 1; }
+  .logo b { font-family: var(--display); font-size: 30px; font-weight: 700; letter-spacing: .01em; }
+  .logo small { font-size: 10px; letter-spacing: .3em; text-transform: uppercase; color: var(--muted); margin-top: 3px; }
+  nav.main { display: flex; gap: 26px; margin-left: auto; font-size: 14.5px; font-weight: 500; }
+  nav.main a { text-decoration: none; color: var(--muted); transition: color .2s; padding: 6px 0; }
+  nav.main a:hover { color: var(--ink); }
+  .fit-btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 999px; box-shadow: inset 0 0 0 1.5px var(--ink); font-weight: 600; font-size: 14px; white-space: nowrap; transition: background .2s, color .2s; }
+  .fit-btn:hover { background: var(--ink); color: var(--paper); }
+  .fit-btn .cnt { min-width: 22px; height: 22px; padding: 0 6px; border-radius: 11px; background: var(--wine); color: #fff; font-size: 12px; display: inline-grid; place-items: center; }
+  .fit-btn .cnt.zero { background: rgba(28, 21, 23, .14); color: var(--ink); }
+
+  /* hero */
+  .hero { padding: clamp(28px, 5vw, 64px) 0 clamp(36px, 6vw, 80px); }
+  .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(24px, 5vw, 72px); align-items: center; }
+  .hero h1 { font-size: clamp(46px, 7.4vw, 96px); margin: 14px 0 20px; }
+  .hero h1 em { font-style: italic; color: var(--wine); font-weight: 500; }
+  .hero p.lead { font-size: clamp(16px, 1.6vw, 19px); color: var(--muted); max-width: 30em; }
+  .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+  .facts { display: grid; grid-template-columns: repeat(4, auto); gap: 10px 28px; margin-top: 38px; padding-top: 24px; border-top: 1px solid var(--line); justify-content: start; }
+  .facts b { display: block; font-family: var(--display); font-size: 30px; font-weight: 700; line-height: 1; }
+  .facts span { font-size: 12.5px; color: var(--muted); }
+  .collage { position: relative; aspect-ratio: 4 / 5; max-width: 560px; justify-self: end; width: 100%; }
+  .collage figure { position: absolute; overflow: hidden; border-radius: 200px 200px 14px 14px; background: #ddd2c4; box-shadow: 0 24px 50px -22px rgba(60, 20, 30, .45); }
+  .collage img { width: 100%; height: 100%; object-fit: cover; }
+  .collage .c1 { inset: 0 24% 8% 0; }
+  .collage .c2 { right: 0; top: 14%; width: 34%; aspect-ratio: 3 / 4.4; border-radius: 120px 120px 12px 12px; }
+  .collage .c3 { right: 8%; bottom: 0; width: 40%; aspect-ratio: 1; border-radius: 50%; border: 6px solid var(--ivory); }
+  .collage .stamp { position: absolute; left: -8px; bottom: 6%; width: 104px; height: 104px; border-radius: 50%; background: var(--wine); color: #fff; display: grid; place-items: center; text-align: center; font-family: var(--display); font-size: 17px; line-height: 1.05; font-style: italic; transform: rotate(-10deg); }
+  .collage .stamp b { display: block; font-size: 28px; font-style: normal; }
+
+  /* catalog */
+  section.sec { padding: clamp(48px, 7vw, 96px) 0; }
+  section.sec.alt { background: var(--paper); border-block: 1px solid var(--line); }
+  .sec-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 18px; margin-bottom: 28px; }
+  .sec-head p { color: var(--muted); max-width: 32em; margin-top: 10px; }
+  .toolbar { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; margin-bottom: 26px; }
+  .chips { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; padding: 2px; margin: -2px; max-width: 100%; }
+  .chips::-webkit-scrollbar { display: none; }
+  .chip { flex: none; padding: 9px 16px; border-radius: 999px; font-size: 14px; font-weight: 500; box-shadow: inset 0 0 0 1.2px var(--line); background: transparent; transition: background .2s, color .2s, box-shadow .2s; white-space: nowrap; }
+  .chip:hover { box-shadow: inset 0 0 0 1.2px var(--ink); }
+  .chip[aria-pressed="true"], .chip.on { background: var(--ink); color: var(--paper); box-shadow: none; }
+  .chip:disabled { opacity: .38; cursor: not-allowed; text-decoration: line-through; box-shadow: inset 0 0 0 1.2px var(--line); background: transparent; color: var(--ink); }
+  .toolbar select { padding: 9px 14px; border-radius: 999px; border: 0; box-shadow: inset 0 0 0 1.2px var(--line); background: var(--paper); font-size: 14px; margin-left: auto; }
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px 18px; }
+  .card { cursor: pointer; text-align: left; display: block; }
+  .card .ph { position: relative; aspect-ratio: 3 / 4; overflow: hidden; border-radius: 6px; background: #e4d9cb; }
+  .card .ph img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform .6s cubic-bezier(.2, .7, .2, 1); }
+  .card:hover .ph img { transform: scale(1.04); }
+  .card .tag { position: absolute; left: 10px; top: 10px; padding: 4px 10px; border-radius: 999px; background: rgba(255, 252, 248, .92); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; font-weight: 600; }
+  .heart { position: absolute; right: 10px; top: 10px; width: 38px; height: 38px; border-radius: 50%; background: rgba(255, 252, 248, .92); display: grid; place-items: center; transition: transform .2s, background .2s; }
+  .heart:hover { transform: scale(1.08); }
+  .heart svg { width: 18px; height: 18px; fill: none; stroke: var(--ink); stroke-width: 1.8; }
+  .heart[aria-pressed="true"] { background: var(--wine); }
+  .heart[aria-pressed="true"] svg { fill: #fff; stroke: #fff; }
+  .card h3 { font-size: 22px; margin-top: 12px; font-weight: 600; line-height: 1.12; }
+  .card h3 small { font-family: var(--sans); font-size: 12px; color: var(--muted); font-weight: 500; letter-spacing: .04em; margin-left: 4px; }
+  .card .pr { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; margin-top: 6px; }
+  .card .pr b { font-weight: 600; font-size: 17px; }
+  .card .pr span { font-size: 12.5px; color: var(--muted); }
+  .empty { grid-column: 1 / -1; padding: 60px 20px; text-align: center; color: var(--muted); border: 1px dashed var(--line); border-radius: 14px; }
+  .more-note { margin-top: 34px; text-align: center; color: var(--muted); font-size: 14.5px; }
+  .more-note a { color: var(--wine); font-weight: 600; }
+
+  /* steps */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; counter-reset: s; }
+  .step { padding: 28px; border-radius: 14px; background: var(--ivory); border: 1px solid var(--line); }
+  .step::before { counter-increment: s; content: counter(s, decimal-leading-zero); font-family: var(--display); font-size: 54px; color: var(--gold); font-weight: 500; line-height: 1; display: block; margin-bottom: 10px; }
+  .step h3 { font-size: 26px; margin-bottom: 8px; }
+  .step p { color: var(--muted); font-size: 15px; }
+
+  /* booking */
+  .book { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(24px, 4vw, 56px); align-items: start; }
+  .book-info p { color: var(--muted); margin-top: 12px; max-width: 28em; }
+  .perks { list-style: none; margin-top: 22px; display: grid; gap: 10px; }
+  .perks li { display: flex; gap: 10px; font-size: 15px; }
+  .perks li::before { content: "✦"; color: var(--gold); flex: none; }
+  .picked { margin-top: 28px; }
+  .picked h4 { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: 12px; }
+  .picked-list { display: flex; flex-wrap: wrap; gap: 10px; }
+  .pk { position: relative; width: 78px; }
+  .pk img { width: 78px; height: 104px; object-fit: cover; object-position: top; border-radius: 6px; }
+  .pk button { position: absolute; right: -6px; top: -6px; width: 24px; height: 24px; border-radius: 50%; background: var(--ink); color: #fff; font-size: 14px; line-height: 1; display: grid; place-items: center; }
+  .pk span { display: block; font-size: 11.5px; color: var(--muted); margin-top: 4px; line-height: 1.2; }
+  .picked .none { color: var(--muted); font-size: 14.5px; }
+  .picked .none a { color: var(--wine); font-weight: 600; }
+  form.panel, .panel { background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: clamp(20px, 3vw, 34px); }
+  .seg { display: grid; grid-template-columns: 1fr 1fr; padding: 4px; border-radius: 999px; background: var(--ivory); margin-bottom: 22px; }
+  .seg button { padding: 11px 10px; border-radius: 999px; font-size: 14px; font-weight: 600; color: var(--muted); transition: background .2s, color .2s; }
+  .seg button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+  .lbl { display: block; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin: 20px 0 10px; }
+  .lbl:first-of-type { margin-top: 0; }
+  .dates .chip { text-align: center; line-height: 1.15; padding: 9px 14px; }
+  .dates .chip small { display: block; font-size: 11px; opacity: .65; text-transform: uppercase; letter-spacing: .06em; }
+  .times { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+  .times .chip { text-align: center; padding: 10px 0; }
+  .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 22px; }
+  .f { display: block; }
+  .f.full { grid-column: 1 / -1; }
+  .f span.t { display: block; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: 7px; }
+  .f input, .f select, .f textarea { width: 100%; padding: 13px 14px; border-radius: 10px; border: 1.5px solid var(--line); background: var(--ivory); font-size: 16px; transition: border-color .2s, background .2s; }
+  .f textarea { resize: vertical; min-height: 78px; }
+  .f input:focus, .f select:focus, .f textarea:focus { outline: none; border-color: var(--wine); background: #fff; }
+  .f.err input, .f.err select { border-color: #b3261e; background: #fdf1f0; }
+  .f .em { display: none; color: #b3261e; font-size: 12.5px; margin-top: 5px; }
+  .f.err .em { display: block; }
+  .legal { font-size: 12.5px; color: var(--muted); margin-top: 16px; }
+  .submit { width: 100%; margin-top: 18px; padding: 17px; font-size: 16px; }
+  .done { text-align: center; padding: 18px 6px; }
+  .done .ok { width: 64px; height: 64px; border-radius: 50%; background: var(--wine); color: #fff; font-size: 30px; display: grid; place-items: center; margin: 0 auto 18px; }
+  .done h3 { font-size: 36px; }
+  .done .sum { margin: 20px auto 0; max-width: 360px; text-align: left; display: grid; gap: 8px; padding: 18px; border-radius: 12px; background: var(--ivory); font-size: 15px; }
+  .done .sum div { display: flex; justify-content: space-between; gap: 14px; }
+  .done .sum span { color: var(--muted); }
+  .done .sum b { font-weight: 600; text-align: right; }
+
+  /* size guide */
+  .guide { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 4vw, 56px); align-items: center; }
+  .calc { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .calc .f span.t { margin-bottom: 6px; }
+  .res { margin-top: 18px; padding: 20px; border-radius: 14px; background: var(--ivory); border: 1px dashed var(--line); font-size: 15px; color: var(--muted); }
+  .res.on { border-style: solid; border-color: var(--wine); background: #fbf1f1; color: var(--ink); }
+  .res b { font-family: var(--display); font-size: 40px; color: var(--wine); line-height: 1; margin: 0 6px; }
+  table.sz { width: 100%; border-collapse: collapse; font-size: 14.5px; margin-top: 20px; }
+  table.sz th, table.sz td { padding: 10px 8px; text-align: center; border-bottom: 1px solid var(--line); }
+  table.sz th { font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  table.sz tr.hl td { background: #f6e6e6; font-weight: 600; }
+
+  /* info cards */
+  .info { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .ic { padding: 24px; border-radius: 14px; background: var(--ivory); border: 1px solid var(--line); }
+  .ic h3 { font-size: 24px; margin-bottom: 8px; }
+  .ic p { font-size: 14.5px; color: var(--muted); }
+  .ic ul { list-style: none; font-size: 14.5px; color: var(--muted); display: grid; gap: 4px; }
+
+  /* contacts */
+  .contacts { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(20px, 4vw, 56px); }
+  .map { position: relative; min-height: 320px; border-radius: 18px; overflow: hidden; background: #e9dfd2; border: 1px solid var(--line); }
+  .map svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .map .pin { position: absolute; left: 50%; top: 46%; transform: translate(-50%, -100%); text-align: center; }
+  .map .pin i { display: block; width: 26px; height: 26px; margin: 8px auto 0; border-radius: 50% 50% 50% 0; background: var(--wine); transform: rotate(-45deg); box-shadow: 0 8px 18px rgba(107, 36, 55, .45); position: relative; }
+  .map .pin i::after { content: ""; position: absolute; inset: 8px; border-radius: 50%; background: #fff; }
+  .map .pin span { display: inline-block; padding: 8px 14px; border-radius: 10px; background: var(--ink); color: var(--paper); font-weight: 600; font-size: 14px; white-space: nowrap; }
+  .map .go { position: absolute; left: 14px; bottom: 14px; }
+  .ct h3 { font-size: 26px; margin-bottom: 4px; }
+  .ct-row { padding: 18px 0; border-bottom: 1px solid var(--line); }
+  .ct-row:last-child { border-bottom: 0; }
+  .ct-row small { display: block; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: 4px; }
+  .ct-row b { font-size: 19px; font-weight: 600; }
+  .ct-row .links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+
+  footer { background: var(--ink); color: #cfc3b6; padding: 36px 0 calc(36px + var(--safe-b)); font-size: 13.5px; }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 30px; }
+  footer b { font-family: var(--display); font-size: 24px; color: #fff; font-weight: 700; }
+
+  /* product modal */
+  .mback { position: fixed; inset: 0; z-index: 80; background: rgba(28, 21, 23, .62); display: none; align-items: center; justify-content: center; padding: 20px; }
+  .mback.on { display: flex; animation: fade .25s ease; }
+  @keyframes fade { from { opacity: 0; } }
+  .modal { position: relative; width: min(940px, 100%); max-height: calc(100vh - 40px); max-height: calc(100dvh - 40px); overflow: auto; background: var(--paper); border-radius: 18px; display: grid; grid-template-columns: .9fr 1.1fr; animation: rise .35s cubic-bezier(.2, .7, .2, 1); }
+  @keyframes rise { from { transform: translateY(24px); opacity: 0; } }
+  .modal .mph { background: #e4d9cb; min-height: 320px; }
+  .modal .mph img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+  .modal .mb { padding: clamp(22px, 3vw, 38px); display: flex; flex-direction: column; gap: 14px; }
+  .modal h3 { font-size: clamp(30px, 4vw, 42px); }
+  .modal .price { font-size: 26px; font-weight: 600; }
+  .modal .price small { display: block; font-size: 14px; color: var(--muted); font-weight: 400; margin-top: 2px; }
+  .modal .sz-row { display: flex; flex-wrap: wrap; gap: 8px; }
+  .modal .note { font-size: 14px; color: var(--muted); }
+  .modal .acts { display: grid; gap: 10px; margin-top: auto; }
+  .mx { position: absolute; right: 14px; top: 14px; z-index: 2; width: 40px; height: 40px; border-radius: 50%; background: rgba(255, 252, 248, .95); font-size: 22px; display: grid; place-items: center; box-shadow: 0 2px 10px rgba(0, 0, 0, .15); }
+
+  /* floating cart pill (mobile) */
+  .pill { position: fixed; left: 14px; right: 14px; bottom: calc(14px + var(--safe-b)); z-index: 60; display: none; align-items: center; justify-content: space-between; padding: 16px 22px; border-radius: 999px; background: var(--wine); color: #fff; font-weight: 600; box-shadow: 0 14px 30px -10px rgba(107, 36, 55, .6); }
+  .toast { position: fixed; left: 50%; top: 84px; transform: translate(-50%, -16px); opacity: 0; pointer-events: none; z-index: 90; padding: 12px 20px; border-radius: 999px; background: var(--ink); color: #fff; font-size: 14px; transition: opacity .25s, transform .25s; max-width: calc(100vw - 32px); text-align: center; }
+  .toast.on { opacity: 1; transform: translate(-50%, 0); }
+
+  @media (max-width: 1040px) {
+    .grid { grid-template-columns: repeat(3, 1fr); }
+    .info { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 860px) {
+    html { scroll-padding-top: 118px; }
+    .bar { height: auto; min-height: 60px; flex-wrap: wrap; gap: 0 12px; padding-top: 8px; padding-bottom: 0; }
+    .logo b { font-size: 26px; }
+    nav.main { order: 3; flex: 0 0 100%; margin: 6px calc(-1 * var(--gutter)) 0; padding: 0 var(--gutter); gap: 22px; overflow-x: auto; scrollbar-width: none; border-top: 1px solid var(--line); }
+    nav.main::-webkit-scrollbar { display: none; }
+    nav.main a { padding: 10px 0; white-space: nowrap; }
+    .fit-btn { margin-left: auto; padding: 9px 14px; }
+    html { scroll-padding-top: 108px; }
+    .hero-grid, .book, .guide, .contacts { grid-template-columns: minmax(0, 1fr); }
+    .collage { justify-self: center; max-width: 420px; order: -1; }
+    .facts { grid-template-columns: repeat(2, auto); }
+    .steps { grid-template-columns: 1fr; }
+    .grid { grid-template-columns: repeat(2, 1fr); gap: 22px 12px; }
+    .card h3 { font-size: 19px; }
+    .modal { grid-template-columns: 1fr; }
+    .modal .mph { height: min(62vh, 125vw); min-height: 0; overflow: hidden; }
+    .mback { padding: 0; align-items: flex-end; }
+    .modal { border-radius: 18px 18px 0 0; max-height: 92dvh; }
+    .pill.show { display: flex; }
+    .toast { top: 120px; }
+  }
+  @media (max-width: 520px) {
+    .info { grid-template-columns: 1fr; }
+    .fields { grid-template-columns: 1fr; }
+    .times { grid-template-columns: repeat(4, 1fr); }
+    .calc { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 46px; }
+    .fit-btn .lbl-txt { display: none; }
+    .collage .stamp { width: 88px; height: 88px; font-size: 15px; }
+    .collage .stamp b { font-size: 24px; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; scroll-behavior: auto !important; } }
+</style>
+</head>
+<body id="top">
+<div class="demo-bar"><b>Демо-версия</b> · каталог, цены и фото — из группы бренда ВКонтакте · запись на примерку не настоящая</div>
+
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#top" aria-label="Joylovin — наверх"><b>Joylovin</b><small>brand · Самара</small></a>
+    <nav class="main" aria-label="Разделы">
+      <a href="#catalog">Каталог</a>
+      <a href="#fitting">Примерка</a>
+      <a href="#size">Подбор размера</a>
+      <a href="#delivery">Доставка и оплата</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <button class="fit-btn" type="button" id="fitBtn" aria-label="Примерочная"><span class="lbl-txt">Примерочная</span><span class="cnt zero" id="fitCnt">0</span></button>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Вечерние и свадебные платья</span>
+      <h1>Платье, в&nbsp;котором вы&nbsp;— <em>главная</em></h1>
+      <p class="lead">Свой бренд и больше тысячи моделей в наличии. Выберите платья на сайте, соберите примерочную — и приходите на Ново-Садовую: всё будет ждать вас на вешалке.</p>
+      <div class="cta">
+        <a class="btn" href="#fitting">Записаться на примерку</a>
+        <a class="btn ghost" href="#catalog">Смотреть каталог</a>
+      </div>
+      <div class="facts">
+        <div><b>1000+</b><span>моделей в наличии</span></div>
+        <div><b>40–52</b><span>размеры</span></div>
+        <div><b>от 5 000 ₽</b><span>цены на платья</span></div>
+        <div><b>4,9 ★</b><span>оценка в 2ГИС</span></div>
+      </div>
+    </div>
+    <div class="collage" aria-hidden="false">
+      <figure class="c1"><img src="img/11699613.jpg" alt="Свадебное платье с пышными рукавами"></figure>
+      <figure class="c2"><img src="img/7591642.jpg" alt="Атласное платье миди изумрудного цвета"></figure>
+      <figure class="c3"><img src="img/11699600.jpg" alt="Белое платье с разрезом"></figure>
+      <div class="stamp"><div><b>11–21</b>ежедневно, по записи</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec alt" id="catalog">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow">Каталог</span>
+        <h2>Выберите платья для примерки</h2>
+        <p>Нажмите на сердечко — платье попадёт в вашу примерочную. Мы подготовим его к вашему приходу.</p>
+      </div>
+    </div>
+    <div class="toolbar">
+      <div class="chips" id="catChips" role="group" aria-label="Тип платья"></div>
+      <select id="sortSel" aria-label="Сортировка">
+        <option value="pop">Сначала новинки</option>
+        <option value="asc">Сначала дешевле</option>
+        <option value="desc">Сначала дороже</option>
+      </select>
+    </div>
+    <div class="chips" id="priceChips" role="group" aria-label="Цена" style="margin-bottom:28px"></div>
+    <div class="grid" id="grid"></div>
+    <p class="more-note">Здесь показана часть коллекции — в салоне больше тысячи моделей. <a href="https://vk.com/club211219074" target="_blank" rel="noopener">Весь каталог в ВКонтакте</a></p>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head"><div><span class="eyebrow">Как это работает</span><h2>Три шага до платья</h2></div></div>
+    <div class="steps">
+      <div class="step"><h3>Выбираете</h3><p>Листаете каталог, добавляете понравившиеся модели в примерочную. Не знаете размер — подскажет калькулятор ниже.</p></div>
+      <div class="step"><h3>Записываетесь</h3><p>Выбираете день и время. Примерка проходит по записи, чтобы платья были готовы, а консультант — только для вас.</p></div>
+      <div class="step"><h3>Примеряете и забираете</h3><p>Приходите в салон или примеряйте по видеосвязи. Понравилось — забираете сразу или оформляете доставку по России.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec alt" id="fitting">
+  <div class="wrap book">
+    <div class="book-info">
+      <span class="eyebrow">Запись на примерку</span>
+      <h2>Приходите — всё уже подготовлено</h2>
+      <p>Выберите удобное время. Платья из вашей примерочной будут висеть в кабинке к приходу.</p>
+      <ul class="perks">
+        <li>Ежедневно по записи, Ново-Садовая 162Д</li>
+        <li>Можно примерять онлайн по видеосвязи</li>
+        <li>Оплата картой, наличными, долями и в рассрочку</li>
+      </ul>
+      <div class="picked">
+        <h4>Ваша примерочная</h4>
+        <div class="picked-list" id="pickedList"></div>
+      </div>
+    </div>
+    <div id="bookWrap">
+      <form class="panel" id="bookForm" novalidate>
+        <div class="seg" role="group" aria-label="Формат примерки">
+          <button type="button" data-mode="salon" aria-pressed="true">В салоне</button>
+          <button type="button" data-mode="online" aria-pressed="false">Онлайн по видео</button>
+        </div>
+        <span class="lbl">День</span>
+        <div class="chips dates" id="dates" role="group" aria-label="День"></div>
+        <span class="lbl">Время</span>
+        <div class="times" id="times" role="group" aria-label="Время"></div>
+        <div class="fields">
+          <label class="f" id="fName"><span class="t">Имя</span><input id="name" autocomplete="name" placeholder="Как к вам обращаться"><span class="em">Напишите имя</span></label>
+          <label class="f" id="fPhone"><span class="t">Телефон</span><input id="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 ___ ___-__-__"><span class="em">Нужен номер из 11 цифр</span></label>
+          <label class="f"><span class="t">Повод</span>
+            <select id="occ"><option>Выпускной</option><option>Свадьба</option><option>Вечер / корпоратив</option><option>День рождения</option><option>Другое</option></select></label>
+          <label class="f"><span class="t">Размер</span>
+            <select id="size"><option value="">Пока не знаю</option><option>40</option><option>42</option><option>44</option><option>46</option><option>48</option><option>50</option><option>52</option></select></label>
+          <label class="f full"><span class="t">Пожелания</span><textarea id="note" placeholder="Цвет, длина, дата мероприятия — всё, что поможет подобрать"></textarea></label>
+        </div>
+        <button class="btn submit" type="submit">Записаться на примерку</button>
+        <p class="legal">Нажимая кнопку, вы соглашаетесь на обработку персональных данных. Демо: данные никуда не отправляются.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="size">
+  <div class="wrap guide">
+    <div>
+      <span class="eyebrow">Подбор размера</span>
+      <h2>Не знаете свой размер?</h2>
+      <p style="color:var(--muted);margin:12px 0 22px;max-width:30em">Введите три мерки в сантиметрах — подскажем российский размер. Окончательно подберём на примерке.</p>
+      <div class="calc">
+        <label class="f"><span class="t">Грудь, см</span><input id="mB" type="number" inputmode="numeric" min="70" max="140" placeholder="90"></label>
+        <label class="f"><span class="t">Талия, см</span><input id="mW" type="number" inputmode="numeric" min="50" max="130" placeholder="70"></label>
+        <label class="f"><span class="t">Бёдра, см</span><input id="mH" type="number" inputmode="numeric" min="80" max="150" placeholder="98"></label>
+      </div>
+      <div class="res" id="res">Заполните три мерки — подскажем размер.</div>
+      <button class="btn ghost sm" type="button" id="useSize" hidden style="margin-top:14px">Указать этот размер в записи</button>
+    </div>
+    <div>
+      <table class="sz" id="szTable"></table>
+    </div>
+  </div>
+</section>
+
+<section class="sec alt" id="delivery">
+  <div class="wrap">
+    <div class="sec-head"><div><span class="eyebrow">Доставка и оплата</span><h2>Удобно, даже если вы не в Самаре</h2></div></div>
+    <div class="info">
+      <div class="ic"><h3>По всей России</h3><p>Отправляем транспортной компанией СДЭК и Почтой России. Примерка по видеосвязи перед заказом.</p></div>
+      <div class="ic"><h3>Оплата</h3><ul><li>Картой и наличными</li><li>По QR-коду</li><li>Долями</li><li>В рассрочку</li></ul></div>
+      <div class="ic"><h3>Онлайн-примерка</h3><p>Покажем платье на живой вешалке по видеосвязи: ткань, посадку, детали. Запись — через форму выше.</p></div>
+      <div class="ic"><h3>Подгоним по размеру</h3><p>Нужного размера нет в наличии? Расскажем, что можно заказать — например, другие размеры и цвета.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="contacts">
+  <div class="wrap contacts">
+    <div class="map" role="img" aria-label="Схема: Ново-Садовая улица, 162Д, Самара">
+      <svg viewBox="0 0 600 420" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <rect width="600" height="420" fill="#eadfd0"/>
+        <path d="M-20 300 L240 250 L430 280 L640 190" stroke="#fffcf8" stroke-width="22" fill="none"/>
+        <path d="M120 -20 L170 200 L150 440" stroke="#fffcf8" stroke-width="16" fill="none"/>
+        <path d="M420 -20 L400 160 L470 440" stroke="#fffcf8" stroke-width="16" fill="none"/>
+        <path d="M-20 120 L300 150 L640 90" stroke="#f6f0e8" stroke-width="10" fill="none"/>
+        <rect x="210" y="40" width="90" height="60" rx="8" fill="#cfd8c2" opacity=".7"/>
+        <rect x="470" y="300" width="100" height="80" rx="8" fill="#cfd8c2" opacity=".7"/>
+        <text x="250" y="244" font-family="Onest, sans-serif" font-size="13" fill="#6f6266" transform="rotate(-6 250 244)">Ново-Садовая ул.</text>
+      </svg>
+      <div class="pin"><span>Joylovin, Ново-Садовая 162Д</span><i></i></div>
+      <a class="btn sm go" href="https://2gis.ru/samara/firm/70000001040450393" target="_blank" rel="noopener">Открыть в 2ГИС</a>
+    </div>
+    <div class="ct">
+      <span class="eyebrow">Контакты</span>
+      <h2 style="margin:8px 0 10px">Ждём вас на примерку</h2>
+      <div class="ct-row"><small>Адрес</small><b>Самара, Ново-Садовая улица, 162Д</b></div>
+      <div class="ct-row"><small>Время</small><b>Ежедневно по записи, 11:00–21:00</b></div>
+      <div class="ct-row"><small>Телефон и мессенджеры</small><b>8 (927) 766-07-94</b><br><b style="font-size:16px;color:var(--muted)">8 (927) 260-38-40</b>
+        <div class="links">
+          <a class="btn sm" href="tel:+79277660794">Позвонить</a>
+          <a class="btn sm ghost" href="https://t.me/joylovin_brand" target="_blank" rel="noopener">Telegram</a>
+          <a class="btn sm ghost" href="https://vk.com/club211219074" target="_blank" rel="noopener">ВКонтакте</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><b>Joylovin</b><br>вечерние и свадебные платья · Самара</div>
+    <div>Демо-сайт · материалы из группы бренда ВКонтакте</div>
+  </div>
+</footer>
+
+<button class="pill" id="pill" type="button"><span id="pillTxt">Примерочная</span><span>Записаться →</span></button>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="mback" id="mback" aria-hidden="true"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle" id="modal"></div></div>
+
+<script>
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const rub = (n) => n.toLocaleString('ru-RU') + ' ₽';
+
+/* ---------- Data: items from the brand's VK catalog ---------- */
+const CATS = [['all', 'Все платья'], ['evening', 'Вечерние'], ['wedding', 'Свадебные'], ['suit', 'Костюмы']];
+const CAT_NAME = { evening: 'Вечернее', wedding: 'Свадебное', suit: 'Костюм' };
+const P = [
+  { id: '11699600', name: 'Свадебное платье', cat: 'wedding', price: 18500 },
+  { id: '11699613', name: 'Свадебное платье', cat: 'wedding', price: 22500 },
+  { id: '7591642', name: 'Атласное платье миди на бретелях', cat: 'evening', price: 9600, sizes: [42], order: [40, 44, 46], colors: 'Изумруд, чёрный, электрик, голубой — и ещё 10 пастельных оттенков под заказ' },
+  { id: '11699621', name: 'Свадебное платье', cat: 'wedding', price: 18500, sizes: [42, 44, 46, 48, 50] },
+  { id: '11699598', name: 'Свадебное платье', cat: 'wedding', price: 13200 },
+  { id: '11702750', name: 'Платье мини', cat: 'evening', price: 11800 },
+  { id: '11699575', name: 'Платье', cat: 'evening', price: 16500, sizes: [42, 44, 46, 48] },
+  { id: '11699574', name: 'Платье из фатина', cat: 'evening', price: 12990 },
+  { id: '11699617', name: 'Свадебное платье', cat: 'wedding', price: 14500 },
+  { id: '6679597', name: 'Брючный костюм 3-ка', cat: 'suit', price: 12600 },
+  { id: '11699599', name: 'Свадебное платье', cat: 'wedding', price: 13280 },
+  { id: '6803151', name: 'Платье мини на бретелях', cat: 'evening', price: 7990 },
+  { id: '11699604', name: 'Свадебное платье', cat: 'wedding', price: 7890 },
+  { id: '11699579', name: 'Платье', cat: 'evening', price: 8990, sizes: [42, 44] },
+  { id: '6589296', name: 'Платье мини на бретелях', cat: 'evening', price: 9900 },
+  { id: '11702740', name: 'Платье миди', cat: 'evening', price: 5860 },
+  { id: '6803198', name: 'Платье миди', cat: 'evening', price: 5800 },
+];
+{ const seen = {}; P.forEach((p) => { const k = p.name; seen[k] = (seen[k] || 0) + 1; p.n = seen[k]; }); P.forEach((p) => { if (seen[p.name] < 2) p.n = 0; }); }
+const byId = Object.fromEntries(P.map((p) => [p.id, p]));
+const PRICES = [['all', 'Любая цена', 0, 1e9], ['u10', 'до 10 000 ₽', 0, 10000], ['m', '10 000 – 15 000 ₽', 10000, 15000], ['o15', 'от 15 000 ₽', 15000, 1e9]];
+const LABEL = (p) => p.name + (p.n ? ` · №${String(p.n).padStart(2, '0')}` : '');
+
+/* ---------- State ---------- */
+let wish = [];
+try { wish = JSON.parse(localStorage.getItem('jl_wish') || '[]').filter((id) => byId[id]); } catch (e) { wish = []; }
+const saveWish = () => { try { localStorage.setItem('jl_wish', JSON.stringify(wish)); } catch (e) {} };
+const flt = { cat: 'all', price: 'all', sort: 'pop' };
+const bk = { mode: 'salon', date: null, time: null };
+let draft = {};
+let toastT;
+function toast(msg) { const t = $('#toast'); t.textContent = msg; t.classList.add('on'); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('on'), 2200); }
+function scrollToEl(el) { const hdr = $('header').getBoundingClientRect().height + 8; window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - hdr, behavior: 'smooth' }); }
+
+/* ---------- Catalog ---------- */
+const HEART = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.2-9.4C1.6 7.6 3.7 4.5 7 4.5c2 0 3.5 1.1 5 3 1.5-1.9 3-3 5-3 3.3 0 5.4 3.1 4.2 6.6-1.7 4.8-9.2 9.4-9.2 9.4z" stroke-linejoin="round"/></svg>';
+function renderChips() {
+  $('#catChips').innerHTML = CATS.map(([id, n]) => `<button class="chip" type="button" data-cat="${id}" aria-pressed="${flt.cat === id}">${n}${id === 'all' ? ' · ' + P.length : ' · ' + P.filter((p) => p.cat === id).length}</button>`).join('');
+  $('#priceChips').innerHTML = PRICES.map(([id, n]) => `<button class="chip" type="button" data-price="${id}" aria-pressed="${flt.price === id}">${n}</button>`).join('');
+}
+function renderGrid() {
+  const pr = PRICES.find((x) => x[0] === flt.price);
+  let list = P.filter((p) => (flt.cat === 'all' || p.cat === flt.cat) && p.price >= pr[2] && p.price <= pr[3]);
+  if (flt.sort === 'asc') list.sort((a, b) => a.price - b.price);
+  if (flt.sort === 'desc') list.sort((a, b) => b.price - a.price);
+  $('#grid').innerHTML = list.length ? list.map((p) => `
+    <article class="card" data-id="${p.id}" tabindex="0" role="button" aria-label="${LABEL(p)}, ${rub(p.price)}">
+      <div class="ph"><img src="img/${p.id}.jpg" alt="${LABEL(p)}" loading="lazy">
+        <span class="tag">${CAT_NAME[p.cat]}</span>
+        <button class="heart" type="button" data-heart="${p.id}" aria-pressed="${wish.includes(p.id)}" aria-label="В примерочную">${HEART}</button></div>
+      <h3>${p.name}${p.n ? `<small>№${String(p.n).padStart(2, '0')}</small>` : ''}</h3>
+      <div class="pr"><b>${rub(p.price)}</b><span>долями от ${rub(Math.round(p.price / 4))}</span></div>
+    </article>`).join('') : '<div class="empty">В этой цене и типе пока ничего нет — загляните в «Любая цена».</div>';
+}
+$('#catChips').addEventListener('click', (e) => { const b = e.target.closest('[data-cat]'); if (!b) return; flt.cat = b.dataset.cat; renderChips(); renderGrid(); });
+$('#priceChips').addEventListener('click', (e) => { const b = e.target.closest('[data-price]'); if (!b) return; flt.price = b.dataset.price; renderChips(); renderGrid(); });
+$('#sortSel').addEventListener('change', (e) => { flt.sort = e.target.value; renderGrid(); });
+$('#grid').addEventListener('click', (e) => {
+  const h = e.target.closest('[data-heart]');
+  if (h) { e.stopPropagation(); toggleWish(h.dataset.heart); return; }
+  const c = e.target.closest('.card'); if (c) openProduct(c.dataset.id);
+});
+$('#grid').addEventListener('keydown', (e) => { if ((e.key === 'Enter' || e.key === ' ') && e.target.classList.contains('card')) { e.preventDefault(); openProduct(e.target.dataset.id); } });
+
+function toggleWish(id) {
+  const i = wish.indexOf(id);
+  if (i >= 0) { wish.splice(i, 1); toast('Убрали из примерочной'); } else { wish.push(id); toast('В примерочной: ' + wish.length); }
+  saveWish(); syncWish();
+}
+function syncWish() {
+  $$('[data-heart]').forEach((b) => b.setAttribute('aria-pressed', wish.includes(b.dataset.heart) ? 'true' : 'false'));
+  const c = $('#fitCnt'); c.textContent = wish.length; c.classList.toggle('zero', !wish.length);
+  const pill = $('#pill'); pill.classList.toggle('show', wish.length > 0);
+  $('#pillTxt').textContent = 'Примерочная · ' + wish.length;
+  $('#pickedList').innerHTML = wish.length ? wish.map((id) => `<div class="pk"><img src="img/${id}.jpg" alt=""><button type="button" data-rm="${id}" aria-label="Убрать">×</button><span>${LABEL(byId[id])}</span></div>`).join('')
+    : '<p class="none">Пока пусто. <a href="#catalog">Выберите платья в каталоге</a> — или приходите без выбора, подберём на месте.</p>';
+  const m = $('#modal'); if (m.dataset.id) { const b = $('[data-mw]', m); if (b) b.textContent = wish.includes(m.dataset.id) ? 'Убрать из примерочной' : 'Добавить в примерочную'; }
+}
+$('#pickedList').addEventListener('click', (e) => { const b = e.target.closest('[data-rm]'); if (b) toggleWish(b.dataset.rm); });
+$('#fitBtn').addEventListener('click', () => scrollToEl($('#fitting')));
+$('#pill').addEventListener('click', () => scrollToEl($('#fitting')));
+
+/* ---------- Product modal ---------- */
+let lastFocus = null;
+function openProduct(id) {
+  const p = byId[id]; if (!p) return; lastFocus = document.activeElement;
+  const m = $('#modal'); m.dataset.id = id;
+  const sizes = p.sizes ? `<div><span class="lbl" style="margin-top:6px">Размеры в наличии</span><div class="sz-row">${p.sizes.map((s) => `<span class="chip on">${s}</span>`).join('')}${(p.order || []).map((s) => `<span class="chip">${s} · под заказ</span>`).join('')}</div></div>`
+    : '<p class="note">Размеры в наличии подтвердим перед примеркой — обычно 40–52.</p>';
+  m.innerHTML = `<button class="mx" type="button" aria-label="Закрыть" id="mClose">×</button>
+    <div class="mph"><img src="img/${p.id}.jpg" alt="${LABEL(p)}"></div>
+    <div class="mb">
+      <span class="eyebrow">${CAT_NAME[p.cat]}${p.n ? ` · №${String(p.n).padStart(2, '0')}` : ''}</span>
+      <h3 id="mTitle">${p.name}</h3>
+      <div class="price">${rub(p.price)}<small>или долями: 4 платежа по ${rub(Math.round(p.price / 4))}</small></div>
+      ${sizes}
+      ${p.colors ? `<p class="note"><b>Цвета:</b> ${p.colors}.</p>` : ''}
+      <p class="note">Примерка по записи. Платье подготовим к вашему приходу.</p>
+      <div class="acts">
+        <button class="btn" type="button" data-mw>${wish.includes(id) ? 'Убрать из примерочной' : 'Добавить в примерочную'}</button>
+        <button class="btn ghost" type="button" data-book>Записаться на примерку</button>
+      </div>
+    </div>`;
+  const mb = $('#mback'); mb.classList.add('on'); mb.setAttribute('aria-hidden', 'false');
+  document.documentElement.style.overflow = 'hidden';
+  $('#mClose').focus({ preventScroll: true });
+}
+function closeProduct() {
+  const mb = $('#mback'); if (!mb.classList.contains('on')) return;
+  mb.classList.remove('on'); mb.setAttribute('aria-hidden', 'true'); $('#modal').dataset.id = '';
+  document.documentElement.style.overflow = '';
+  if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
+}
+$('#mback').addEventListener('click', (e) => {
+  if (e.target.id === 'mback' || e.target.closest('#mClose')) return closeProduct();
+  const id = $('#modal').dataset.id;
+  if (e.target.closest('[data-mw]')) toggleWish(id);
+  if (e.target.closest('[data-book]')) { if (!wish.includes(id)) { wish.push(id); saveWish(); syncWish(); } closeProduct(); setTimeout(() => scrollToEl($('#fitting')), 60); }
+});
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeProduct(); });
+
+/* ---------- Booking ---------- */
+const DAYS = 14, HOURS = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+const dayKey = (d) => d.getFullYear() * 10000 + (d.getMonth() + 1) * 100 + d.getDate();
+const fmtDay = new Intl.DateTimeFormat('ru-RU', { weekday: 'short' }), fmtLong = new Intl.DateTimeFormat('ru-RU', { weekday: 'long', day: 'numeric', month: 'long' });
+const dates = Array.from({ length: DAYS }, (_, i) => { const d = new Date(); d.setHours(0, 0, 0, 0); d.setDate(d.getDate() + i); return d; });
+function slotTaken(d, h) {
+  const now = new Date();
+  if (dayKey(d) === dayKey(now) && h <= now.getHours() + 1) return true;
+  return (d.getDate() * 7 + h * 13 + d.getMonth() * 3) % 5 === 0;
+}
+function renderDates() {
+  $('#dates').innerHTML = dates.map((d, i) => `<button class="chip" type="button" data-di="${i}" aria-pressed="${bk.date === i}"><small>${i === 0 ? 'сегодня' : fmtDay.format(d)}</small>${d.getDate()}</button>`).join('');
+}
+function renderTimes() {
+  if (bk.date == null) { $('#times').innerHTML = '<p style="grid-column:1/-1;color:var(--muted);font-size:14.5px">Сначала выберите день</p>'; return; }
+  const d = dates[bk.date];
+  $('#times').innerHTML = HOURS.map((h) => `<button class="chip" type="button" data-h="${h}" aria-pressed="${bk.time === h}" ${slotTaken(d, h) ? 'disabled' : ''}>${h}:00</button>`).join('');
+}
+$('#dates').addEventListener('click', (e) => { const b = e.target.closest('[data-di]'); if (!b) return; bk.date = +b.dataset.di; if (bk.time != null && slotTaken(dates[bk.date], bk.time)) bk.time = null; renderDates(); renderTimes(); });
+$('#times').addEventListener('click', (e) => { const b = e.target.closest('[data-h]'); if (!b || b.disabled) return; bk.time = +b.dataset.h; renderTimes(); });
+$$('.seg button').forEach((b) => b.addEventListener('click', () => { bk.mode = b.dataset.mode; $$('.seg button').forEach((x) => x.setAttribute('aria-pressed', x === b ? 'true' : 'false')); }));
+$('#phone').addEventListener('input', (e) => {
+  let d = e.target.value.replace(/\D/g, ''); if (d[0] === '8') d = '7' + d.slice(1); if (d && d[0] !== '7') d = '7' + d; d = d.slice(0, 11);
+  const f = (s, a, b) => s.slice(a, b);
+  e.target.value = d ? '+7' + (d.length > 1 ? ' ' + f(d, 1, 4) : '') + (d.length > 4 ? ' ' + f(d, 4, 7) : '') + (d.length > 7 ? '-' + f(d, 7, 9) : '') + (d.length > 9 ? '-' + f(d, 9, 11) : '') : '';
+});
+['name', 'phone', 'occ', 'size', 'note'].forEach((id) => $('#' + id).addEventListener('input', (e) => { draft[id] = e.target.value; e.target.closest('.f') && e.target.closest('.f').classList.remove('err'); }));
+function pickedHtml() { return wish.length ? wish.map((id) => LABEL(byId[id])).join(', ') : 'подберём на месте'; }
+$('#bookForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const name = $('#name').value.trim(), phone = $('#phone').value.replace(/\D/g, '');
+  const bad = [];
+  if (name.length < 2) bad.push('fName');
+  if (phone.length !== 11) bad.push('fPhone');
+  ['fName', 'fPhone'].forEach((id) => $('#' + id).classList.toggle('err', bad.includes(id)));
+  if (bad.length) { $('#' + bad[0] + ' input').focus(); return; }
+  if (bk.date == null || bk.time == null) { toast('Выберите день и время'); scrollToEl($('#dates').previousElementSibling); return; }
+  const d = dates[bk.date];
+  const rec = { name, phone: $('#phone').value, when: fmtLong.format(d) + ', ' + bk.time + ':00', mode: bk.mode, size: $('#size').value, occ: $('#occ').value, dresses: wish.slice(), at: Date.now() };
+  try { const a = JSON.parse(localStorage.getItem('jl_fittings') || '[]'); a.push(rec); localStorage.setItem('jl_fittings', JSON.stringify(a)); } catch (er) {}
+  $('#bookWrap').innerHTML = `<div class="panel done"><div class="ok">✓</div><h3>Вы записаны, ${name.split(' ')[0]}!</h3>
+    <p style="color:var(--muted);margin-top:8px">Мы напишем вам в мессенджер и подтвердим время. Платья будут ждать в примерочной.</p>
+    <div class="sum"><div><span>Когда</span><b>${rec.when}</b></div><div><span>Формат</span><b>${rec.mode === 'salon' ? 'В салоне, Ново-Садовая 162Д' : 'Онлайн по видео'}</b></div><div><span>Платья</span><b>${pickedHtml()}</b></div><div><span>Размер</span><b>${rec.size || 'подберём на примерке'}</b></div></div>
+    <button class="btn ghost sm" type="button" id="again" style="margin-top:22px">Записать ещё кого-то</button></div>`;
+});
+$('#bookWrap').addEventListener('click', (e) => { if (e.target.id === 'again') location.reload(); });
+
+/* ---------- Size guide ---------- */
+const SZ = [[40, 80, 62, 88], [42, 84, 66, 92], [44, 88, 70, 96], [46, 92, 74, 100], [48, 96, 78, 104], [50, 100, 82, 108], [52, 104, 86, 112]];
+$('#szTable').innerHTML = '<tr><th>Размер</th><th>Грудь</th><th>Талия</th><th>Бёдра</th></tr>' + SZ.map((r) => `<tr data-s="${r[0]}"><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td></tr>`).join('');
+let calcSize = null;
+function calc() {
+  const v = [+$('#mB').value, +$('#mW').value, +$('#mH').value];
+  const res = $('#res');
+  $$('#szTable tr').forEach((r) => r.classList.remove('hl'));
+  if (v.some((x) => !x)) { res.className = 'res'; res.textContent = 'Заполните три мерки — подскажем размер.'; $('#useSize').hidden = true; calcSize = null; return; }
+  const pick = (idx, val) => { const r = SZ.find((x) => val <= x[idx]); return r ? r[0] : 54; };
+  const s = Math.max(pick(1, v[0]), pick(2, v[1]), pick(3, v[2]));
+  calcSize = s;
+  res.className = 'res on';
+  res.innerHTML = s > 52 ? 'Ваши мерки — за пределами нашей сетки 40–52. <b>54</b> — покажем, что есть, или сошьём под заказ.' : `Ваш размер примерно <b>${s}</b>. Если мерки попали в разные размеры, мы взяли больший — так платье сядет свободнее.`;
+  const row = $(`#szTable tr[data-s="${s}"]`); row && row.classList.add('hl');
+  $('#useSize').hidden = s > 52;
+}
+['mB', 'mW', 'mH'].forEach((id) => $('#' + id).addEventListener('input', calc));
+$('#useSize').addEventListener('click', () => { if (!calcSize) return; $('#size').value = String(calcSize); toast('Размер ' + calcSize + ' указан в записи'); scrollToEl($('#fitting')); });
+
+/* ---------- init ---------- */
+renderChips(); renderGrid(); renderDates(); renderTimes(); syncWish();
+</script>
+</body>
+</html>

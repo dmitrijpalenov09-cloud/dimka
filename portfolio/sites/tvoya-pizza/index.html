@@ -1,0 +1,1153 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Твоя пицца — доставка пиццы 116 км, Кряж, Волгарь</title>
+<meta name="description" content="Твоя пицца: тонкая пицца без бортиков с доставкой по 116 км, в Кряж, Волгарь, Южный город-1, Сухую Самарку и Подстёпновку. Бесплатно от 1000 ₽ по 116 км, −5% на самовывоз, −15% в день рождения.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geologica:wght@500;700;800;900&family=Onest:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  /* Layout: warm night kitchen — charcoal surfaces, tomato red as the one loud colour, chalk-hand notes as in the paper menu */
+  :root {
+    --bg: #141210;
+    --surface: #1c1916;
+    --surface-2: #26221e;
+    --line: rgba(246, 239, 227, .1);
+    --cream: #f6efe3;
+    --dim: rgba(246, 239, 227, .62);
+    --red: #e3392c;
+    --red-2: #f25142;
+    --basil: #7cc451;
+    --mustard: #f2b33d;
+    --display: "Geologica", "Oswald", Impact, sans-serif;
+    --sans: "Onest", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --hand: "Caveat", "Segoe Print", cursive;
+    --wrap: 1200px;
+    --gutter: clamp(16px, 4vw, 36px);
+    --safe-b: env(safe-area-inset-bottom, 0px);
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  [hidden] { display: none !important; }
+  html { scroll-behavior: smooth; scroll-padding-top: 128px; }
+  body {
+    background: var(--bg);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.07'/%3E%3C/svg%3E");
+    color: var(--cream); font-family: var(--sans); font-size: 15.5px; line-height: 1.55;
+    -webkit-font-smoothing: antialiased; overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration: none; }
+  button, input, textarea, select { font: inherit; color: inherit; }
+  button { cursor: pointer; background: none; border: 0; }
+  :focus-visible { outline: 2px solid var(--mustard); outline-offset: 2px; border-radius: 6px; }
+  .wrap { max-width: var(--wrap); margin: 0 auto; padding-left: var(--gutter); padding-right: var(--gutter); }
+  .num { font-variant-numeric: tabular-nums; }
+  .demo-bar { background: var(--surface-2); color: var(--dim); text-align: center; font-size: 12.5px; padding: 6px var(--gutter); border-bottom: 1px solid var(--line); }
+  .demo-bar b { color: var(--mustard); font-weight: 600; }
+
+  /* Header */
+  header { position: sticky; top: 0; z-index: 40; background: rgba(20, 18, 16, .88); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+  .bar { display: flex; align-items: center; gap: 16px; height: 68px; }
+  .logo { display: flex; align-items: center; gap: 11px; flex: none; }
+  .logo-mark { display: block; width: 46px; height: 46px; flex: none; }
+  .logo-mark svg { width: 100%; height: 100%; display: block; }
+  .logo b em { font-style: normal; color: var(--red); }
+  .foot-logo { display: block; width: 150px; }
+  .foot-logo svg { width: 100%; height: auto; display: block; }
+  img.ph { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .card .pic .art.rect, .card .pic .art.snack.rect { width: 94%; aspect-ratio: 1.15; }
+  .card .pic .art.rect img.ph, .pm-art .art-in.rect img.ph { border-radius: 14px; }
+  .card:hover .pic .art.rect { transform: scale(1.04); }
+  .pm-art .art-in.rect { aspect-ratio: 1.15; }
+  .thumb img.ph { border-radius: 10px; }
+  .extras { display: grid; gap: 12px; }
+  .exg h6 { font-size: 12px; font-weight: 600; color: var(--dim); margin-bottom: 7px; letter-spacing: .02em; }
+  .mod small { opacity: .7; font-weight: 500; }
+  .logo b { display: block; font-family: var(--display); font-weight: 800; font-size: 20px; letter-spacing: -.01em; line-height: 1; }
+  .logo small { display: block; font-size: 11.5px; color: var(--dim); margin-top: 4px; white-space: nowrap; }
+  .mode { display: inline-flex; padding: 4px; border-radius: 12px; background: var(--surface-2); }
+  .mode button { padding: 7px 12px; border-radius: 9px; font-size: 13px; font-weight: 600; color: var(--dim); white-space: nowrap; }
+  .mode button[aria-pressed="true"] { background: var(--cream); color: #1a1714; }
+  .open-now { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; color: var(--dim); white-space: nowrap; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--basil); box-shadow: 0 0 0 4px rgba(124, 196, 81, .16); flex: none; }
+  .dot.off { background: var(--red); box-shadow: 0 0 0 4px rgba(227, 57, 44, .18); }
+  .spacer { flex: 1; }
+  .phone { font-family: var(--display); font-weight: 700; font-size: 16px; white-space: nowrap; }
+  .cart-btn { display: inline-flex; align-items: center; gap: 10px; padding: 11px 16px; border-radius: 12px; background: var(--red); color: #fff; font-weight: 700; transition: background .2s, transform .15s; white-space: nowrap; }
+  .cart-btn:hover { background: var(--red-2); }
+  .cart-btn .sep { width: 1px; height: 18px; background: rgba(255, 255, 255, .4); }
+  .bump { animation: bump .35s ease; }
+  @keyframes bump { 40% { transform: scale(1.07); } }
+  .tabs-wrap { border-top: 1px solid var(--line); }
+  .tabs { display: flex; gap: 6px; overflow-x: auto; padding-top: 9px; padding-bottom: 9px; scrollbar-width: none; }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab { flex: none; padding: 8px 15px; border-radius: 999px; font-weight: 600; font-size: 14px; color: var(--dim); transition: background .2s, color .2s; }
+  .tab:hover { color: var(--cream); }
+  .tab.on { background: var(--cream); color: #1a1714; }
+
+  /* Hero */
+  .hero { padding: clamp(36px, 6vw, 72px) 0 clamp(30px, 5vw, 56px); overflow: hidden; }
+  .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(20px, 4vw, 56px); align-items: center; }
+  .where { display: inline-flex; align-items: center; gap: 8px; padding: 7px 13px; border-radius: 999px; background: var(--surface-2); font-size: 13px; color: var(--dim); }
+  .where b { color: var(--cream); font-weight: 600; }
+  h1 { font-family: var(--display); font-weight: 900; font-size: clamp(44px, 7.4vw, 96px); line-height: .92; letter-spacing: -.035em; margin: 22px 0 34px; text-wrap: balance; }
+  h1 .red { color: var(--red); position: relative; white-space: nowrap; }
+  h1 .red svg { position: absolute; left: 0; right: 0; bottom: -.16em; width: 100%; height: .3em; }
+  .lead { font-size: clamp(16px, 1.5vw, 18.5px); color: var(--dim); max-width: 520px; }
+  .lead b { color: var(--cream); font-weight: 600; }
+  .cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 15px 22px; border-radius: 14px; font-weight: 700; font-size: 15px; transition: background .2s, transform .15s, opacity .2s; white-space: nowrap; }
+  .btn:active { transform: scale(.98); }
+  .btn-red { background: var(--red); color: #fff; }
+  .btn-red:hover { background: var(--red-2); }
+  .btn-ghost { background: var(--surface-2); }
+  .btn-ghost:hover { background: #312c27; }
+  .btn-block { width: 100%; }
+  .btn[disabled] { opacity: .45; pointer-events: none; }
+  .facts { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 30px; font-size: 13.5px; color: var(--dim); }
+  .facts span { display: inline-flex; align-items: center; gap: 7px; }
+  .facts b { color: var(--cream); font-family: var(--display); font-weight: 700; }
+  .stage { position: relative; aspect-ratio: 1; max-width: 520px; width: 100%; justify-self: end; }
+  .stage .board { position: absolute; inset: 6%; border-radius: 50%; background: radial-gradient(circle at 40% 35%, #3a2a1c, #22180f 70%); box-shadow: inset 0 0 0 10px #2d2016, inset 0 0 0 11px rgba(255, 255, 255, .05), 0 40px 80px rgba(0, 0, 0, .5); }
+  .stage .spin { position: absolute; inset: 12%; animation: spin 60s linear infinite; filter: drop-shadow(0 16px 24px rgba(0, 0, 0, .55)); }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .note { position: absolute; font-family: var(--hand); font-size: clamp(20px, 2.3vw, 27px); line-height: 1; color: var(--cream); white-space: nowrap; transform: rotate(-6deg); }
+  .note svg { position: absolute; overflow: visible; }
+  .note.n1 { left: -4%; top: 6%; }
+  .note.n2 { right: -2%; bottom: 8%; transform: rotate(4deg); text-align: right; }
+  .note.n3 { right: 4%; top: 2%; transform: rotate(7deg); color: var(--mustard); }
+
+  /* Offer strip */
+  .offers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .offer { position: relative; overflow: hidden; display: flex; gap: 16px; align-items: center; padding: 18px 20px; border-radius: 18px; background: var(--surface); border: 1px solid var(--line); }
+  .offer .big { font-family: var(--display); font-weight: 900; font-size: 34px; line-height: 1; letter-spacing: -.03em; flex: none; min-width: 84px; }
+  .offer h3 { font-size: 15px; font-weight: 700; }
+  .offer p { font-size: 13px; color: var(--dim); }
+  .offer.o1 .big { color: var(--mustard); }
+  .offer.o2 .big { color: var(--basil); }
+  .offer.o3 .big { color: var(--red-2); }
+
+  /* Sections */
+  .sec { padding-top: clamp(44px, 6vw, 72px); }
+  .sec-head { display: flex; justify-content: space-between; align-items: end; gap: 16px 28px; flex-wrap: wrap; margin-bottom: 22px; }
+  .sec-head h2 { font-family: var(--display); font-weight: 900; font-size: clamp(32px, 4.4vw, 52px); letter-spacing: -.03em; line-height: 1; }
+  .sec-head h2 small { font-family: var(--hand); font-weight: 700; font-size: .55em; color: var(--mustard); letter-spacing: 0; margin-left: 10px; vertical-align: middle; }
+  .sec-head p { max-width: 430px; color: var(--dim); font-size: 14px; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .card { position: relative; display: flex; flex-direction: column; padding: 18px 18px 18px; border-radius: 22px; background: var(--surface); border: 1px solid var(--line); cursor: pointer; transition: transform .25s cubic-bezier(.2, .7, .2, 1), border-color .25s, background .25s; }
+  .card:hover { transform: translateY(-4px); border-color: rgba(246, 239, 227, .22); background: #201d19; }
+  .card .pic { position: relative; aspect-ratio: 1.25; display: grid; place-items: center; margin: -4px -4px 10px; border-radius: 16px; background: radial-gradient(circle at 50% 55%, #2b251f, transparent 70%); }
+  .card .pic .art { width: 78%; aspect-ratio: 1; filter: drop-shadow(0 14px 18px rgba(0, 0, 0, .5)); transition: transform .5s cubic-bezier(.2, .7, .2, 1); }
+  .card:hover .pic .art { transform: rotate(14deg) scale(1.03); }
+  .card .pic .art.snack { width: 70%; }
+  .badges { position: absolute; top: 10px; left: 10px; display: flex; gap: 6px; flex-wrap: wrap; }
+  .bdg { font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; padding: 4px 8px; border-radius: 7px; background: var(--surface-2); color: var(--cream); }
+  .bdg.new { background: var(--mustard); color: #1a1714; }
+  .bdg.hot { background: var(--red); color: #fff; }
+  .bdg.kid { background: #3c6fd8; color: #fff; }
+  .bdg.sea { background: #1f8a8a; color: #fff; }
+  .card h3 { font-family: var(--display); font-weight: 800; font-size: 21px; letter-spacing: -.02em; line-height: 1.15; }
+  .card .comp { margin-top: 6px; font-size: 13.5px; color: var(--dim); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .card .foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: auto; padding-top: 14px; }
+  .price { font-family: var(--display); font-weight: 800; font-size: 20px; }
+  .price small { font-family: var(--sans); font-size: 12.5px; font-weight: 500; color: var(--dim); margin-right: 3px; }
+  .card .add { padding: 9px 15px; border-radius: 11px; background: var(--surface-2); font-weight: 700; font-size: 14px; transition: background .2s, color .2s; }
+  .card:hover .add { background: var(--red); color: #fff; }
+  .src { margin-top: 14px; font-size: 12.5px; color: var(--dim); }
+  .card.soon .pic .art { opacity: .8; filter: grayscale(.25) drop-shadow(0 14px 18px rgba(0, 0, 0, .5)); }
+  .card.soon .add { background: transparent; border: 1px solid var(--line); }
+  .msgr { display: flex; flex-wrap: wrap; gap: 8px; }
+  .msgr a, .msgr span { padding: 8px 12px; border-radius: 10px; background: var(--surface-2); font-weight: 600; font-size: 13px; }
+
+  /* Delivery */
+  .dgrid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 16px; align-items: start; }
+  .dmap { aspect-ratio: 360 / 230; max-width: 100%; border-radius: 22px; overflow: hidden; background: var(--surface); border: 1px solid var(--line); }
+  .dmap svg { display: block; width: 100%; height: 100%; }
+  .dmap [data-a] { cursor: pointer; }
+  .areas { display: grid; gap: 8px; }
+  .area { display: grid; grid-template-columns: 12px 1fr auto; gap: 12px; align-items: center; padding: 13px 16px; border-radius: 14px; background: var(--surface); border: 1.5px solid var(--line); text-align: left; transition: border-color .2s, background .2s; }
+  .area .pin { width: 12px; height: 12px; border-radius: 50%; background: var(--mustard); }
+  .area.home .pin { background: var(--red); }
+  .area b { display: block; font-weight: 700; font-size: 15px; }
+  .area small { color: var(--dim); font-size: 12.5px; }
+  .area .fee { font-family: var(--display); font-weight: 800; font-size: 16px; text-align: right; white-space: nowrap; }
+  .area .fee small { display: block; font-family: var(--sans); font-weight: 500; font-size: 11.5px; }
+  .area[aria-pressed="true"] { border-color: var(--cream); background: var(--surface-2); }
+  .d-note { margin-top: 12px; font-size: 13px; color: var(--dim); }
+
+  /* Reviews & contacts */
+  .about { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .tile { padding: 22px; border-radius: 22px; background: var(--surface); border: 1px solid var(--line); display: grid; gap: 8px; align-content: start; }
+  .tile .k { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--dim); }
+  .tile .v { font-family: var(--display); font-weight: 800; font-size: 22px; letter-spacing: -.02em; line-height: 1.2; }
+  .tile p { color: var(--dim); font-size: 14px; }
+  .tile .rating { font-family: var(--display); font-weight: 900; font-size: 54px; line-height: 1; color: var(--mustard); }
+  .copy { justify-self: start; padding: 8px 12px; border-radius: 10px; background: var(--surface-2); font-weight: 600; font-size: 13px; }
+
+  footer { margin-top: clamp(48px, 6vw, 80px); border-top: 1px solid var(--line); padding-top: 26px; padding-bottom: calc(110px + var(--safe-b)); color: var(--dim); font-size: 13px; }
+  .foot-row { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+  .mbar { position: fixed; left: 12px; right: 12px; bottom: calc(12px + var(--safe-b)); z-index: 45; display: none; }
+  .mbar button { width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 15px 18px; border-radius: 16px; background: var(--red); color: #fff; font-weight: 700; font-size: 15px; box-shadow: 0 14px 30px rgba(0, 0, 0, .5); }
+
+  /* Overlays */
+  .scrim { position: fixed; inset: 0; z-index: 60; background: rgba(0, 0, 0, .64); opacity: 0; pointer-events: none; transition: opacity .25s; }
+  .scrim.on { opacity: 1; pointer-events: auto; }
+  .sheet { position: fixed; z-index: 70; background: var(--surface); color: var(--cream); border: 1px solid var(--line); box-shadow: 0 30px 80px rgba(0, 0, 0, .6); display: flex; flex-direction: column; }
+  .modal { left: 50%; top: 50%; width: min(900px, calc(100vw - 32px)); max-height: calc(100vh - 48px); border-radius: 24px; transform: translate(-50%, -46%) scale(.97); opacity: 0; pointer-events: none; transition: all .25s cubic-bezier(.2, .7, .2, 1); overflow: hidden; }
+  .modal.on { transform: translate(-50%, -50%); opacity: 1; pointer-events: auto; }
+  .drawer { top: 0; right: 0; bottom: 0; width: min(440px, 100vw); transform: translateX(100%); transition: transform .3s cubic-bezier(.2, .7, .2, 1); }
+  .drawer.on { transform: none; }
+  .x { position: absolute; top: 14px; right: 14px; z-index: 3; width: 38px; height: 38px; border-radius: 50%; background: var(--surface-2); display: grid; place-items: center; font-size: 20px; }
+  .x:hover { background: #312c27; }
+  .pm { display: grid; grid-template-columns: 1fr 1fr; min-height: 0; flex: 1; }
+  .pm-art { background: radial-gradient(circle at 50% 50%, #2f2720, #18140f 72%); display: grid; place-items: center; padding: 30px; }
+  .pm-art .art-in { width: 100%; max-width: 360px; aspect-ratio: 1; transition: transform .35s cubic-bezier(.2, .7, .2, 1); filter: drop-shadow(0 20px 30px rgba(0, 0, 0, .6)); }
+  .pm-body { padding: 28px 26px 22px; overflow-y: auto; display: flex; flex-direction: column; gap: 16px; }
+  .pm-body h3 { font-family: var(--display); font-weight: 900; font-size: 32px; letter-spacing: -.03em; line-height: 1.05; padding-right: 36px; }
+  .pm-body .desc { color: var(--dim); font-size: 14px; }
+  .kbju { display: flex; gap: 6px; flex-wrap: wrap; }
+  .kbju span { padding: 6px 10px; border-radius: 9px; background: var(--surface-2); font-size: 12.5px; color: var(--dim); }
+  .kbju b { color: var(--cream); }
+  .seg { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; padding: 4px; border-radius: 13px; background: var(--surface-2); }
+  .seg button { padding: 10px 6px; border-radius: 10px; font-weight: 600; font-size: 14px; color: var(--dim); line-height: 1.25; }
+  .seg button small { display: block; font-size: 11.5px; font-weight: 500; opacity: .8; }
+  .seg button[aria-pressed="true"] { background: var(--cream); color: #1a1714; }
+  .lbl { font-size: 13px; font-weight: 600; color: var(--dim); margin-bottom: 8px; }
+  .mods { display: flex; flex-wrap: wrap; gap: 8px; }
+  .mod { padding: 9px 13px; border-radius: 999px; border: 1.5px solid var(--line); font-size: 13.5px; font-weight: 500; transition: border-color .2s, background .2s; }
+  .mod[aria-pressed="true"] { border-color: var(--cream); background: var(--surface-2); }
+  .mod[aria-pressed="true"]::before { content: "✓ "; color: var(--basil); font-weight: 700; }
+  .pm-foot { margin-top: auto; display: flex; gap: 10px; align-items: center; }
+  .qty { display: inline-flex; align-items: center; border-radius: 12px; background: var(--surface-2); }
+  .qty button { width: 38px; height: 44px; font-size: 20px; font-weight: 600; }
+  .qty span { min-width: 22px; text-align: center; font-weight: 700; }
+
+  .dr-head { padding: 22px 22px 14px; border-bottom: 1px solid var(--line); }
+  .dr-head h3 { font-family: var(--display); font-weight: 900; font-size: 28px; letter-spacing: -.02em; }
+  .dr-head p { color: var(--dim); font-size: 13px; }
+  .dr-body { flex: 1; overflow-y: auto; padding: 6px 22px; }
+  .ci { display: grid; grid-template-columns: 60px 1fr auto; gap: 12px; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .ci .thumb { width: 60px; height: 60px; }
+  .ci h4 { font-weight: 700; font-size: 15px; line-height: 1.25; }
+  .ci small { display: block; color: var(--dim); font-size: 12.5px; }
+  .ci .right { display: grid; justify-items: end; gap: 6px; }
+  .ci .sum { font-family: var(--display); font-weight: 800; font-size: 16px; }
+  .ci .qty button { width: 30px; height: 32px; font-size: 17px; }
+  .free { margin: 14px 0 4px; padding: 12px 14px; border-radius: 12px; background: rgba(124, 196, 81, .09); font-size: 13px; }
+  .free .track { height: 6px; border-radius: 4px; background: rgba(246, 239, 227, .1); margin-top: 8px; overflow: hidden; }
+  .free .track i { display: block; height: 100%; background: var(--basil); border-radius: 4px; transition: width .3s; }
+  .upsell h5 { font-size: 13px; color: var(--dim); font-weight: 600; margin: 16px 0 8px; }
+  .ups { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 6px; scrollbar-width: none; }
+  .ups::-webkit-scrollbar { display: none; }
+  .up { flex: none; width: 124px; padding: 10px; border-radius: 14px; background: var(--surface-2); text-align: center; font-size: 12.5px; line-height: 1.3; display: grid; gap: 4px; justify-items: center; }
+  .up .thumb { width: 60px; height: 60px; }
+  .up b { font-family: var(--display); font-weight: 800; }
+  .up button { padding: 6px 10px; border-radius: 8px; background: rgba(246, 239, 227, .1); font-weight: 600; font-size: 12px; }
+  .dr-foot { padding: 16px 22px calc(18px + var(--safe-b)); border-top: 1px solid var(--line); display: grid; gap: 8px; }
+  .line { display: flex; justify-content: space-between; gap: 12px; color: var(--dim); font-size: 14px; }
+  .line.good { color: var(--basil); }
+  .line.total { color: var(--cream); font-family: var(--display); font-weight: 900; font-size: 22px; margin: 4px 0 6px; }
+  .empty { text-align: center; color: var(--dim); padding: 50px 10px; }
+  .empty .art-e { width: 130px; height: 130px; margin: 0 auto 12px; opacity: .7; }
+
+  .co, .tr, .paybox { flex: none; }
+  #flowBody > * { flex: none; }
+  .co { padding: 26px; display: grid; gap: 18px; }
+  .co h3, .tr-top h3 { font-family: var(--display); font-weight: 900; font-size: 30px; letter-spacing: -.02em; line-height: 1.05; }
+  .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .fields .full { grid-column: 1 / -1; }
+  label.f { display: grid; gap: 6px; font-size: 13px; font-weight: 600; color: var(--dim); }
+  .f input, .f textarea, .f select { width: 100%; padding: 13px 14px; border-radius: 12px; border: 1.5px solid var(--line); background: rgba(246, 239, 227, .04); font-size: 16px; color: var(--cream); outline: none; transition: border-color .2s; }
+  .f select option { color: #111; }
+  .f input:focus, .f textarea:focus, .f select:focus { border-color: var(--cream); }
+  .f.err input, .f.err select { border-color: var(--red-2); }
+  .f .msg { display: none; color: #ff8a80; font-size: 12px; font-weight: 500; }
+  .f.err .msg { display: block; }
+  .check { display: flex; gap: 12px; align-items: flex-start; padding: 13px 14px; border-radius: 12px; background: rgba(242, 179, 61, .08); border: 1.5px solid transparent; font-size: 14px; cursor: pointer; }
+  .check input { width: 20px; height: 20px; accent-color: var(--mustard); margin-top: 1px; flex: none; }
+  .check small { display: block; color: var(--dim); font-size: 12.5px; }
+  .pay { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .pay button { padding: 13px 8px; border-radius: 12px; border: 1.5px solid var(--line); font-size: 13px; font-weight: 600; display: grid; justify-items: center; gap: 6px; text-align: center; line-height: 1.2; }
+  .pay button svg { width: 24px; height: 24px; }
+  .pay button[aria-pressed="true"] { border-color: var(--cream); background: var(--surface-2); }
+  .summary { border-radius: 14px; background: rgba(246, 239, 227, .04); border: 1px solid var(--line); padding: 14px 16px; display: grid; gap: 6px; }
+  .hint { font-size: 12.5px; color: var(--dim); }
+  .info { font-size: 13px; padding: 10px 12px; border-radius: 10px; background: var(--surface-2); color: var(--dim); }
+
+  .paybox { padding: 34px 28px; text-align: center; display: grid; gap: 16px; justify-items: center; }
+  .paybox .amount { font-family: var(--display); font-weight: 900; font-size: 44px; }
+  .paybox .lock { width: 64px; height: 64px; border-radius: 50%; background: rgba(124, 196, 81, .12); display: grid; place-items: center; }
+  .paybox .lock svg { width: 28px; height: 28px; }
+  .spinner { width: 22px; height: 22px; border: 3px solid rgba(255, 255, 255, .25); border-top-color: #fff; border-radius: 50%; animation: spin .8s linear infinite; }
+
+  .tr { padding: 28px 26px; display: grid; gap: 20px; }
+  .tr-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; padding-right: 40px; }
+  .tr-top p { color: var(--dim); font-size: 14px; }
+  .eta-big small { display: block; color: var(--dim); font-size: 12.5px; }
+  .eta-big b { font-family: var(--display); font-weight: 900; font-size: 46px; color: var(--basil); line-height: 1; }
+  .tmap { aspect-ratio: 360 / 230; max-width: 100%; border-radius: 18px; overflow: hidden; border: 1px solid var(--line); background: var(--surface-2); }
+  .tmap svg { display: block; width: 100%; height: 100%; }
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+  .step { text-align: center; font-size: 13px; color: var(--dim); line-height: 1.25; }
+  .step .ic { width: 46px; height: 46px; margin: 0 auto 8px; border-radius: 50%; display: grid; place-items: center; background: var(--surface-2); border: 2px solid transparent; transition: all .3s; }
+  .step .ic svg { width: 22px; height: 22px; }
+  .step.done .ic { background: rgba(124, 196, 81, .15); border-color: var(--basil); color: var(--basil); }
+  .step.now .ic { background: rgba(227, 57, 44, .18); border-color: var(--red); animation: pulse 1.4s ease infinite; }
+  .step.done, .step.now { color: var(--cream); font-weight: 600; }
+  @keyframes pulse { 50% { box-shadow: 0 0 0 8px rgba(227, 57, 44, .15); } }
+  .courier { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 14px; background: var(--surface-2); }
+  .courier .ava { width: 44px; height: 44px; border-radius: 50%; background: var(--red); color: #fff; display: grid; place-items: center; font-family: var(--display); font-weight: 800; flex: none; }
+  .courier > div { flex: 1; }
+  .courier small { display: block; color: var(--dim); font-size: 12.5px; }
+  .courier .ph { font-weight: 700; font-size: 14px; white-space: nowrap; }
+  .rate-box { text-align: center; }
+  .rate { display: flex; gap: 6px; justify-content: center; }
+  .rate button { width: 44px; height: 44px; color: rgba(246, 239, 227, .25); transition: color .2s, transform .15s; }
+  .rate button svg { width: 34px; height: 34px; }
+  .rate button.on { color: var(--mustard); }
+  .rate button:hover { transform: scale(1.12); }
+  .tr-note { font-size: 12.5px; color: var(--dim); border-left: 3px solid var(--red); padding: 6px 12px; background: rgba(246, 239, 227, .03); border-radius: 0 8px 8px 0; }
+
+  .toast { position: fixed; left: 50%; bottom: calc(90px + var(--safe-b)); z-index: 80; transform: translate(-50%, 20px); opacity: 0; padding: 12px 18px; border-radius: 12px; background: var(--cream); color: #1a1714; font-weight: 600; font-size: 14px; box-shadow: 0 12px 30px rgba(0, 0, 0, .4); transition: all .25s; pointer-events: none; white-space: nowrap; max-width: calc(100vw - 32px); overflow: hidden; text-overflow: ellipsis; }
+  .toast.on { opacity: 1; transform: translate(-50%, 0); }
+  .push { position: fixed; left: 50%; top: calc(12px + env(safe-area-inset-top, 0px)); z-index: 90; width: min(380px, calc(100vw - 24px)); transform: translate(-50%, -150%); transition: transform .45s cubic-bezier(.2, .8, .2, 1); background: rgba(246, 246, 246, .97); color: #111; border-radius: 18px; padding: 12px 14px; box-shadow: 0 18px 40px rgba(0, 0, 0, .5); display: grid; grid-template-columns: 36px 1fr; gap: 10px; }
+  .push.on { transform: translate(-50%, 0); }
+  .push .app { width: 36px; height: 36px; border-radius: 9px; display: grid; place-items: center; color: #fff; font-weight: 800; font-size: 13px; }
+  .push .meta { font-size: 12px; color: #666; display: flex; justify-content: space-between; gap: 8px; }
+  .push .meta b { color: #333; }
+  .push p { font-size: 14px; line-height: 1.35; margin-top: 2px; }
+
+  @media (max-width: 1040px) {
+    .phone { display: none; }
+    .grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 920px) {
+    .open-now { display: none; }
+    .hero-grid, .dgrid { grid-template-columns: 1fr; }
+    .stage { justify-self: center; max-width: 420px; order: -1; }
+    .offers, .about { grid-template-columns: 1fr; }
+    .pm { grid-template-columns: 1fr; overflow-y: auto; }
+    .pm-art { padding: 18px 18px 0; }
+    .pm-art .art-in { max-width: 240px; }
+    .pm-body { overflow: visible; }
+  }
+  @media (max-width: 640px) {
+    .bar { height: 60px; gap: 10px; }
+    .logo small { display: none; }
+    .logo b { font-size: 18px; }
+    .mode { margin-left: auto; }
+    .mode button { padding: 6px 9px; font-size: 12px; }
+    header .cart-btn { display: none; }
+    .mbar { display: block; }
+    .stage { max-width: 250px; }
+    .note svg { display: none; }
+    .courier { flex-wrap: wrap; }
+    .courier .ph { width: 100%; padding-left: 56px; }
+    .note { font-size: 20px; }
+    .cta .btn { flex: 1 1 100%; }
+    .grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .card { padding: 12px; border-radius: 18px; }
+    .card h3 { font-size: 16.5px; }
+    .card .comp { font-size: 12.5px; -webkit-line-clamp: 2; }
+    .card .foot { flex-direction: column; align-items: stretch; gap: 8px; }
+    .card .add { text-align: center; }
+    .price { font-size: 17px; }
+    .bdg { font-size: 10px; padding: 3px 6px; }
+    .modal { left: 0; right: 0; top: auto; bottom: 0; width: 100%; max-height: 92vh; border-radius: 22px 22px 0 0; transform: translateY(100%); }
+    .modal.on { transform: none; }
+    .fields { grid-template-columns: 1fr; }
+    .pay { grid-template-columns: 1fr 1fr; }
+    .steps { font-size: 11.5px; }
+    .step .ic { width: 40px; height: 40px; }
+    .pm-foot { position: sticky; bottom: 0; background: var(--surface); padding: 12px 0 calc(4px + var(--safe-b)); }
+  }
+  @media (max-width: 400px) {
+    .bar { gap: 8px; }
+    .logo { gap: 8px; min-width: 0; }
+    .logo-mark { width: 38px; height: 38px; }
+    .logo b { font-size: 16px; white-space: nowrap; }
+    .mode { flex: none; }
+    .mode button { padding: 6px 8px; }
+  }
+  @media (max-width: 370px) { .m-off { display: none; } }
+  @media (max-width: 330px) { .logo span { display: none; } }
+  @media (max-width: 360px) { .grid { grid-template-columns: 1fr; } }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+
+<div class="demo-bar"><b>Демо-версия</b> · заказы и оплата не настоящие · меню и цены — из меню пиццерии</div>
+
+<header>
+  <div class="wrap bar">
+    <a href="#top" class="logo" aria-label="Твоя пицца — наверх">
+      <span class="logo-mark" id="logoMark"></span>
+      <span><b><em>Твоя</em> пицца</b><small>116 км · Кряж · Волгарь</small></span>
+    </a>
+    <div class="mode" role="group" aria-label="Способ получения">
+      <button type="button" data-mode="delivery" aria-pressed="true">Доставка</button>
+      <button type="button" data-mode="pickup" aria-pressed="false">Самовывоз<span class="m-off"> −5%</span></button>
+    </div>
+    <span class="open-now"><span class="dot" id="hdrDot"></span><span id="hdrOpen">Ежедневно 10:00–21:30</span></span>
+    <span class="spacer"></span>
+    <span class="phone num">8 (908) 409-57-75</span>
+    <button class="cart-btn" id="cartBtn" type="button"><span>Корзина</span><span class="sep"></span><span id="cartBtnSum" class="num">0 ₽</span></button>
+  </div>
+  <div class="tabs-wrap"><nav class="wrap tabs" id="tabs" aria-label="Разделы"></nav></div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="where">📍 <b>Самара</b> · 116 км, Кряж, Волгарь, Южный город-1</span>
+        <h1>Тонкая пицца. <span class="red">Без бортиков.<svg viewBox="0 0 300 30" preserveAspectRatio="none" aria-hidden="true"><path d="M4 20 C60 8 120 26 180 14 S280 10 296 16" fill="none" stroke="#e3392c" stroke-width="5" stroke-linecap="round"/></svg></span></h1>
+        <p class="lead">Чтобы каждым кусочком можно было насладиться целиком. <b>Доставка по 116 км бесплатно от 1 000 ₽</b>, в соседние посёлки — 150 ₽.</p>
+        <div class="cta">
+          <a href="#cat-pizza" class="btn btn-red">Выбрать пиццу</a>
+          <a href="#cat-delivery" class="btn btn-ghost">Куда доставляем</a>
+        </div>
+        <div class="facts">
+          <span><b>5,0</b> рейтинг во ВКонтакте</span>
+          <span><b class="num">10:00–21:30</b> каждый день</span>
+          <span><b id="pizzaCount">22</b> <span id="pizzaCountW">вида пиццы</span></span>
+        </div>
+      </div>
+      <div class="stage" aria-hidden="true">
+        <div class="board"></div>
+        <div class="spin" id="heroPizza"></div>
+        <div class="note n1">тонкое тесто<svg width="60" height="40" style="left:40%;top:26px"><path d="M2 2 C20 18 30 26 54 34" fill="none" stroke="#f6efe3" stroke-width="2" stroke-linecap="round"/><path d="M44 36 L55 35 L50 25" fill="none" stroke="#f6efe3" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <div class="note n2">фирменный<br>чесночный соус<svg width="60" height="44" style="right:60%;top:-44px"><path d="M58 40 C40 26 22 18 6 4" fill="none" stroke="#f6efe3" stroke-width="2" stroke-linecap="round"/><path d="M4 14 L5 3 L16 6" fill="none" stroke="#f6efe3" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <div class="note n3">без бортиков!</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="offers">
+      <div class="offer o1"><span class="big">−15%</span><div><h3>В день рождения</h3><p>Отметьте при заказе и покажите документ курьеру</p></div></div>
+      <div class="offer o2"><span class="big">−5%</span><div><h3>На самовывоз</h3><p>Молодёжный переулок, 22 — заберите сами</p></div></div>
+      <div class="offer o3"><span class="big">0 ₽</span><div><h3>Доставка по 116 км</h3><p>При заказе от 1 000 ₽. Скидки не суммируются</p></div></div>
+    </div>
+  </div>
+
+  <div id="menu"></div>
+
+  <section class="sec" id="cat-delivery">
+    <div class="wrap">
+      <div class="sec-head"><h2>Доставка<small>куда везём</small></h2><p>Нажмите на свой посёлок — цена доставки в корзине пересчитается.</p></div>
+      <div class="dgrid">
+        <div class="dmap" id="dmap" aria-label="Схема доставки"></div>
+        <div>
+          <div class="areas" id="areas"></div>
+          <p class="d-note">Схема без масштаба. В другие населённые пункты отправим заказ курьером-такси — стоимость по тарифу, уточним по телефону.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="cat-about">
+    <div class="wrap">
+      <div class="sec-head"><h2>Контакты<small>заходите</small></h2></div>
+      <div class="about">
+        <div class="tile"><span class="k">Отзывы ВКонтакте</span><span class="rating">5,0</span><p>Средняя оценка гостей в группе «Твоя пицца».</p><a class="copy" href="https://vk.ru/tvpizza63" target="_blank" rel="noopener">Открыть группу →</a></div>
+        <div class="tile"><span class="k">Самовывоз −5%</span><span class="v">Молодёжный переулок, 22</span><p>Самара · ежедневно 10:00–21:30</p></div>
+        <div class="tile"><span class="k">Заказ и предзаказ</span><span class="v num" id="phoneTxt">8 (908) 409-57-75</span><p>Звоните или пишите в мессенджер — ответим</p><div class="msgr"><a href="https://wa.me/79084095775" target="_blank" rel="noopener">WhatsApp</a><a href="https://t.me/+79084095775" target="_blank" rel="noopener">Telegram</a><span>Max — тот же номер</span></div><button class="copy" type="button" id="copyPhone">Скопировать номер</button></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot-row">
+    <span class="foot-logo" id="footLogo"></span><span>«Твоя пицца» · доставка пиццы и бургеров · Самара, Куйбышевский район</span>
+    <span>Демо-версия сайта · меню и фото — из пиццерии</span>
+  </div>
+</footer>
+
+<div class="mbar"><button type="button" id="mbarBtn"><span id="mbarLabel">Корзина пуста</span><span id="mbarSum" class="num">0 ₽</span></button></div>
+<div class="scrim" id="scrim"></div>
+
+<div class="sheet modal" id="pModal" role="dialog" aria-modal="true" aria-labelledby="pmTitle">
+  <button class="x" data-close aria-label="Закрыть">×</button>
+  <div class="pm">
+    <div class="pm-art"><div class="art-in" id="pmArt"></div></div>
+    <div class="pm-body">
+      <div><h3 id="pmTitle"></h3><p class="desc" id="pmDesc"></p></div>
+      <div class="kbju" id="pmKbju"></div>
+      <div id="pmSizesBox"><div class="lbl" id="pmSizesLbl">Размер</div><div class="seg" id="pmSizes"></div></div>
+      <div id="pmModsBox"><div class="lbl">Пожелания к пицце</div><div class="mods" id="pmMods"></div></div>
+      <div id="pmExtrasBox"><div class="lbl">Добавить в пиццу</div><div class="extras" id="pmExtras"></div></div>
+      <div class="pm-foot">
+        <div class="qty"><button type="button" id="pmMinus" aria-label="Меньше">−</button><span id="pmQty">1</span><button type="button" id="pmPlus" aria-label="Больше">+</button></div>
+        <button class="btn btn-red" style="flex:1" id="pmAdd" type="button">В корзину</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<aside class="sheet drawer" id="cart" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
+  <button class="x" data-close aria-label="Закрыть">×</button>
+  <div class="dr-head"><h3 id="cartTitle">Корзина</h3><p id="cartSub"></p></div>
+  <div class="dr-body" id="cartBody"></div>
+  <div class="dr-foot" id="cartFoot"></div>
+</aside>
+
+<div class="sheet modal" id="flow" role="dialog" aria-modal="true" aria-label="Оформление заказа">
+  <button class="x" data-close aria-label="Закрыть">×</button>
+  <div id="flowBody" style="display:flex;flex-direction:column;min-height:0;overflow-y:auto"></div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="push" id="push" role="status" aria-live="polite"></div>
+
+<script>
+/* ---------- Data (from the VK group «Доставка «Твоя пицца»» and the client's paper menu) ---------- */
+const PHONE = '8 (908) 409-57-75';
+const PICKUP_ADDR = 'Молодёжный переулок, 22';
+const OPEN = [600, 1290]; // 10:00–21:30, minutes
+
+const CATS = [
+  { id: 'pizza', name: 'Пицца', title: 'Пицца', note: 'ручная раскатка · 25 и 32 см', text: 'Тонкое тесто без бортиков. Любую пиццу можно дополнить топпингами — сыром, мясом, морепродуктами.' },
+  { id: 'burgers', name: 'Бургеры', title: 'Бургеры', note: 'сочные · сытные', text: 'Котлеты из мраморной говядины и курицы, авторские соусы, два сыра.' },
+  { id: 'snacks', name: 'Закуски', title: 'Закуски', note: 'к пицце и бургерам', text: 'Хрустящее к пицце — или вместо неё.' },
+  { id: 'rolls', name: 'Роллы', title: 'Роллы', note: 'совсем скоро', text: 'Запускаем роллы. Как только будут готовы фото — откроем заказ.' },
+];
+
+// Prices and recipes from the pizzeria's paper menu (photos from the client, October 2026); 25 см price for «Колбасной» from VK.
+const MENU = [
+  { id: 'muzh', cat: 'pizza', name: 'Для мужчин', badges: [['hot', 'Сытная']], items: ['томатный соус', 'моцарелла', 'ветчина', 'бекон', 'буженина', 'копчёное куриное филе', 'маринованные огурцы', 'томаты'], sizes: [['25 см', 450], ['32 см', 680]], img: 'p-muzh.webp', art: 'muzh' },
+  { id: 'chickbbq', cat: 'pizza', name: 'Чикен барбекю', badges: [['new', 'Новинка']], items: ['томатный соус', 'моцарелла', 'куриное филе', 'вяленые помидоры', 'шампиньоны', 'болгарский перец', 'фиолетовый лук', 'соус барбекю'], sizes: [['32 см', 900]], img: 'p-chickbbq.webp', art: 'bbq' },
+  { id: 'pepperoni', cat: 'pizza', name: 'Пепперони', badges: [['hot', 'Острая']], items: ['острый томатный соус', 'моцарелла', 'колбаски пепперони'], sizes: [['25 см', 450], ['32 см', 630]], kbju: [186, 11, 11, 13], img: 'p-pepperoni.webp', art: 'pepperoni' },
+  { id: 'carbonara', cat: 'pizza', name: 'Карбонара', badges: [['new', 'Новинка']], items: ['томатный соус', 'моцарелла', 'бекон', 'яйцо', 'пармезан'], sizes: [['32 см', 680]], img: 'p-carbonara.webp', art: 'bianca' },
+  { id: 'cheese4', cat: 'pizza', name: '4 сыра', badges: [['', 'Сырная']], items: ['сливочный соус', 'моцарелла', 'гауда', 'пармезан', 'дорблю'], sizes: [['25 см', 450], ['32 см', 650]], img: 'p-cheese4.webp', art: 'cheese4' },
+  { id: 'myasnaya', cat: 'pizza', name: 'Мясная', badges: [['', 'Сытная']], items: ['томатный соус', 'моцарелла', 'копчёная куриная грудка', 'салями', 'ветчина', 'бекон', 'шампиньоны'], sizes: [['32 см', 900]], img: 'p-myasnaya.webp', art: 'meat' },
+  { id: 'seasons', cat: 'pizza', name: '4 сезона', badges: [['', 'Хит']], items: ['сливочный соус', 'моцарелла', 'колбаски салями', 'ветчина', 'шампиньоны', 'томаты'], sizes: [['25 см', 430], ['32 см', 630]], img: 'p-seasons.webp', art: 'seasons' },
+  { id: 'caprichese', cat: 'pizza', name: 'Капричезе', badges: [['new', 'Новинка']], items: ['томатный соус', 'моцарелла', 'говяжий фарш', 'маринованные огурцы'], sizes: [['32 см', 700]], img: 'p-caprichese.webp', art: 'muzh' },
+  { id: 'bianca', cat: 'pizza', name: 'Бьянка', badges: [['', 'Белая']], items: ['сливочный соус', 'моцарелла', 'ветчина', 'бекон', 'томаты'], sizes: [['25 см', 430], ['32 см', 630]], img: 'p-bianca.webp', art: 'bianca' },
+  { id: 'cowsbag', cat: 'pizza', name: 'Кауз Багг', badges: [['new', 'Новинка']], items: ['томатный соус', 'моцарелла', 'бекон', 'ветчина', 'сырокопчёная колбаса', 'куриное филе', 'маслины'], sizes: [['32 см', 680]], img: 'p-cowsbag.webp', art: 'kolbasa' },
+  { id: 'italyanskaya', cat: 'pizza', name: 'Итальянская', badges: [['', 'Классика']], items: ['соус жульен', 'моцарелла', 'шампиньоны', 'ветчина', 'томаты'], sizes: [['32 см', 800]], img: 'p-italyanskaya.webp', art: 'sq-ital' },
+  { id: 'chickmush', cat: 'pizza', name: 'Курица грибы', badges: [['new', 'Новинка']], items: ['сливочный соус', 'моцарелла', 'куриное филе', 'шампиньоны'], sizes: [['32 см', 630]], img: 'p-chickmush.webp', art: 'julien' },
+  { id: 'pear', cat: 'pizza', name: 'Груша дор блю', badges: [['new', 'Новинка']], items: ['моцарелла', 'груша', 'сыр дорблю', 'грецкий орех', 'мёд'], sizes: [['32 см', 700]], img: 'p-pear.webp', art: 'cheese4' },
+  { id: 'slivochnaya', cat: 'pizza', name: 'Сливочная', badges: [['new', 'Новинка']], items: ['сливочный соус', 'моцарелла', 'бекон', 'фиолетовый лук', 'шампиньоны'], sizes: [['25 см', 450], ['32 см', 630]], img: 'p-slivochnaya.webp', art: 'sliv' },
+  { id: 'hunter', cat: 'pizza', name: 'С охотничьими колбасками', badges: [['new', 'Новинка']], items: ['томатный соус', 'моцарелла', 'охотничьи колбаски', 'шампиньоны', 'маринованные огурцы'], sizes: [['32 см', 650]], img: 'p-hunter.webp', art: 'kolbasa' },
+  { id: 'kolbasnaya', cat: 'pizza', name: 'Колбасная', badges: [], items: ['томатный соус', 'моцарелла', 'сервелат', 'ветчина', 'краковская колбаса', 'томаты'], sizes: [['25 см', 430], ['32 см', 630]], img: 'p-kolbasnaya.webp', art: 'kolbasa' },
+  { id: 'ananasnaya', cat: 'pizza', name: 'Ананасная', badges: [], items: ['томатный соус', 'моцарелла', 'куриное филе', 'ананас', 'чесночный соус'], sizes: [['25 см', 430], ['32 см', 630]], weight: '540 г', img: 'p-ananasnaya.webp', art: 'ananas' },
+  { id: 'gavayskaya', cat: 'pizza', name: 'Гавайская', badges: [['sea', 'С креветками']], items: ['морской соус', 'моцарелла', 'ананас', 'креветки'], sizes: [['25 см', 500], ['32 см', 700]], kbju: [139, 10.4, 5.2, 13.3], img: 'p-gavayskaya.webp', art: 'gavai' },
+  { id: 'morskaya', cat: 'pizza', name: 'Морская', badges: [['sea', 'Морепродукты']], items: ['морской соус', 'моцарелла', 'мидии', 'креветки', 'сёмга', 'красный лук'], sizes: [['32 см', 780]], kbju: [210, 13, 9, 23], img: 'p-morskaya.webp', art: 'morskaya' },
+  { id: 'margarita', cat: 'pizza', name: 'Маргарита', badges: [['', 'Лёгкая']], items: ['томатный соус', 'моцарелла', 'свежие томаты'], sizes: [['32 см', 550]], img: 'p-margarita.webp', art: 'margarita' },
+  { id: 'kpivu', cat: 'pizza', name: 'К пиву', ask: true, badges: [['', 'Цену уточняем']], items: ['соус бамбино', 'моцарелла', 'говядина', 'бекон', 'аджика', 'копчёное куриное филе', 'красный лук', 'чесночный соус'], sizes: [['32 см', 0]], weight: '570 г', img: 'p-kpivu.webp', art: 'kpivu' },
+  { id: 'julien', cat: 'pizza', name: 'Жульен', ask: true, badges: [['', 'Цену уточняем']], items: ['моцарелла', 'шампиньоны', 'полный состав уточняем'], sizes: [['32 см', 0]], img: 'p-julien.webp', art: 'julien' },
+
+  { id: 'b-classic', cat: 'burgers', name: 'Классический', badges: [['new', 'Авторский']], items: ['большая булочка', 'соус гамбургер', 'айсберг', 'помидор', 'котлета из мраморной говядины', 'два сыра', 'жареный лук'], sizes: [['1 шт', 378]], img: 'b-classic.webp', art: 's-burger' },
+  { id: 'b-bbq', cat: 'burgers', name: 'BBQ классика', badges: [['new', 'Авторский']], items: ['большая булочка', 'соус барбекю', 'айсберг', 'помидор', 'мраморная котлета', 'два сыра', 'жареный лук'], sizes: [['1 шт', 371]], img: 'b-bbq.webp', art: 's-burger' },
+  { id: 'b-cheesebro', cat: 'burgers', name: 'Сырный бро', badges: [['new', 'Авторский']], items: ['большая булочка', 'плавленый сливочный сыр', 'айсберг', 'чеддер', 'куриная котлета', 'моцарелла', 'рокфор', 'жареный лук', 'соус гамбургер'], sizes: [['1 шт', 447]], img: 'b-cheesebro.webp', art: 's-burger' },
+  { id: 'b-english', cat: 'burgers', name: 'Английский', badges: [['hot', 'С халапеньо']], items: ['булочка', 'соус барбекю', 'айсберг', 'халапеньо', 'помидор', 'бекон', 'котлета', 'сыр', 'яйцо-глазунья', 'жареный лук'], sizes: [['1 шт', 547]], img: 'b-english.webp', art: 's-burger' },
+  { id: 'b-bacon', cat: 'burgers', name: 'Беконайзер', badges: [], items: ['булочка', 'соус барбекю', 'айсберг', 'помидор', 'бекон', 'котлета', 'два сыра', 'жареный лук'], sizes: [['1 шт', 390]], img: 'b-bacon.webp', art: 's-burger' },
+  { id: 'b-gavai', cat: 'burgers', name: 'Гавайский', badges: [], items: ['булочка', 'кисло-сладкий соус', 'айсберг', 'ананас', 'котлета', 'два сыра', 'жареный лук'], sizes: [['1 шт', 392]], img: 'b-gavai.webp', art: 's-burger' },
+  { id: 'b-grib', cat: 'burgers', name: 'Грибной', badges: [], items: ['булочка', 'грибной соус', 'айсберг', 'грибы', 'помидор', 'куриная котлета', 'два сыра'], sizes: [['1 шт', 299]], img: 'b-grib.webp', art: 's-burger' },
+  { id: 'b-chicken', cat: 'burgers', name: 'Чикен бургер', badges: [], items: ['большая булочка', 'соус барбекю', 'лист салата', 'помидор', 'куриная котлета', 'сыр', 'маринованный огурец'], sizes: [['1 шт', 268]], img: 'b-chicken.webp', art: 's-burger' },
+  { id: 'b-cherry', cat: 'burgers', name: 'Черри бургер', badges: [], items: ['булочка', 'кисло-сладкий соус', 'айсберг', 'куриная котлета', 'два сыра', 'помидор с прованскими травами'], sizes: [['1 шт', 253]], img: 'b-cherry.webp', art: 's-burger' },
+  { id: 'b-makdak', cat: 'burgers', name: 'Мак-дак', badges: [], items: ['большая булочка', 'соус мак-дак', 'лист салата', 'говяжья котлета', 'маринованные огурцы', 'сыр'], sizes: [['1 шт', 252]], img: 'b-makdak.webp', art: 's-burger' },
+  { id: 'b-hamb', cat: 'burgers', name: 'Гамбургер', badges: [], items: ['маленькая булочка', 'соус мак-дак', 'сыр', 'говяжья котлета'], sizes: [['1 шт', 158]], img: 'b-hamb.webp', art: 's-burger' },
+  { id: 'b-kids', cat: 'burgers', name: 'Детский', badges: [['kid', 'Детский']], items: ['маленькая булочка', 'соус барбекю', 'сыр', 'куриная котлета'], sizes: [['1 шт', 138]], img: 'b-kids.webp', art: 's-burger' },
+
+  { id: 'rings', cat: 'snacks', name: 'Луковые кольца', badges: [], items: ['в хрустящей панировке'], sizes: [['6 шт', 200], ['9 шт', 250], ['12 шт', 300]], img: 's-rings.webp', art: 's-rings' },
+  { id: 'nuggets', cat: 'snacks', name: 'Наггетсы', badges: [], items: ['куриные, золотистые'], sizes: [['6 шт', 150], ['9 шт', 190], ['12 шт', 230]], img: 's-nuggets.webp', art: 's-nuggets' },
+  { id: 'fries', cat: 'snacks', name: 'Картошка фри', badges: [], items: ['классическая'], sizes: [['100 г', 150], ['150 г', 185]], img: 's-fries.webp', art: 's-fries' },
+  { id: 'wings', cat: 'snacks', name: 'Куриные крылья', badges: [], items: ['хрустящая корочка, сочное мясо'], sizes: [['4 шт', 250]], img: 's-wings.webp', art: 's-wings' },
+  { id: 'toast', cat: 'snacks', name: 'Гренки', soon: true, badges: [['new', 'Скоро']], items: ['ржаные, с чесноком и зеленью — цену и порцию уточняем'], sizes: [['—', 0]], img: 's-toast.webp', art: 's-toast' },
+  { id: 'cheese', cat: 'snacks', name: 'Сырные палочки', soon: true, badges: [['new', 'Скоро']], items: ['моцарелла в панировке — цену и порцию уточняем'], sizes: [['—', 0]], img: 's-cheese.webp', art: 's-cheese' },
+
+  { id: 'rolls-1', cat: 'rolls', name: 'Роллы', soon: true, badges: [['new', 'Скоро']], items: ['готовим запуск — откроем заказ после фото'], sizes: [['—', 0]], art: 's-roll' },
+];
+// Paid toppings from the «Топпинг к пицце» board; the vegetable list is our guess — confirm with the client.
+const EXTRAS = [
+  ['Сыры', 90, [['parm', 'Пармезан'], ['gouda', 'Гауда'], ['mozz', 'Моцарелла'], ['dorblu', 'Дор блю']]],
+  ['Мясные', 70, [['ham', 'Ветчина'], ['cerv', 'Сервелат'], ['salami', 'Салями'], ['bacon', 'Бекон'], ['pepp', 'Пепперони']]],
+  ['Морепродукты', null, [['salmon', 'Сёмга', 100], ['shrimp', 'Креветки', 80], ['mussel', 'Мидии', 80]]],
+  ['Овощные', 50, [['tomato', 'Томаты'], ['mush', 'Шампиньоны'], ['pickle', 'Маринованные огурцы'], ['onion', 'Лук']]],
+  ['Тесто', 50, [['dough', 'Дополнительное тесто']]],
+];
+const EXTRA = Object.fromEntries(EXTRAS.flatMap(([, p, list]) => list.map(([id, n, own]) => [id, { name: n, price: own ?? p }])));
+const extrasSum = (l) => (l.extras || []).reduce((s, x) => s + (EXTRA[x] ? EXTRA[x].price : 0), 0);
+const extrasText = (l) => (l.extras || []).filter((x) => EXTRA[x]).map((x) => EXTRA[x].name.toLowerCase()).join(', ');
+const BY_ID = Object.fromEntries(MENU.map((m) => [m.id, m]));
+const MODS = [['nogarlic', 'Без чесночного соуса'], ['noonion', 'Без лука'], ['notomato', 'Без томатов'], ['cut8', 'Нарезать на 8 кусков']];
+
+// Delivery areas from the VK group: 116 км — 150 ₽, free from 1000 ₽; nearby villages — 150 ₽ flat.
+const AREAS = [
+  { id: 'km116', name: '116 км', fee: 150, freeFrom: 1000, eta: 40, pt: [150, 118], route: 'M150 118 V96 H188 V80', home: true },
+  { id: 'kryazh', name: 'Совхоз Кряж', fee: 150, eta: 55, pt: [58, 64], route: 'M150 118 H104 L58 64' },
+  { id: 'km113', name: '113 км', fee: 150, eta: 50, pt: [86, 168], route: 'M150 118 L120 168 H86' },
+  { id: 'volgar', name: 'Волгарь', fee: 150, eta: 55, pt: [262, 52], route: 'M150 118 H214 L262 52' },
+  { id: 'yuzhny', name: 'Южный город-1', fee: 150, eta: 55, pt: [290, 122], route: 'M150 118 H234 L290 122' },
+  { id: 'suhaya', name: 'Сухая Самарка', fee: 150, eta: 60, pt: [196, 196], route: 'M150 118 L172 160 L196 196' },
+  { id: 'podst', name: 'Подстёпновка', fee: 150, eta: 60, pt: [312, 190], route: 'M150 118 H234 L290 122 L312 190' },
+  { id: 'far', name: 'Дальние сёла', fee: 250, minOrder: 2000, eta: 75, pt: [40, 204], route: 'M150 118 L96 162 L40 204' },
+  { id: 'other', name: 'Другой населённый пункт', fee: null, eta: 80, pt: [334, 26], route: 'M150 118 H214 L262 52 L334 26' },
+];
+
+/* ---------- Helpers ---------- */
+const $ = (s, r = document) => r.querySelector(s);
+const rub = (n) => Math.round(n).toLocaleString('ru-RU') + ' ₽';
+const store = { get(k, d) { try { const v = JSON.parse(localStorage.getItem(k)); return v ?? d; } catch { return d; } }, set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} } };
+function rng(seed) { let s = seed; return () => ((s = (s * 1664525 + 1013904223) >>> 0) / 4294967296); }
+let svgUid = 0;
+
+/* ---------- Illustrations ---------- */
+function scatter(r, n, minDist, inside) {
+  const pts = []; let tries = 0;
+  while (pts.length < n && tries++ < 1200) { const p = inside(r); if (pts.every((q) => Math.hypot(q[0] - p[0], q[1] - p[1]) > minDist)) pts.push(p); }
+  return pts;
+}
+const inCircle = (rad) => (r) => { const a = r() * Math.PI * 2, d = Math.sqrt(r()) * rad; return [100 + Math.cos(a) * d, 100 + Math.sin(a) * d]; };
+const inSquare = (h) => (r) => [100 - h + r() * 2 * h, 100 - h + r() * 2 * h];
+const rot = (r) => Math.round(r() * 180);
+const T = {
+  pepperoni: ([x, y]) => `<circle cx="${x}" cy="${y}" r="11" fill="#b3261e"/><circle cx="${x}" cy="${y}" r="11" fill="none" stroke="#8e1b15" stroke-width="1.4"/><circle cx="${x - 3}" cy="${y - 2}" r="1.6" fill="#e0624f"/><circle cx="${x + 4}" cy="${y + 3}" r="1.3" fill="#e0624f"/>`,
+  salami: ([x, y]) => `<circle cx="${x}" cy="${y}" r="10" fill="#a8323a"/><circle cx="${x - 3}" cy="${y - 2}" r="1.5" fill="#f3d6cf"/><circle cx="${x + 3}" cy="${y + 2}" r="1.3" fill="#f3d6cf"/><circle cx="${x + 2}" cy="${y - 4}" r="1.1" fill="#f3d6cf"/>`,
+  krakow: ([x, y]) => `<circle cx="${x}" cy="${y}" r="10" fill="#c9776b"/><circle cx="${x - 3}" cy="${y}" r="1.8" fill="#f6e2da"/><circle cx="${x + 3}" cy="${y - 3}" r="1.5" fill="#f6e2da"/><circle cx="${x + 2}" cy="${y + 3}" r="1.6" fill="#f6e2da"/>`,
+  tomato: ([x, y]) => `<circle cx="${x}" cy="${y}" r="10" fill="#e2412c"/><circle cx="${x}" cy="${y}" r="7" fill="#f26b4f"/><circle cx="${x - 2.5}" cy="${y - 1}" r="1.4" fill="#fbe08a"/><circle cx="${x + 2.5}" cy="${y + 1.5}" r="1.4" fill="#fbe08a"/>`,
+  ham: ([x, y], r) => `<rect x="${x - 8}" y="${y - 6}" width="16" height="12" rx="4" fill="#ef9a9a" transform="rotate(${rot(r)} ${x} ${y})"/>`,
+  bacon: ([x, y], r) => `<g transform="rotate(${rot(r)} ${x} ${y})"><path d="M${x - 11} ${y} q5 -6 11 0 t11 0" stroke="#b9473b" stroke-width="6" fill="none" stroke-linecap="round"/><path d="M${x - 11} ${y} q5 -6 11 0 t11 0" stroke="#f0b3a6" stroke-width="1.5" fill="none"/></g>`,
+  mushroom: ([x, y], r) => `<g transform="rotate(${Math.round(r() * 360)} ${x} ${y})"><path d="M${x - 9} ${y} a9 7 0 0 1 18 0 z" fill="#d9c2a3"/><rect x="${x - 3}" y="${y}" width="6" height="7" rx="2" fill="#efe1cc"/></g>`,
+  olive: ([x, y]) => `<circle cx="${x}" cy="${y}" r="5" fill="none" stroke="#262626" stroke-width="3"/>`,
+  basil: ([x, y], r) => `<ellipse cx="${x}" cy="${y}" rx="9" ry="5" fill="#3f9142" transform="rotate(${rot(r)} ${x} ${y})"/>`,
+  mozz: ([x, y], r) => `<ellipse cx="${x}" cy="${y}" rx="${9 + r() * 4}" ry="${7 + r() * 3}" fill="#fff8e6" opacity=".95"/>`,
+  blue: ([x, y]) => `<ellipse cx="${x}" cy="${y}" rx="9" ry="7" fill="#f2efe4"/><circle cx="${x - 2}" cy="${y}" r="1.5" fill="#6d7fa8"/><circle cx="${x + 3}" cy="${y - 2}" r="1.2" fill="#6d7fa8"/>`,
+  gouda: ([x, y]) => `<ellipse cx="${x}" cy="${y}" rx="9" ry="7" fill="#f6b93b"/>`,
+  parm: ([x, y]) => `<path d="M${x - 6} ${y + 5} l6 -11 l6 11 z" fill="#f5e3a8"/>`,
+  pineapple: ([x, y], r) => `<path d="M${x - 7} ${y + 5} L${x} ${y - 7} L${x + 7} ${y + 5} Z" fill="#f7d34a" stroke="#e0b52a" stroke-width="1.2" transform="rotate(${rot(r)} ${x} ${y})"/>`,
+  chicken: ([x, y], r) => `<path d="M${x - 8} ${y - 3} q4 -6 10 -3 q6 2 5 8 q-3 5 -10 3 q-6 -2 -5 -8z" fill="#e7c9a0" transform="rotate(${rot(r)} ${x} ${y})"/>`,
+  smoked: ([x, y], r) => `<path d="M${x - 8} ${y - 3} q4 -6 10 -3 q6 2 5 8 q-3 5 -10 3 q-6 -2 -5 -8z" fill="#c98a52" transform="rotate(${rot(r)} ${x} ${y})"/>`,
+  pepper: ([x, y], r) => `<path d="M${x - 9} ${y} q9 -7 18 0" stroke="${r() > .5 ? '#3fae4a' : '#e8452c'}" stroke-width="4.5" fill="none" stroke-linecap="round" transform="rotate(${rot(r)} ${x} ${y})"/>`,
+  onion: ([x, y], r) => `<ellipse cx="${x}" cy="${y}" rx="8" ry="6" fill="none" stroke="#a24a8f" stroke-width="2.4" transform="rotate(${rot(r)} ${x} ${y})"/>`,
+  jalap: ([x, y]) => `<circle cx="${x}" cy="${y}" r="6.5" fill="#4a9b3a"/><circle cx="${x}" cy="${y}" r="3.2" fill="#c9e6a3"/>`,
+  shrimp: ([x, y], r) => `<path d="M${x + 8} ${y - 4} a9 9 0 1 0 -2 11" stroke="#f08f73" stroke-width="5.5" fill="none" stroke-linecap="round" transform="rotate(${rot(r)} ${x} ${y})"/>`,
+  mussel: ([x, y], r) => `<ellipse cx="${x}" cy="${y}" rx="8" ry="4.5" fill="#2a2f3d" transform="rotate(${rot(r)} ${x} ${y})"/><ellipse cx="${x}" cy="${y}" rx="4" ry="2" fill="#e8a25a" transform="rotate(${rot(r)} ${x} ${y})"/>`,
+  salmon: ([x, y], r) => `<g transform="rotate(${rot(r)} ${x} ${y})"><rect x="${x - 9}" y="${y - 5}" width="18" height="10" rx="3" fill="#f2875c"/><path d="M${x - 5} ${y - 5} v10 M${x} ${y - 5} v10 M${x + 5} ${y - 5} v10" stroke="#ffd2bd" stroke-width="1.3"/></g>`,
+  onionSweet: ([x, y], r) => `<ellipse cx="${x}" cy="${y}" rx="8" ry="6" fill="none" stroke="#e9d7b2" stroke-width="2.4" transform="rotate(${rot(r)} ${x} ${y})"/>`,
+};
+const SAUCE = { tomato: '#c8381f', cream: '#f3e3bd', bbq: '#7a3a1d', sea: '#e7a184', julien: '#ead2a2' };
+const PIZZAS = {
+  sliv: { sauce: 'cream', layers: [['mushroom', 6], ['bacon', 4], ['onion', 5]], garlic: false },
+  pepperoni: { sauce: 'tomato', layers: [['pepperoni', 10]], garlic: true },
+  diablo: { sauce: 'tomato', layers: [['salami', 5], ['bacon', 3], ['jalap', 7]], garlic: true },
+  bianca: { sauce: 'cream', layers: [['ham', 6], ['bacon', 4], ['tomato', 4]], garlic: true },
+  kolbasa: { sauce: 'tomato', layers: [['ham', 4], ['salami', 4], ['krakow', 4], ['tomato', 3]], garlic: true },
+  ananas: { sauce: 'tomato', layers: [['pineapple', 8], ['chicken', 6]], garlic: true },
+  bbq: { sauce: 'bbq', layers: [['pepper', 6], ['smoked', 6], ['onion', 5]], garlic: true },
+  seasons: { sauce: 'cream', layers: [['smoked', 3], ['pepper', 3], ['salami', 3], ['olive', 4], ['tomato', 3], ['mushroom', 3]], garlic: true },
+  morskaya: { sauce: 'sea', layers: [['salmon', 4], ['shrimp', 4], ['mussel', 4], ['onion', 3], ['olive', 3]], garlic: true },
+  gavai: { sauce: 'sea', layers: [['pineapple', 7], ['shrimp', 5]], garlic: true },
+  cheese4: { sauce: 'cream', layers: [['mozz', 5], ['blue', 4], ['gouda', 4], ['parm', 5]], garlic: false },
+  margarita: { sauce: 'tomato', layers: [['mozz', 6], ['tomato', 5], ['basil', 5]], garlic: false },
+  kids: { sauce: 'tomato', layers: [['ham', 6], ['tomato', 5]], garlic: false },
+  'sq-meat': { square: true, sauce: 'tomato', layers: [['smoked', 4], ['salami', 4], ['ham', 4], ['bacon', 3], ['mushroom', 4]], garlic: true },
+  'sq-ital': { square: true, sauce: 'julien', layers: [['mushroom', 7], ['ham', 5], ['tomato', 4]], garlic: true },
+  'sq-stud': { square: true, sauce: 'tomato', layers: [['ham', 6], ['bacon', 5], ['onionSweet', 6]], garlic: true },
+  meat: { sauce: 'tomato', layers: [['smoked', 4], ['salami', 4], ['ham', 4], ['bacon', 3], ['mushroom', 4]], garlic: false },
+  muzh: { sauce: 'tomato', layers: [['ham', 4], ['bacon', 3], ['smoked', 3], ['tomato', 3], ['jalap', 3]], garlic: false },
+  kpivu: { sauce: 'tomato', layers: [['salami', 4], ['bacon', 3], ['smoked', 3], ['onion', 4]], garlic: true },
+  julien: { sauce: 'julien', layers: [['mushroom', 8], ['chicken', 4]], garlic: false },
+};
+function pizzaSVG(kind) {
+  const p = PIZZAS[kind], uid = ++svgUid, sauce = SAUCE[p.sauce];
+  const r = rng(kind.length * 131 + kind.charCodeAt(0));
+  let s = `<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="cr${uid}" cx="50%" cy="45%" r="60%"><stop offset="85%" stop-color="#e9b26a"/><stop offset="100%" stop-color="#c07c36"/></radialGradient></defs>`;
+  // Thin crust, no rim: the dough edge is only a few pixels wide.
+  if (p.square) s += `<rect x="10" y="10" width="180" height="180" rx="16" fill="url(#cr${uid})"/><rect x="15" y="15" width="170" height="170" rx="12" fill="${sauce}"/>`;
+  else s += `<circle cx="100" cy="100" r="96" fill="url(#cr${uid})"/><circle cx="100" cy="100" r="90" fill="${sauce}"/>`;
+  const area = p.square ? inSquare(74) : inCircle(76);
+  for (let i = 0; i < 22; i++) { const [x, y] = area(r); s += `<ellipse cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" rx="${(8 + r() * 9).toFixed(1)}" ry="${(6 + r() * 7).toFixed(1)}" fill="#f7d774" opacity="${p.sauce === 'tomato' ? .72 : .42}"/>`; }
+  for (const [t, n] of p.layers) for (const pt of scatter(r, n, 21, p.square ? inSquare(70) : inCircle(70))) s += T[t](pt.map((v) => +v.toFixed(1)), r);
+  if (p.garlic) { let d = ''; for (let i = 0; i < 4; i++) { const y0 = 52 + i * 32; d += `M${p.square ? 26 : 34} ${y0} q12 -10 24 0 t24 0 t24 0 t24 0 t24 0 `; } s += `<path d="${d}" stroke="#fffaf0" stroke-width="2" fill="none" stroke-linecap="round" opacity=".6"/>`; }
+  if (p.square) s += `<path d="M100 15 V185 M15 100 H185" stroke="rgba(0,0,0,.15)" stroke-width="1.2"/>`;
+  else s += `<path d="M100 100 L196 100 M100 100 L32 32 M100 100 L52 184" stroke="rgba(0,0,0,.15)" stroke-width="1.2"/>`;
+  return s + '</svg>';
+}
+function snackSVG(kind) {
+  const box = (inner, color = '#e3392c') => `<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><ellipse cx="100" cy="176" rx="70" ry="8" fill="rgba(0,0,0,.35)"/>${inner}</svg>`;
+  if (kind === 's-fries' || kind === 's-wedges') {
+    const wedges = kind === 's-wedges';
+    let sticks = '';
+    const r = rng(kind.length * 17);
+    for (let i = 0; i < 11; i++) { const x = 58 + i * 8 + r() * 4, h = 60 + r() * 30, a = -10 + r() * 20; sticks += wedges ? `<path d="M${x} ${118} q8 -${h} 16 0 z" fill="#e2a24a" stroke="#b97624" stroke-width="2" transform="rotate(${a} ${x} 118)"/>` : `<rect x="${x}" y="${118 - h}" width="9" height="${h + 10}" rx="2" fill="#f4c54f" stroke="#d9a12e" stroke-width="1.5" transform="rotate(${a} ${x} 118)"/>`; }
+    return box(`${sticks}<path d="M52 110 H148 L138 172 H62 Z" fill="#e3392c"/><path d="M52 110 H148 L146 122 H54 Z" fill="#c22a1f"/><circle cx="100" cy="146" r="13" fill="#fff"/><text x="100" y="151" text-anchor="middle" font-family="Geologica, sans-serif" font-weight="800" font-size="13" fill="#e3392c">ТП</text>`);
+  }
+  if (kind === 's-nuggets') {
+    const pts = [[70, 120], [104, 112], [136, 124], [84, 146], [120, 148], [100, 130]];
+    return box(`<ellipse cx="100" cy="150" rx="74" ry="24" fill="#2f2a25"/>` + pts.map(([x, y], i) => `<path d="M${x - 16} ${y} q-2 -14 14 -15 q18 -1 18 13 q0 14 -16 14 q-14 0 -16 -12z" fill="#d99a3c" stroke="#b77724" stroke-width="2" transform="rotate(${i * 27} ${x} ${y})"/><circle cx="${x - 4}" cy="${y - 4}" r="1.6" fill="#f3cf86"/><circle cx="${x + 5}" cy="${y + 2}" r="1.4" fill="#f3cf86"/>`).join(''));
+  }
+  if (kind === 's-wings') {
+    const pts = [[72, 128, -20], [112, 116, 15], [134, 142, 40], [92, 150, -50]];
+    return box(`<ellipse cx="100" cy="150" rx="74" ry="24" fill="#2f2a25"/>` + pts.map(([x, y, a]) => `<g transform="rotate(${a} ${x} ${y})"><path d="M${x - 24} ${y} q4 -18 24 -16 q22 2 24 14 q-2 14 -24 14 q-22 0 -24 -12z" fill="#b8551f"/><path d="M${x - 16} ${y - 6} q12 -8 26 -2" stroke="#e08a3c" stroke-width="3" fill="none" stroke-linecap="round"/></g>`).join(''));
+  }
+  if (kind === 's-shrimp') {
+    const pts = [[64, 122, -15], [100, 112, 10], [136, 124, 30], [80, 150, -40], [120, 150, 20], [100, 134, 0]];
+    return box(`<ellipse cx="100" cy="150" rx="74" ry="24" fill="#2f2a25"/>` + pts.map(([x, y, a]) => `<g transform="rotate(${a} ${x} ${y})"><path d="M${x - 18} ${y} q2 -14 18 -14 q16 0 18 12 q-2 12 -18 12 q-16 0 -18 -10z" fill="#efc36a" stroke="#d29a3a" stroke-width="2"/><path d="M${x + 18} ${y - 2} l9 -6 l-2 10 z" fill="#f07c5c"/></g>`).join(''));
+  }
+  if (kind === 's-burger') return box(`<path d="M44 132 h112 a8 8 0 0 1 -8 12 h-96 a8 8 0 0 1 -8 -12z" fill="#d99a52"/><rect x="40" y="114" width="120" height="18" rx="9" fill="#6b3a22"/><path d="M38 114 h124 l-8 8 l-9 -6 l-10 9 l-9 -8 l-12 7 l-10 -8 l-10 8 l-11 -8 l-10 7 l-10 -7 l-11 7 l-8 -7z" fill="#f2b632"/><path d="M36 106 q8 -9 16 0 t16 0 t16 0 t16 0 t16 0 t16 0 t16 0 t16 0 v4 h-128z" fill="#6cbf4a"/><path d="M40 104 q0 -52 60 -52 q60 0 60 52 z" fill="#e19a4c"/>${[[72, 78], [94, 68], [118, 72], [136, 86], [84, 92], [110, 90]].map(([x, y]) => `<ellipse cx="${x}" cy="${y}" rx="3" ry="1.8" fill="#fff4dc"/>`).join('')}`);
+  if (kind === 's-toast') return box(`<ellipse cx="100" cy="150" rx="74" ry="24" fill="#2f2a25"/>` + [[64, 126, -10], [96, 116, 8], [130, 128, 18], [80, 148, -4], [116, 148, 12]].map(([x, y, a]) => `<g transform="rotate(${a} ${x} ${y})"><rect x="${x - 14}" y="${y - 10}" width="28" height="20" rx="4" fill="#c98a3e"/><rect x="${x - 10}" y="${y - 6}" width="20" height="12" rx="3" fill="#e8b46a"/><circle cx="${x - 3}" cy="${y - 1}" r="1.4" fill="#fff6e0"/><circle cx="${x + 4}" cy="${y + 2}" r="1.2" fill="#3f9142"/></g>`).join(''));
+  if (kind === 's-cheese') return box(`<ellipse cx="100" cy="150" rx="74" ry="24" fill="#2f2a25"/>` + [[60, 132, -20], [84, 122, -8], [110, 124, 6], [136, 132, 20], [96, 146, 0]].map(([x, y, a]) => `<g transform="rotate(${a} ${x} ${y})"><rect x="${x - 7}" y="${y - 28}" width="14" height="56" rx="7" fill="#d98f34"/><rect x="${x - 4}" y="${y - 24}" width="8" height="48" rx="4" fill="#efb24f"/></g>`).join('') + '<path d="M118 112 q10 -12 4 -24" stroke="#fff3c4" stroke-width="5" fill="none" stroke-linecap="round"/>');
+  if (kind === 's-rings') return box(`<ellipse cx="100" cy="150" rx="74" ry="24" fill="#2f2a25"/>` + [[70, 132, 0], [104, 120, 20], [134, 136, -15], [92, 150, 10], [120, 152, -5]].map(([x, y, a]) => `<ellipse cx="${x}" cy="${y}" rx="20" ry="12" fill="none" stroke="#d99a3c" stroke-width="9" transform="rotate(${a} ${x} ${y})"/><ellipse cx="${x}" cy="${y}" rx="20" ry="12" fill="none" stroke="#f1c46e" stroke-width="3" stroke-dasharray="4 5" transform="rotate(${a} ${x} ${y})"/>`).join(''));
+  if (kind === 's-roll') return box(`<rect x="20" y="132" width="160" height="14" rx="7" fill="#3a2a1d"/>` + [[58, 112], [100, 104], [142, 112]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="24" fill="#1f2a22"/><circle cx="${x}" cy="${y}" r="18" fill="#fbf7ee"/><circle cx="${x}" cy="${y}" r="9" fill="#f08a5d"/><circle cx="${x + 4}" cy="${y - 2}" r="3.5" fill="#8bc34a"/>`).join(''));
+  return box('');
+}
+const artFor = (k) => (PIZZAS[k] ? pizzaSVG(k) : snackSVG(k));
+const picFor = (m) => (m.img ? `<img class="ph" src="img/${m.img}" alt="" loading="lazy" decoding="async">` : artFor(m.art));
+
+/* ---------- Logo (redrawn from the pizzeria's sign: a pizza with one slice pulled out) ---------- */
+function logoPizza(x = 0, y = 0) {
+  const P = (a, d) => [100 + Math.cos(a * Math.PI / 180) * d, 100 + Math.sin(a * Math.PI / 180) * d];
+  const f = (p) => p.map((v) => v.toFixed(1)).join(' ');
+  const wedge = (a0, a1, d) => `M100 100 L${f(P(a0, d))} A${d} ${d} 0 0 1 ${f(P(a1, d))} Z`;
+  let g = '';
+  for (let i = 0; i < 8; i++) {
+    const a0 = -112.5 + i * 45, a1 = a0 + 45, mid = a0 + 22.5;
+    const [sx, sy] = P(mid - 7, 56), [mx, my] = P(mid + 9, 36), [ox, oy] = P(mid + 6, 72);
+    const [dx, dy] = i === 7 ? P(mid, 11).map((v) => v - 100) : [0, 0];
+    g += `<g transform="translate(${dx.toFixed(1)} ${dy.toFixed(1)})"><path d="${wedge(a0, a1, 92)}" fill="#eaa43a" stroke="#2b1f17" stroke-width="3.2" stroke-linejoin="round"/><path d="${wedge(a0, a1, 80)}" fill="#f7cf5b" stroke="#2b1f17" stroke-width="2" stroke-linejoin="round"/>`
+      + `<circle cx="${sx.toFixed(1)}" cy="${sy.toFixed(1)}" r="9.5" fill="#d9483f" stroke="#2b1f17" stroke-width="2"/><circle cx="${(sx - 3).toFixed(1)}" cy="${(sy - 2).toFixed(1)}" r="1.6" fill="#f3a69c"/><circle cx="${(sx + 3).toFixed(1)}" cy="${(sy + 3).toFixed(1)}" r="1.4" fill="#f3a69c"/>`
+      + `<g transform="translate(${mx.toFixed(1)} ${my.toFixed(1)}) rotate(${(mid + 90).toFixed(0)})"><path d="M-7 1 a7 6 0 0 1 14 0 z" fill="#fbf4e6" stroke="#2b1f17" stroke-width="1.8"/><rect x="-2.6" y="1" width="5.2" height="6" rx="1.6" fill="#fbf4e6" stroke="#2b1f17" stroke-width="1.8"/></g>`
+      + `<ellipse cx="${ox.toFixed(1)}" cy="${oy.toFixed(1)}" rx="5" ry="3.6" fill="#5aa142" stroke="#2b1f17" stroke-width="1.5"/></g>`;
+  }
+  return `<g transform="translate(${x} ${y})">${g}</g>`;
+}
+const logoMark = () => `<svg viewBox="-6 -6 212 212" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">${logoPizza()}</svg>`;
+const logoFull = () => `<svg viewBox="0 0 250 204" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Твоя пицца">${logoPizza(18, 2)}<rect x="0" y="117" width="250" height="46" rx="4" fill="#0e0c0b"/><text x="8" y="152" font-family="Geologica, Oswald, sans-serif" font-weight="800" font-size="38"><tspan fill="#e3392c">Твоя</tspan><tspan fill="#f6efe3" dx="12">пицца</tspan></text></svg>`;
+const ICON = {
+  check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 10 17 19 7"/></svg>',
+  receipt: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg>',
+  chef: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M7 14a4 4 0 1 1 1.5-7.7A4 4 0 0 1 16 6.3 4 4 0 1 1 17 14v5H7z"/><path d="M7 16h10"/></svg>',
+  moto: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><circle cx="6" cy="17" r="3"/><circle cx="18" cy="17" r="3"/><path d="M6 17h7l3-6h3M10 9h4l2 2"/></svg>',
+  home: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M4 11 12 4l8 7v9H4z"/><path d="M10 20v-5h4v5"/></svg>',
+  bag: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M5 8h14l-1 12H6z"/><path d="M9 8a3 3 0 0 1 6 0"/></svg>',
+  card: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/></svg>',
+  sbp: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M4 7l5-3v8l-5 3zM20 7l-5-3v8l5 3zM9 12l3 2 3-2v8l-3-2-3 2z"/></svg>',
+  courier: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M7 14h3"/><circle cx="16" cy="13.5" r="2"/></svg>',
+  cash: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="6" width="19" height="12" rx="2"/><circle cx="12" cy="12" r="2.6"/></svg>',
+  lock: '<svg viewBox="0 0 24 24" fill="none" stroke="#7cc451" stroke-width="2"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>',
+  star: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg>',
+};
+
+/* ---------- State ---------- */
+let cart = store.get('tp2_cart', []).filter((l) => BY_ID[l.id] && BY_ID[l.id].sizes[l.size] && !BY_ID[l.id].soon && !BY_ID[l.id].ask);
+let mode = store.get('tp2_mode', 'delivery');
+let area = store.get('tp2_area', 'km116');
+if (!AREAS.some((a) => a.id === area)) area = 'km116';
+let notifyPref = store.get('tp2_notify', 'tg');
+if (!['tg', 'wa', 'max', 'none'].includes(notifyPref)) notifyPref = 'tg';
+let contactDraft = store.get('tp2_contact', {});
+let birthday = false;
+const A = () => AREAS.find((a) => a.id === area);
+const lineKey = (l) => [l.id, l.size, (l.mods || []).slice().sort().join('+'), (l.extras || []).slice().sort().join('+')].join('|');
+const linePrice = (l) => (BY_ID[l.id].sizes[l.size][1] + extrasSum(l)) * l.qty;
+const subtotal = () => cart.reduce((s, l) => s + linePrice(l), 0);
+const count = () => cart.reduce((s, l) => s + l.qty, 0);
+const deliveryFee = () => { if (mode === 'pickup' || !cart.length) return 0; const a = A(); if (a.fee == null) return null; return a.freeFrom && subtotal() >= a.freeFrom ? 0 : a.fee; };
+// Discounts do not stack: the larger one applies.
+const discount = () => { const pct = Math.max(mode === 'pickup' ? 5 : 0, birthday ? 15 : 0); return { pct, sum: Math.round(subtotal() * pct / 100), why: pct === 15 ? 'день рождения' : pct === 5 ? 'самовывоз' : '' }; };
+const total = () => subtotal() - discount().sum + (deliveryFee() || 0);
+const save = () => { store.set('tp2_cart', cart); store.set('tp2_mode', mode); store.set('tp2_area', area); store.set('tp2_notify', notifyPref); };
+function samaraNow() {
+  const parts = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Samara', hour: '2-digit', minute: '2-digit', hour12: false }).formatToParts(new Date());
+  const g = (t) => +((parts.find((p) => p.type === t) || {}).value || 0);
+  return (g('hour') % 24) * 60 + g('minute');
+}
+const isOpen = () => { const m = samaraNow(); return m >= OPEN[0] && m < OPEN[1]; };
+const hhmm = (d) => d.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
+
+/* ---------- Render menu ---------- */
+$('#heroPizza').innerHTML = '<img class="ph" src="img/p-chickbbq.webp" alt="Пицца «Чикен барбекю»">';
+$('#logoMark').innerHTML = logoMark();
+$('#footLogo').innerHTML = logoFull();
+{ const n = MENU.filter((m) => m.cat === 'pizza').length, w = n % 10 === 1 && n % 100 !== 11 ? 'вид' : [2, 3, 4].includes(n % 10) && ![12, 13, 14].includes(n % 100) ? 'вида' : 'видов'; $('#pizzaCount').textContent = n; $('#pizzaCountW').textContent = w + ' пиццы'; }
+{ const l = document.createElement('link'); l.rel = 'icon'; l.href = 'data:image/svg+xml,' + encodeURIComponent(logoMark()); document.head.appendChild(l); }
+$('#tabs').innerHTML = CATS.map((c) => `<a class="tab" href="#cat-${c.id}" data-cat="${c.id}">${c.name}</a>`).join('') + '<a class="tab" href="#cat-delivery" data-cat="delivery">Доставка</a><a class="tab" href="#cat-about" data-cat="about">Контакты</a>';
+$('#menu').innerHTML = CATS.map((c) => `
+  <section class="sec" id="cat-${c.id}"><div class="wrap">
+    <div class="sec-head"><h2>${c.title}<small>${c.note}</small></h2><p>${c.text}</p></div>
+    <div class="grid">${MENU.filter((m) => m.cat === c.id).map(cardHTML).join('')}</div>
+    ${c.id === 'pizza' ? '<p class="src">Цены и составы — по меню пиццерии. Размер 25 см есть не у всех пицц; цены «К пиву» и «Жульена» уточняем.</p>' : ''}
+  </div></section>`).join('');
+function cardHTML(m) {
+  if (m.soon) return `<article class="card soon" data-id="${m.id}" tabindex="0" role="button" aria-label="${m.name}, скоро в меню">
+    <div class="pic"><div class="art snack${m.img ? ' rect' : ''}">${picFor(m)}</div><div class="badges"><span class="bdg new">Скоро</span></div></div>
+    <h3>${m.name}</h3><p class="comp">${m.items.join(', ')}</p>
+    <div class="foot"><span class="price" style="color:var(--dim);font-size:15px">Скоро в меню</span><span class="add">Сообщить</span></div></article>`;
+  if (m.ask) return `<article class="card" data-id="${m.id}" tabindex="0" role="button" aria-label="${m.name}, цену уточняем">
+    <div class="pic"><div class="art">${picFor(m)}</div><div class="badges"><span class="bdg">Цену уточняем</span></div></div>
+    <h3>${m.name}</h3><p class="comp">${m.items.join(', ')}${m.weight ? ' · ' + m.weight : ''}</p>
+    <div class="foot"><span class="price" style="color:var(--dim);font-size:15px">${m.sizes[0][0]}</span><span class="add">Спросить</span></div></article>`;
+  const from = Math.min(...m.sizes.map((s) => s[1]));
+  return `<article class="card" data-id="${m.id}" tabindex="0" role="button" aria-label="${m.name}, от ${from} рублей">
+    <div class="pic"><div class="art ${m.cat === 'snacks' ? 'snack' : ''}${m.img && m.cat !== 'pizza' ? ' rect' : ''}">${picFor(m)}</div>
+      ${m.badges.length ? `<div class="badges">${m.badges.map(([c, t]) => `<span class="bdg ${c}">${t}</span>`).join('')}</div>` : ''}</div>
+    <h3>${m.name}</h3>
+    <p class="comp">${m.items.join(', ')}</p>
+    <div class="foot"><span class="price num">${m.sizes.length > 1 ? '<small>от</small>' : ''}${rub(from)}</span><span class="add">${m.cat === 'snacks' && m.sizes.length === 1 ? '+ В корзину' : 'Выбрать'}</span></div>
+  </article>`;
+}
+$('#menu').addEventListener('click', (e) => { const c = e.target.closest('.card'); if (c) openProduct(c.dataset.id); });
+$('#menu').addEventListener('keydown', (e) => { if ((e.key === 'Enter' || e.key === ' ') && e.target.classList.contains('card')) { e.preventDefault(); openProduct(e.target.dataset.id); } });
+const tabEls = [...$('#tabs').children];
+const obs = new IntersectionObserver((es) => es.forEach((en) => { if (en.isIntersecting) { const id = en.target.id.slice(4); tabEls.forEach((t) => t.classList.toggle('on', t.dataset.cat === id)); const on = $('#tabs .on'); if (on) { const bar = $('#tabs'); const r = on.getBoundingClientRect(), b = bar.getBoundingClientRect(); bar.scrollTo({ left: bar.scrollLeft + r.left - b.left - (b.width - r.width) / 2, behavior: 'smooth' }); } } }), { rootMargin: '-45% 0px -50% 0px' });
+document.querySelectorAll('section.sec').forEach((s) => obs.observe(s));
+
+/* ---------- Header status & mode ---------- */
+function syncHeader() {
+  const open = isOpen();
+  $('#hdrDot').classList.toggle('off', !open);
+  $('#hdrOpen').textContent = open ? (mode === 'delivery' ? `Открыто · доставка ~${A().eta} мин` : 'Открыто · самовывоз −5%') : 'Сейчас закрыто · примем предзаказ';
+  document.querySelectorAll('.mode button').forEach((b) => b.setAttribute('aria-pressed', b.dataset.mode === mode ? 'true' : 'false'));
+}
+document.querySelectorAll('.mode button').forEach((b) => b.addEventListener('click', () => { mode = b.dataset.mode; save(); syncHeader(); renderCartButtons(); }));
+
+/* ---------- Overlays ---------- */
+const scrim = $('#scrim');
+let openSheet = null;
+function show(el) { if (openSheet && openSheet !== el) openSheet.classList.remove('on'); openSheet = el; el.classList.add('on'); scrim.classList.add('on'); document.body.style.overflow = 'hidden'; }
+function hideAll() { if (openSheet) openSheet.classList.remove('on'); openSheet = null; scrim.classList.remove('on'); document.body.style.overflow = ''; stopTracking(); }
+scrim.addEventListener('click', hideAll);
+document.querySelectorAll('[data-close]').forEach((b) => b.addEventListener('click', hideAll));
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') hideAll(); });
+
+/* ---------- Product ---------- */
+let pm = null;
+function openProduct(id) {
+  const m = BY_ID[id];
+  if (m.soon) { toast(`«${m.name}» скоро появятся — напишем в мессенджер`); return; }
+  if (m.ask) { toast(`Цену «${m.name}» уточняем — спросите по телефону ${PHONE}`); return; }
+  if (m.cat === 'snacks' && m.sizes.length === 1) { addToCart({ id, size: 0, mods: [], qty: 1 }); return; }
+  pm = { id, size: m.sizes.length - 1, mods: [], extras: [], qty: 1 };
+  $('#pmTitle').textContent = m.name;
+  $('#pmDesc').textContent = m.items.join(', ').replace(/^./, (c) => c.toUpperCase()) + (m.weight ? ` · ${m.weight}` : '');
+  $('#pmKbju').innerHTML = m.kbju ? `<span>на 100 г:</span><span><b>${m.kbju[0]}</b> ккал</span><span>Б <b>${m.kbju[1]}</b></span><span>Ж <b>${m.kbju[2]}</b></span><span>У <b>${m.kbju[3]}</b></span>` : '';
+  $('#pmKbju').hidden = !m.kbju;
+  $('#pmArt').innerHTML = picFor(m);
+  $('#pmArt').classList.toggle('rect', !!m.img && m.cat !== 'pizza');
+  $('#pmSizesBox').hidden = m.sizes.length < 2;
+  $('#pmSizesLbl').textContent = m.cat === 'snacks' ? 'Порция' : 'Размер';
+  $('#pmSizes').innerHTML = m.sizes.map(([l, p], i) => `<button type="button" data-i="${i}">${l}<small>${rub(p)}</small></button>`).join('');
+  $('#pmModsBox').hidden = m.cat !== 'pizza';
+  $('#pmExtrasBox').hidden = m.cat !== 'pizza';
+  $('#pmExtras').innerHTML = EXTRAS.map(([g, p, list]) => `<div class="exg"><h6>${g}${p ? ` · +${p} ₽` : ''}</h6><div class="mods">${list.map(([xid, n, own]) => `<button type="button" class="mod" data-x="${xid}" aria-pressed="false">${n}${own ? ` <small>+${own} ₽</small>` : ''}</button>`).join('')}</div></div>`).join('');
+  $('#pmMods').innerHTML = MODS.map(([id, n]) => `<button type="button" class="mod" data-m="${id}" aria-pressed="false">${n}</button>`).join('');
+  syncProduct();
+  show($('#pModal'));
+}
+function syncProduct() {
+  const m = BY_ID[pm.id];
+  $('#pmSizes').querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', +b.dataset.i === pm.size ? 'true' : 'false'));
+  $('#pmMods').querySelectorAll('.mod').forEach((b) => b.setAttribute('aria-pressed', pm.mods.includes(b.dataset.m) ? 'true' : 'false'));
+  $('#pmExtras').querySelectorAll('[data-x]').forEach((b) => b.setAttribute('aria-pressed', pm.extras.includes(b.dataset.x) ? 'true' : 'false'));
+  $('#pmQty').textContent = pm.qty;
+  $('#pmAdd').textContent = `В корзину за ${rub(linePrice(pm))}`;
+  const art = $('#pmArt').firstElementChild;
+  if (art) art.style.transform = m.cat !== 'snacks' && m.sizes.length > 1 ? `scale(${pm.size === 0 ? .82 : 1})` : '';
+}
+$('#pmSizes').addEventListener('click', (e) => { const b = e.target.closest('button'); if (b) { pm.size = +b.dataset.i; syncProduct(); } });
+$('#pmMods').addEventListener('click', (e) => { const b = e.target.closest('.mod'); if (!b) return; const x = b.dataset.m; pm.mods = pm.mods.includes(x) ? pm.mods.filter((y) => y !== x) : [...pm.mods, x]; syncProduct(); });
+$('#pmExtras').addEventListener('click', (e) => { const b = e.target.closest('[data-x]'); if (!b) return; const x = b.dataset.x; pm.extras = pm.extras.includes(x) ? pm.extras.filter((y) => y !== x) : [...pm.extras, x]; syncProduct(); });
+$('#pmMinus').addEventListener('click', () => { pm.qty = Math.max(1, pm.qty - 1); syncProduct(); });
+$('#pmPlus').addEventListener('click', () => { pm.qty = Math.min(20, pm.qty + 1); syncProduct(); });
+$('#pmAdd').addEventListener('click', () => { addToCart({ ...pm, mods: [...pm.mods], extras: [...pm.extras] }); hideAll(); });
+function addToCart(line) {
+  const k = lineKey(line), ex = cart.find((l) => lineKey(l) === k);
+  if (ex) ex.qty += line.qty; else cart.push(line);
+  save(); renderCartButtons(true);
+  const m = BY_ID[line.id];
+  toast(`Добавлено: ${m.name}${m.sizes.length > 1 ? ', ' + m.sizes[line.size][0] : ''}`);
+}
+
+/* ---------- Cart ---------- */
+function renderCartButtons(bump) {
+  const n = count(), s = subtotal();
+  $('#cartBtnSum').textContent = rub(s);
+  $('#mbarLabel').textContent = n ? `Корзина · ${n} шт` : 'Корзина пуста';
+  $('#mbarSum').textContent = rub(s);
+  if (bump) [$('#cartBtn'), $('#mbarBtn')].forEach((b) => { b.classList.remove('bump'); void b.offsetWidth; b.classList.add('bump'); });
+}
+const lineDesc = (l) => { const m = BY_ID[l.id]; const parts = [m.sizes[l.size][0]]; const mods = MODS.filter(([id]) => (l.mods || []).includes(id)).map(([, n]) => n.toLowerCase()); if (mods.length) parts.push(mods.join(', ')); if (extrasText(l)) parts.push('+ ' + extrasText(l)); return parts.join(' · '); };
+function totalsHTML() {
+  const d = discount(), fee = deliveryFee();
+  return `<div class="line"><span>Товары (${count()})</span><span class="num">${rub(subtotal())}</span></div>
+    ${d.sum ? `<div class="line good"><span>Скидка ${d.pct}% · ${d.why}</span><span class="num">−${rub(d.sum)}</span></div>` : ''}
+    <div class="line"><span>${mode === 'delivery' ? 'Доставка · ' + A().name : 'Самовывоз'}</span><span class="num">${mode === 'pickup' ? 'бесплатно' : fee == null ? 'по тарифу такси' : fee ? rub(fee) : 'бесплатно'}</span></div>
+    <div class="line total"><span>Итого</span><span class="num">${rub(total())}</span></div>`;
+}
+function renderCart() {
+  const body = $('#cartBody'), foot = $('#cartFoot');
+  $('#cartSub').textContent = mode === 'delivery' ? `Доставка · ${A().name} · примерно ${A().eta} мин` : `Самовывоз −5% · ${PICKUP_ADDR}`;
+  if (!cart.length) {
+    body.innerHTML = `<div class="empty"><div class="art-e">${picFor(BY_ID.margarita)}</div><p>Корзина пока пустая.<br>Выберите пиццу — тонкую, без бортиков.</p></div>`;
+    foot.innerHTML = `<button class="btn btn-ghost btn-block" type="button" id="toMenu">Перейти к меню</button>`;
+    $('#toMenu').onclick = hideAll;
+    return;
+  }
+  const s = subtotal(), a = A();
+  const ups = ['fries', 'nuggets', 'rings', 'wings'].filter((id) => !cart.some((l) => l.id === id)).slice(0, 4);
+  body.innerHTML = cart.map((l, i) => `
+    <div class="ci"><div class="thumb">${picFor(BY_ID[l.id])}</div>
+      <div><h4>${BY_ID[l.id].name}</h4><small>${lineDesc(l)}</small></div>
+      <div class="right"><span class="sum num">${rub(linePrice(l))}</span>
+        <div class="qty"><button type="button" data-dec="${i}" aria-label="Меньше">−</button><span>${l.qty}</span><button type="button" data-inc="${i}" aria-label="Больше">+</button></div></div></div>`).join('') +
+    (mode === 'delivery' && a.freeFrom ? `<div class="free">${s < a.freeFrom ? `Ещё <b class="num">${rub(a.freeFrom - s)}</b> — и доставка по 116 км бесплатно` : 'Доставка по 116 км — бесплатно'}<div class="track"><i style="width:${Math.min(100, (s / a.freeFrom) * 100)}%"></i></div></div>` : '') +
+    (ups.length ? `<div class="upsell"><h5>Добавить к пицце?</h5><div class="ups">${ups.map((id) => `<div class="up"><div class="thumb">${picFor(BY_ID[id])}</div>${BY_ID[id].name}<b class="num">${rub(BY_ID[id].sizes[0][1])}</b><button type="button" data-up="${id}">+ Добавить</button></div>`).join('')}</div></div>` : '');
+  foot.innerHTML = totalsHTML() + `<button class="btn btn-red btn-block" id="toCheckout" type="button">Оформить заказ</button>`;
+  $('#toCheckout').onclick = openCheckout;
+}
+$('#cartBody').addEventListener('click', (e) => {
+  const inc = e.target.closest('[data-inc]'), dec = e.target.closest('[data-dec]'), up = e.target.closest('[data-up]');
+  if (inc) cart[+inc.dataset.inc].qty++;
+  else if (dec) { const i = +dec.dataset.dec; cart[i].qty--; if (cart[i].qty <= 0) cart.splice(i, 1); }
+  else if (up) addToCart({ id: up.dataset.up, size: 0, mods: [], qty: 1 });
+  else return;
+  save(); renderCartButtons(); renderCart();
+});
+function openCart() { renderCart(); show($('#cart')); }
+$('#cartBtn').addEventListener('click', openCart);
+$('#mbarBtn').addEventListener('click', openCart);
+
+/* ---------- Delivery map ---------- */
+function terrain(w, h) {
+  return `<rect width="${w}" height="${h}" fill="#1f1c19"/>
+    <path d="M-10 214 C70 196 120 224 200 210 S320 182 370 196" stroke="#1d3647" stroke-width="16" fill="none"/>
+    <path d="M30 20 C80 40 60 90 20 110" stroke="#24301f" stroke-width="30" fill="none" opacity=".7"/>
+    <path d="M250 150 C290 140 330 160 350 150" stroke="#24301f" stroke-width="26" fill="none" opacity=".7"/>
+    <path d="M0 118 H360" stroke="#3a332c" stroke-width="7"/><text x="8" y="112" font-family="Onest, sans-serif" font-size="8" fill="rgba(246,239,227,.35)">трасса</text>`;
+}
+function deliveryMapSVG() {
+  const nodes = AREAS.filter((a) => a.id !== 'other');
+  return `<svg viewBox="0 0 360 230" xmlns="http://www.w3.org/2000/svg">${terrain(360, 230)}
+    ${nodes.filter((a) => !a.home).map((a) => `<path d="${a.route}" stroke="#4a4038" stroke-width="3" fill="none" stroke-dasharray="1 5" stroke-linecap="round"/>`).join('')}
+    ${nodes.map((a) => `<g data-a="${a.id}" class="node"><circle cx="${a.pt[0]}" cy="${a.pt[1]}" r="${a.home ? 15 : 8}" fill="${a.home ? '#e3392c' : '#f2b33d'}" stroke="#1f1c19" stroke-width="3"/>${a.home ? `<circle cx="${a.pt[0]}" cy="${a.pt[1]}" r="24" fill="#e3392c" opacity=".15"/>` : ''}<text x="${a.pt[0]}" y="${a.pt[1] + (a.home ? 30 : 20)}" text-anchor="middle" font-family="Onest, sans-serif" font-weight="600" font-size="10" fill="#f6efe3">${a.name}</text></g>`).join('')}
+    <text x="150" y="122" text-anchor="middle" font-family="Geologica, sans-serif" font-weight="800" font-size="10" fill="#fff">ТП</text>
+  </svg>`;
+}
+function renderAreas() {
+  $('#areas').innerHTML = AREAS.map((a) => `<button type="button" class="area ${a.home ? 'home' : ''}" data-a="${a.id}" aria-pressed="${a.id === area}"><span class="pin" style="${a.id === 'other' ? 'background:#6b625a' : ''}"></span><span><b>${a.name}</b><small>${a.id === 'other' ? 'курьером-такси' : a.minOrder ? `заказ от ${rub(a.minOrder)} · условия уточняются` : `~${a.eta} мин${a.freeFrom ? ' · бесплатно от ' + rub(a.freeFrom) : ''}`}</small></span><span class="fee num">${a.fee == null ? 'по тарифу' : rub(a.fee)}<small>${a.freeFrom ? 'до 1 000 ₽' : a.fee == null ? 'такси' : 'доставка'}</small></span></button>`).join('');
+  document.querySelectorAll('#dmap .node circle:first-child').forEach((c) => { const id = c.parentNode.dataset.a; c.setAttribute('stroke', id === area ? '#f6efe3' : '#1f1c19'); });
+}
+function pickArea(id, quiet) { area = id; mode = 'delivery'; save(); syncHeader(); renderAreas(); renderCartButtons(); if (!quiet) toast(`${A().name}: доставка ${A().fee == null ? 'по тарифу такси' : rub(A().fee)}`); }
+$('#dmap').innerHTML = deliveryMapSVG();
+$('#dmap').addEventListener('click', (e) => { const n = e.target.closest('[data-a]'); if (n) pickArea(n.dataset.a); });
+$('#areas').addEventListener('click', (e) => { const n = e.target.closest('[data-a]'); if (n) pickArea(n.dataset.a); });
+renderAreas();
+
+/* ---------- Checkout ---------- */
+// ?demo keeps a visitor in the local demo (orders stay in their browser) — used for the portfolio link.
+const API = /^https?:$/.test(location.protocol) && !new URLSearchParams(location.search).has('demo') ? '/.netlify/functions/orders' : null;
+// Online card/СБП payment needs acquiring (ЮKassa, Т-Банк…); until it is connected the live site takes payment on delivery only.
+const ONLINE_PAY = !API;
+let order = null, pay = ONLINE_PAY ? 'card' : 'courier';
+function openCheckout() {
+  const d = contactDraft;
+  const payList = [['card', ICON.card, 'Картой онлайн'], ['sbp', ICON.sbp, 'СБП'], ['courier', ICON.courier, mode === 'pickup' ? 'Картой на месте' : 'Картой курьеру'], ['cash', ICON.cash, 'Наличными']].filter(([id]) => ONLINE_PAY || id === 'courier' || id === 'cash');
+  if (!payList.some(([id]) => id === pay)) pay = 'courier';
+  const closedNow = !isOpen();
+  $('#flowBody').innerHTML = `
+  <form class="co" id="coForm" novalidate>
+    <h3>Оформление заказа</h3>
+    ${closedNow ? '<div class="info">Сейчас закрыто — оформите предзаказ ко времени, мы начнём готовить в 10:00.</div>' : ''}
+    <div class="seg" role="group" aria-label="Способ получения">
+      <button type="button" data-m="delivery" aria-pressed="${mode === 'delivery'}">Доставка</button>
+      <button type="button" data-m="pickup" aria-pressed="${mode === 'pickup'}">Самовывоз <small>−5%</small></button>
+    </div>
+    <div class="fields">
+      <label class="f"><span>Имя</span><input id="cName" autocomplete="given-name" value="${d.name || ''}" placeholder="Как к вам обращаться"><span class="msg">Укажите имя</span></label>
+      <label class="f"><span>Телефон</span><input id="cPhone" type="tel" inputmode="tel" autocomplete="tel" value="${d.phone || ''}" placeholder="+7 (___) ___-__-__"><span class="msg">Нужен номер из 11 цифр</span></label>
+      ${mode === 'delivery' ? `
+      <label class="f full"><span>Населённый пункт</span><select id="cArea">${AREAS.map((a) => `<option value="${a.id}" ${a.id === area ? 'selected' : ''}>${a.name} — ${a.fee == null ? 'по тарифу такси' : a.freeFrom ? '150 ₽, от 1 000 ₽ бесплатно' : a.minOrder ? rub(a.fee) + ', заказ от ' + rub(a.minOrder) : rub(a.fee)}</option>`).join('')}</select></label>
+      ${area === 'other' ? '<div class="full info">Отправим заказ курьером-такси. Стоимость доставки по тарифу — оператор назовёт её, когда перезвонит.</div>' : ''}
+      ${A().minOrder ? `<div class="full info" id="minInfo">В ${A().name.toLowerCase()} возим заказы от <b>${rub(A().minOrder)}</b>. ${subtotal() < A().minOrder ? `Добавьте ещё на <b>${rub(A().minOrder - subtotal())}</b>.` : 'Сумма подходит.'}</div>` : ''}
+      <label class="f full"><span>Улица и дом</span><input id="cAddr" autocomplete="street-address" value="${d.addr || ''}" placeholder="Например: ул. Центральная, 5"><span class="msg">Укажите улицу и дом</span></label>
+      <label class="f"><span>Квартира / офис</span><input id="cFlat" value="${d.flat || ''}" placeholder="кв. 12"></label>
+      <label class="f"><span>Подъезд, этаж</span><input id="cEnt" value="${d.ent || ''}" placeholder="2 подъезд, 5 этаж"></label>`
+      : `<div class="full info">Заберите заказ по адресу: <b>${PICKUP_ADDR}</b>, Самара. Скидка 5% уже в сумме.</div>`}
+      <label class="f"><span>Когда</span><select id="cWhen"><option value="asap" ${closedNow ? '' : 'selected'}>Как можно скорее</option><option value="time" ${closedNow ? 'selected' : ''}>Ко времени (предзаказ)</option></select></label>
+      <label class="f" id="cTimeBox" ${closedNow ? '' : 'hidden'}><span>Время</span><input id="cTime" type="time" min="10:00" max="21:30" value="${closedNow ? '10:30' : ''}"></label>
+      <label class="f full"><span>Комментарий</span><textarea id="cNote" rows="2" placeholder="Например: позвонить за 5 минут"></textarea></label>
+    </div>
+    <label class="check"><input type="checkbox" id="cBday" ${birthday ? 'checked' : ''}><span>У меня день рождения — скидка 15%<small>Покажите документ курьеру или на кассе. Скидки не суммируются — применим бо́льшую.</small></span></label>
+    <div><div class="lbl">Оплата</div><div class="pay" id="payBox">${payList.map(([id, ic, n]) => `<button type="button" data-p="${id}" aria-pressed="${pay === id}">${ic}${n}</button>`).join('')}</div>
+      <label class="f" id="cashBox" ${pay === 'cash' ? '' : 'hidden'} style="margin-top:10px"><span>С какой суммы подготовить сдачу</span><input id="cChange" type="number" inputmode="numeric" placeholder="Например, 2000"></label></div>
+    <div><div class="lbl">Сообщать о статусе заказа</div><div class="seg" id="notifySeg">${[['tg', 'Telegram'], ['wa', 'WhatsApp'], ['max', 'Max'], ['none', 'Не нужно']].map(([id, n]) => `<button type="button" data-n="${id}" aria-pressed="${notifyPref === id}">${n}</button>`).join('')}</div></div>
+    <div class="summary" id="coSum">${totalsHTML()}</div>
+    <button class="btn btn-red btn-block" type="submit" id="coSubmit"></button>
+    <p class="hint">Нажимая кнопку, вы соглашаетесь с условиями доставки и обработкой персональных данных (в рабочей версии — ссылки на документы).</p>
+  </form>`;
+  show($('#flow'));
+  const f = $('#coForm');
+  const val = (id) => ($('#' + id) ? $('#' + id).value.trim() : '');
+  const keep = () => { contactDraft = { name: val('cName') || contactDraft.name || '', phone: val('cPhone') || contactDraft.phone || '', addr: $('#cAddr') ? val('cAddr') : contactDraft.addr || '', flat: $('#cFlat') ? val('cFlat') : contactDraft.flat || '', ent: $('#cEnt') ? val('cEnt') : contactDraft.ent || '' }; store.set('tp2_contact', contactDraft); };
+  const refresh = () => { $('#coSum').innerHTML = totalsHTML(); $('#coSubmit').textContent = `${pay === 'card' || pay === 'sbp' ? 'Перейти к оплате' : 'Подтвердить заказ'} · ${rub(total())}`; };
+  refresh();
+  f.querySelectorAll('[data-m]').forEach((b) => b.addEventListener('click', () => { keep(); mode = b.dataset.m; save(); syncHeader(); renderCartButtons(); openCheckout(); }));
+  if ($('#cArea')) $('#cArea').addEventListener('change', (e) => { keep(); pickArea(e.target.value, true); openCheckout(); });
+  $('#cBday').addEventListener('change', (e) => { birthday = e.target.checked; refresh(); });
+  $('#payBox').addEventListener('click', (e) => { const b = e.target.closest('[data-p]'); if (!b) return; pay = b.dataset.p; $('#payBox').querySelectorAll('button').forEach((x) => x.setAttribute('aria-pressed', x === b)); $('#cashBox').hidden = pay !== 'cash'; refresh(); });
+  $('#notifySeg').addEventListener('click', (e) => { const b = e.target.closest('[data-n]'); if (!b) return; notifyPref = b.dataset.n; save(); $('#notifySeg').querySelectorAll('button').forEach((x) => x.setAttribute('aria-pressed', x === b)); });
+  $('#cWhen').addEventListener('change', (e) => { $('#cTimeBox').hidden = e.target.value !== 'time'; });
+  $('#cPhone').addEventListener('input', (e) => { let dg = e.target.value.replace(/\D/g, ''); if (dg.startsWith('8')) dg = '7' + dg.slice(1); if (!dg.startsWith('7')) dg = '7' + dg; dg = dg.slice(0, 11); const p = dg.slice(1); e.target.value = '+7' + (p ? ' (' + p.slice(0, 3) : '') + (p.length > 3 ? ') ' + p.slice(3, 6) : '') + (p.length > 6 ? '-' + p.slice(6, 8) : '') + (p.length > 8 ? '-' + p.slice(8, 10) : ''); });
+  f.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const checks = [['cName', val('cName').length >= 2], ['cPhone', val('cPhone').replace(/\D/g, '').length === 11]];
+    if (mode === 'delivery') checks.push(['cAddr', val('cAddr').length >= 4]);
+    let ok = true;
+    for (const [id, good] of checks) { $('#' + id).closest('.f').classList.toggle('err', !good); if (!good) ok = false; }
+    if (!ok) { f.querySelector('.err input').focus(); return; }
+    if (mode === 'delivery' && A().minOrder && subtotal() < A().minOrder) { toast(`Минимальный заказ в ${A().name.toLowerCase()} — ${rub(A().minOrder)}`); $('#minInfo') && $('#minInfo').scrollIntoView({ block: 'center' }); return; }
+    keep();
+    const now = new Date();
+    let eta = new Date(now.getTime() + (mode === 'delivery' ? A().eta : 20) * 60000);
+    if (val('cWhen') === 'time' && val('cTime')) { const [h, mi] = val('cTime').split(':'); eta = new Date(now); eta.setHours(+h, +mi, 0, 0); if (eta < now) eta.setDate(eta.getDate() + 1); }
+    order = { no: 1000 + Math.floor(Math.random() * 9000), total: total(), sub: subtotal(), disc: discount(), fee: deliveryFee(), mode, area, eta, addr: [A().name, val('cAddr'), val('cFlat')].filter(Boolean).join(', '), items: cart.map((l) => ({ ...l })), pay, notify: notifyPref, name: val('cName'), phone: val('cPhone'), note: val('cNote'), change: val('cChange'), preorder: val('cWhen') === 'time', bday: birthday };
+    if (pay === 'card' || pay === 'sbp') openPayment(); else placeOrder();
+  });
+}
+
+/* ---------- Payment (demo mock; the site never collects card data) ---------- */
+function openPayment() {
+  $('#flowBody').innerHTML = `
+  <div class="paybox">
+    <div class="lock">${ICON.lock}</div>
+    <div class="hint">Заказ №${order.no}</div>
+    <div class="amount num">${rub(order.total)}</div>
+    <p style="max-width:440px;color:var(--dim)">В рабочей версии здесь откроется защищённая страница ${order.pay === 'sbp' ? 'СБП: QR-код или переход в приложение банка' : 'платёжного сервиса (ЮKassa или Т-Банк)'}. Данные карты сайт не видит и не хранит.</p>
+    <button class="btn btn-red" id="mockPay" type="button" style="min-width:280px">Имитировать оплату (демо)</button>
+    <button class="btn btn-ghost" id="backCo" type="button">Назад к заказу</button>
+  </div>`;
+  $('#mockPay').onclick = (e) => { e.currentTarget.innerHTML = '<span class="spinner"></span> Проверяем оплату…'; e.currentTarget.disabled = true; setTimeout(placeOrder, 1300); };
+  $('#backCo').onclick = openCheckout;
+}
+
+/* ---------- Tracking ---------- */
+let trackTimer = null, courierRaf = null, pushT;
+const STEPS_D = [[ICON.receipt, 'Заказ принят'], [ICON.chef, 'Готовим'], [ICON.moto, 'Курьер в пути'], [ICON.home, 'Доставлен']];
+const STEPS_P = [[ICON.receipt, 'Заказ принят'], [ICON.chef, 'Готовим'], [ICON.bag, 'Можно забирать'], [ICON.check, 'Выдан']];
+// Orders are shared with admin.html through the browser's storage: the owner changes a status there, the customer sees it here.
+const ORDERS_KEY = 'tp_orders';
+const loadOrders = () => store.get(ORDERS_KEY, []);
+const saveOrders = (list) => store.set(ORDERS_KEY, list);
+let curStage = 0;
+async function placeOrder() {
+  const rec = { ...order, eta: order.eta.toISOString(), created: new Date().toISOString(), status: 0, items: order.items.map((l) => ({ ...l, name: BY_ID[l.id].name, size: BY_ID[l.id].sizes[l.size][0] + (extrasText(l) ? ' · + ' + extrasText(l) : ''), sum: linePrice(l) })) };
+  if (API) {
+    const btn = $('#coSubmit'); if (btn) { btn.disabled = true; btn.innerHTML = '<span class="spinner"></span> Отправляем заказ…'; }
+    try {
+      const r = await fetch(API, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(rec) });
+      const res = await r.json();
+      if (!r.ok) throw new Error(res.error || 'server');
+      order.no = res.no; order.sid = res.id; order.token = res.token;
+    } catch (er) {
+      if (btn) { btn.disabled = false; btn.textContent = 'Оформить заказ'; }
+      toast(`Не получилось отправить заказ. Позвоните нам: ${PHONE}`);
+      return;
+    }
+  } else saveOrders([rec, ...loadOrders()].slice(0, 60));
+  cart = []; birthday = false; save(); renderCartButtons();
+  stopTracking();
+  curStage = 0;
+  renderTracking(0); pushStage(0);
+  const poll = async () => {
+    let o;
+    if (API) { try { const r = await fetch(`${API}?id=${order.sid}&t=${order.token}`, { cache: 'no-store' }); if (r.ok) o = await r.json(); } catch {} }
+    else o = loadOrders().find((x) => x.no === order.no);
+    if (o && o.status === -1) { stopTracking(); toast('Кафе отменило заказ — мы вам перезвоним'); return; }
+    if (o && o.status !== curStage && o.status >= 0) { curStage = Math.min(3, o.status); renderTracking(curStage); pushStage(curStage); }
+  };
+  trackTimer = setInterval(poll, API ? 5000 : 1500);
+}
+function nextStageDemo() {
+  const next = Math.min(3, curStage + 1);
+  const list = loadOrders(), o = list.find((x) => x.no === order.no);
+  if (o) { o.status = next; saveOrders(list); }
+  curStage = next; renderTracking(next); pushStage(next);
+}
+function stopTracking() { if (trackTimer) { clearInterval(trackTimer); trackTimer = null; } if (courierRaf) { cancelAnimationFrame(courierRaf); courierRaf = null; } }
+const PUSH_APP = { tg: ['#2aabee', 'TG', 'Telegram · бот «Твоя пицца»'], wa: ['#25d366', 'WA', 'WhatsApp · Твоя пицца'], max: ['#7b3cff', 'MAX', 'Max · Твоя пицца'], sms: ['#34c759', 'SMS', 'Сообщения'] };
+function pushStage(stage) {
+  if (!order || order.notify === 'none') return;
+  const n = order.no, t = hhmm(order.eta);
+  const msgs = order.mode === 'delivery'
+    ? [`Твоя пицца: заказ №${n} принят! Привезём примерно к ${t}.`, `Твоя пицца: уже раскатываем тесто для заказа №${n} 🍕`, `Твоя пицца: курьер выехал к вам. Следите за ним на карте по ссылке.`, `Твоя пицца: заказ доставлен. Приятного аппетита! Оцените нас ⭐`]
+    : [`Твоя пицца: заказ №${n} принят! Будет готов к ${t}.`, `Твоя пицца: уже раскатываем тесто для заказа №${n} 🍕`, `Твоя пицца: заказ №${n} готов — ждём вас: ${PICKUP_ADDR}.`, `Твоя пицца: заказ выдан. Приятного аппетита!`];
+  const [bg, ic, app] = PUSH_APP[order.notify];
+  const el = $('#push');
+  el.innerHTML = `<div class="app" style="background:${bg}">${ic}</div><div><div class="meta"><b>${app}</b><span>сейчас</span></div><p>${msgs[stage]}</p></div>`;
+  el.classList.add('on'); clearTimeout(pushT); pushT = setTimeout(() => el.classList.remove('on'), 4200);
+}
+function trackMapHTML(a) {
+  return `<div class="tmap" aria-label="Карта: курьер едет к вам"><svg viewBox="0 0 360 230" xmlns="http://www.w3.org/2000/svg">${terrain(360, 230)}
+    <path d="${a.route}" fill="none" stroke="rgba(246,239,227,.3)" stroke-width="4" stroke-dasharray="2 7" stroke-linecap="round"/>
+    <path id="routeDone" d="${a.route}" fill="none" stroke="#e3392c" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <g transform="translate(150 118)"><circle r="13" fill="#e3392c" stroke="#fff" stroke-width="2.5"/><text y="4" text-anchor="middle" font-family="Geologica, sans-serif" font-weight="800" font-size="9" fill="#fff">ТП</text></g>
+    <g transform="translate(${a.home ? '188 80' : a.pt.join(' ')})"><path d="M0 12 C-10 0 -10 -14 0 -14 C10 -14 10 0 0 12z" fill="#7cc451" stroke="#fff" stroke-width="2"/><circle cy="-4" r="3.5" fill="#fff"/></g>
+    <text x="${a.home ? 188 : a.pt[0]}" y="${(a.home ? 80 : a.pt[1]) + 26}" text-anchor="middle" font-family="Onest, sans-serif" font-weight="600" font-size="10" fill="#f6efe3">${a.name}</text>
+    <g id="courierDot" transform="translate(150 118)"><circle r="12" fill="#f6efe3"/><circle r="10" fill="#141210"/><path d="M-5 3 h4 l2 -4 h3 M-5 3 a2 2 0 1 0 0.1 0 M5 3 a2 2 0 1 0 0.1 0" stroke="#f6efe3" stroke-width="1.5" fill="none"/></g>
+  </svg></div>`;
+}
+function placeCourier(t) {
+  const path = $('#routeDone'), dot = $('#courierDot');
+  if (!path || !dot) return;
+  const L = path.getTotalLength(), p = path.getPointAtLength(L * t);
+  path.style.strokeDasharray = `${L * t} ${L}`;
+  dot.setAttribute('transform', `translate(${p.x.toFixed(1)} ${p.y.toFixed(1)})`);
+}
+function animateCourier(from, to, ms) {
+  if (courierRaf) cancelAnimationFrame(courierRaf);
+  const start = performance.now();
+  const step = (now) => { const k = Math.min(1, (now - start) / ms); placeCourier(from + (to - from) * k); if (k < 1) courierRaf = requestAnimationFrame(step); };
+  courierRaf = requestAnimationFrame(step);
+}
+function renderTracking(stage) {
+  const deliv = order.mode === 'delivery', a = AREAS.find((x) => x.id === order.area);
+  const steps = deliv ? STEPS_D : STEPS_P;
+  const title = deliv ? ['Заказ принят!', 'Готовим ваш заказ', 'Курьер уже едет', 'Доставлено — приятного аппетита!'][stage] : ['Заказ принят!', 'Готовим ваш заказ', 'Готово — можно забирать', 'Выдан — приятного аппетита!'][stage];
+  const payTxt = { card: 'оплачено картой', sbp: 'оплачено через СБП', courier: deliv ? 'картой курьеру' : 'картой на месте', cash: 'наличными' }[order.pay];
+  $('#flowBody').innerHTML = `
+  <div class="tr">
+    <div class="tr-top">
+      <div><p>Заказ №${order.no} · ${payTxt}</p><h3>${title}</h3><p>${deliv ? order.addr : 'Самовывоз: ' + PICKUP_ADDR}</p></div>
+      <div class="eta-big"><small>${stage >= 3 ? (deliv ? 'Доставлен в' : 'Выдан в') : (deliv ? 'Курьер будет примерно в' : 'Будет готов к')}</small><b class="num">${hhmm(stage >= 3 ? new Date() : order.eta)}</b></div>
+    </div>
+    ${deliv ? trackMapHTML(a) : ''}
+    <div class="steps">${steps.map(([ic, n], i) => `<div class="step ${i < stage || stage === 3 ? 'done' : i === stage ? 'now' : ''}"><div class="ic">${i < stage || stage === 3 ? ICON.check : ic}</div>${n}</div>`).join('')}</div>
+    ${stage === 2 && deliv ? `<div class="courier"><div class="ava">ТП</div><div><b>Курьер «Твоей пиццы»</b><small>Едет к вам · будет примерно в ${hhmm(order.eta)}</small></div><span class="ph num">${PHONE}</span></div>` : ''}
+    ${stage === 3 ? `<div class="rate-box"><div class="lbl">Как вам пицца?</div><div class="rate" id="rate">${[1, 2, 3, 4, 5].map((i) => `<button type="button" data-r="${i}" aria-label="Оценка ${i}">${ICON.star}</button>`).join('')}</div></div>` : ''}
+    <div class="summary">${order.items.map((l) => `<div class="line"><span>${BY_ID[l.id].name}, ${BY_ID[l.id].sizes[l.size][0]} × ${l.qty}</span><span class="num">${rub(linePrice(l))}</span></div>`).join('')}
+      ${order.disc.sum ? `<div class="line good"><span>Скидка ${order.disc.pct}% · ${order.disc.why}</span><span class="num">−${rub(order.disc.sum)}</span></div>` : ''}
+      ${deliv ? `<div class="line"><span>Доставка</span><span class="num">${order.fee == null ? 'по тарифу такси' : order.fee ? rub(order.fee) : 'бесплатно'}</span></div>` : ''}
+      <div class="line total"><span>Итого</span><span class="num">${rub(order.total)}</span></div></div>
+    ${API ? '<div class="tr-note">Статус обновится сам, как только кафе примет заказ.</div>' : `<div class="tr-note">Статус меняет кафе в <a href="admin.html?demo" target="_blank" rel="noopener" style="color:var(--cream);font-weight:700">панели заказов</a> — откройте её в соседней вкладке и нажмите «Готовим», «Курьер выехал»: здесь всё обновится само. В рабочей версии уведомления уходят клиенту в Telegram, WhatsApp или Max.</div>`}
+    ${stage < 3 && !API ? '<button class="btn btn-ghost btn-block" type="button" id="trNext">Демо: следующий статус →</button>' : ''}
+    <button class="btn btn-ghost btn-block" type="button" id="trClose">Вернуться в меню</button>
+  </div>`;
+  $('#trClose').onclick = hideAll;
+  if ($('#trNext')) $('#trNext').onclick = nextStageDemo;
+  if (deliv) { if (stage < 2) placeCourier(0); else if (stage === 2) { placeCourier(0); animateCourier(0, .8, 5600); } else placeCourier(1); }
+  const rate = $('#rate');
+  if (rate) rate.addEventListener('click', (e) => { const b = e.target.closest('[data-r]'); if (!b) return; const r = +b.dataset.r; rate.querySelectorAll('button').forEach((x) => x.classList.toggle('on', +x.dataset.r <= r)); toast(r >= 4 ? 'Спасибо! Ждём вас снова' : 'Спасибо! Передадим команде'); });
+}
+
+/* ---------- Misc ---------- */
+let toastT;
+function toast(msg) { const t = $('#toast'); t.textContent = msg; t.classList.add('on'); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('on'), 1900); }
+$('#copyPhone').addEventListener('click', () => {
+  const done = () => toast('Номер скопирован');
+  const fallback = () => { const r = document.createRange(); r.selectNodeContents($('#phoneTxt')); const s = getSelection(); s.removeAllRanges(); s.addRange(r); toast('Номер выделен — скопируйте его'); };
+  try { navigator.clipboard.writeText(PHONE).then(done, fallback); } catch { fallback(); }
+});
+syncHeader();
+renderCartButtons();
+setInterval(syncHeader, 60000);
+</script>
+</body>
+</html>

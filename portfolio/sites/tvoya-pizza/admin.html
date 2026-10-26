@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Заказы — Твоя пицца</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geologica:wght@700;800;900&family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* Layout: an order board for the owner's laptop — summary on top, status lanes, one card per order */
+  :root {
+    --bg: #141210; --surface: #1c1916; --surface-2: #26221e; --line: rgba(246, 239, 227, .1);
+    --cream: #f6efe3; --dim: rgba(246, 239, 227, .6); --red: #e3392c; --basil: #7cc451; --mustard: #f2b33d; --blue: #5aa9e6;
+    --display: "Geologica", "Oswald", sans-serif; --sans: "Onest", system-ui, -apple-system, "Segoe UI", sans-serif;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  [hidden] { display: none !important; }
+  body { background: var(--bg); color: var(--cream); font-family: var(--sans); font-size: 15px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; }
+  button { font: inherit; color: inherit; cursor: pointer; background: none; border: 0; }
+  .num { font-variant-numeric: tabular-nums; }
+  .wrap { max-width: 1280px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  header { position: sticky; top: 0; z-index: 10; background: rgba(20, 18, 16, .92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+  .bar { display: flex; align-items: center; gap: 16px; height: 64px; flex-wrap: wrap; }
+  .bar h1 { font-family: var(--display); font-weight: 900; font-size: 22px; letter-spacing: -.02em; }
+  .bar h1 span { color: var(--red); }
+  .live { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--dim); }
+  .live i { width: 8px; height: 8px; border-radius: 50%; background: var(--basil); box-shadow: 0 0 0 4px rgba(124, 196, 81, .18); animation: blink 2s infinite; }
+  @keyframes blink { 50% { opacity: .4; } }
+  .sp { flex: 1; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 16px; border-radius: 12px; font-weight: 700; font-size: 14px; background: var(--surface-2); white-space: nowrap; transition: background .2s; }
+  .btn:hover { background: #312c27; }
+  .btn-red { background: var(--red); color: #fff; }
+  .btn-red:hover { background: #f25142; }
+  .btn-green { background: var(--basil); color: #13200c; }
+  .btn-green:hover { background: #8fd462; }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 18px 0; }
+  .stat { padding: 16px 18px; border-radius: 18px; background: var(--surface); border: 1px solid var(--line); }
+  .stat b { display: block; font-family: var(--display); font-weight: 900; font-size: 30px; line-height: 1.1; }
+  .stat span { font-size: 13px; color: var(--dim); }
+  .stat.new b { color: var(--red); }
+  .tabs { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 6px; scrollbar-width: none; }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab { flex: none; padding: 9px 14px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); font-weight: 600; font-size: 14px; color: var(--dim); }
+  .tab[aria-pressed="true"] { background: var(--cream); color: #1a1714; border-color: var(--cream); }
+  .tab .c { display: inline-block; min-width: 20px; margin-left: 6px; padding: 0 6px; border-radius: 10px; background: rgba(246, 239, 227, .12); font-size: 12px; }
+  .tab[aria-pressed="true"] .c { background: rgba(0, 0, 0, .12); }
+  .board { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(330px, 100%), 1fr)); gap: 14px; margin-top: 14px; padding-bottom: 60px; }
+  .order { position: relative; display: flex; flex-direction: column; gap: 10px; padding: 16px; border-radius: 18px; background: var(--surface); border: 1px solid var(--line); border-left: 5px solid var(--st, var(--line)); }
+  .order.fresh { animation: pop 1.2s ease 2; }
+  @keyframes pop { 30% { box-shadow: 0 0 0 4px rgba(227, 57, 44, .5); } }
+  .o-top { display: flex; justify-content: space-between; gap: 10px; align-items: flex-start; }
+  .o-top h3 { font-family: var(--display); font-weight: 800; font-size: 20px; letter-spacing: -.01em; }
+  .o-top small { display: block; color: var(--dim); font-size: 12.5px; }
+  .pill { padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 700; white-space: nowrap; background: var(--st); color: #111; }
+  .cust { display: grid; gap: 2px; font-size: 14px; }
+  .cust b { font-size: 15px; }
+  .cust a { font-weight: 700; text-decoration: none; }
+  .items { display: grid; gap: 4px; padding: 10px 12px; border-radius: 12px; background: var(--surface-2); font-size: 14px; }
+  .items .ln { display: flex; justify-content: space-between; gap: 10px; }
+  .items .ln small { color: var(--dim); display: block; font-size: 12px; }
+  .items .tot { border-top: 1px solid var(--line); padding-top: 6px; margin-top: 2px; font-family: var(--display); font-weight: 800; }
+  .flags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .flag { padding: 4px 9px; border-radius: 8px; background: var(--surface-2); font-size: 12.5px; color: var(--dim); }
+  .flag.warn { background: rgba(242, 179, 61, .15); color: var(--mustard); }
+  .note { font-size: 13.5px; padding: 8px 10px; border-left: 3px solid var(--mustard); background: rgba(242, 179, 61, .06); border-radius: 0 8px 8px 0; }
+  .acts { display: flex; gap: 8px; flex-wrap: wrap; margin-top: auto; }
+  .acts .btn { flex: 1; }
+  #login { position: fixed; inset: 0; z-index: 100; background: var(--bg); display: grid; place-items: center; padding: 20px; }
+  #login[hidden] { display: none; }
+  .login-box { width: min(360px, 100%); display: grid; gap: 12px; padding: 28px; border-radius: 18px; background: var(--surface); border: 1px solid var(--line); }
+  .login-box h2 { font-family: var(--display); font-size: 26px; }
+  .login-box p { color: var(--dim); font-size: 14px; }
+  .login-box .err { color: #ff8a7a; min-height: 1em; }
+  .login-box input { padding: 13px 14px; border-radius: 12px; border: 1.5px solid var(--line); background: var(--surface-2); color: inherit; font: inherit; font-size: 16px; }
+  .empty { grid-column: 1 / -1; padding: 50px 20px; text-align: center; color: var(--dim); border: 1px dashed var(--line); border-radius: 18px; }
+  .info { margin-top: 18px; padding: 14px 16px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); font-size: 13.5px; color: var(--dim); }
+  .info b { color: var(--cream); }
+  .toast { position: fixed; left: 50%; bottom: 20px; transform: translate(-50%, 16px); opacity: 0; padding: 11px 16px; border-radius: 12px; background: var(--cream); color: #1a1714; font-weight: 600; transition: all .25s; pointer-events: none; z-index: 20; }
+  .toast.on { opacity: 1; transform: translate(-50%, 0); }
+  @media (max-width: 760px) { .stats { grid-template-columns: 1fr 1fr; } .bar { height: auto; padding: 10px 0; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap bar">
+    <h1>Твоя пицца <span>·</span> Заказы</h1>
+    <span class="live"><i></i><span id="clock">онлайн</span></span>
+    <span class="sp"></span>
+    <button class="btn" type="button" id="demoOrder">+ Тестовый заказ</button>
+    <a class="btn btn-red" href="index.html" target="_blank" rel="noopener">Открыть сайт</a>
+  </div>
+</header>
+<main class="wrap">
+  <div class="stats">
+    <div class="stat new"><b class="num" id="sNew">0</b><span>новых — ждут ответа</span></div>
+    <div class="stat"><b class="num" id="sCount">0</b><span>заказов сегодня</span></div>
+    <div class="stat"><b class="num" id="sSum">0 ₽</b><span>выручка сегодня</span></div>
+    <div class="stat"><b class="num" id="sAvg">0 ₽</b><span>средний чек</span></div>
+  </div>
+  <div class="tabs" id="tabs"></div>
+  <div class="board" id="board"></div>
+  <div class="info"><b>Как это работает в рабочей версии.</b> Заказы хранятся на сервере, панель открывается по паролю с ноутбука, телефона или планшета на кухне. Новый заказ дублируется в Telegram и на кухню со звуком. Кнопки статуса отправляют клиенту сообщение в Telegram, WhatsApp или Max. В демо заказы видны только в этом браузере.</div>
+</main>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+const KEY = 'tp_orders';
+const AREA_NAMES = { km116: '116 км', kryazh: 'Совхоз Кряж', km113: '113 км', volgar: 'Волгарь', yuzhny: 'Южный город-1', suhaya: 'Сухая Самарка', podst: 'Подстёпновка', far: 'Дальние сёла', other: 'Другой населённый пункт' };
+const ST_D = ['Новый', 'Готовится', 'В пути', 'Доставлен'];
+const ST_P = ['Новый', 'Готовится', 'Готов к выдаче', 'Выдан'];
+const COLORS = { '-1': '#6b625a', 0: '#e3392c', 1: '#f2b33d', 2: '#5aa9e6', 3: '#7cc451' };
+const NEXT_D = ['Принять — готовим', 'Передать курьеру', 'Отметить «доставлен»'];
+const NEXT_P = ['Принять — готовим', 'Готов к выдаче', 'Отметить «выдан»'];
+const PAY = { card: 'Оплачено картой', sbp: 'Оплачено СБП', courier: 'Картой при получении', cash: 'Наличными' };
+const NOTIFY = { tg: 'Telegram', wa: 'WhatsApp', max: 'Max', sms: 'SMS', none: 'без уведомлений' };
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+const rub = (n) => Math.round(n || 0).toLocaleString('ru-RU') + ' ₽';
+const hhmm = (d) => new Date(d).toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
+// Served over http(s) the panel talks to /api/orders with the password; opened as a file it uses the browser's storage (demo).
+// ?demo keeps a visitor in the local demo (orders stay in their browser) — used for the portfolio link.
+const API = /^https?:$/.test(location.protocol) && !new URLSearchParams(location.search).has('demo') ? '/.netlify/functions/orders' : null;
+let cache = [], adminKey = '';
+try { adminKey = sessionStorage.getItem('tp_admin') || ''; } catch {}
+const loadLocal = () => { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch { return []; } };
+const load = () => (API ? cache : loadLocal());
+const store = (l) => { try { localStorage.setItem(KEY, JSON.stringify(l)); } catch { toast('Браузер не даёт сохранять данные — откройте панель в обычном окне'); } };
+async function api(path, opt = {}) {
+  const r = await fetch(API + path, { ...opt, cache: 'no-store', headers: { 'content-type': 'application/json', 'x-admin-key': adminKey, ...(opt.headers || {}) } });
+  if (r.status === 401) { showLogin('Неверный пароль'); throw new Error('auth'); }
+  if (r.status === 503) { showLogin('Пароль панели ещё не задан в настройках сайта'); throw new Error('cfg'); }
+  if (!r.ok) throw new Error('http ' + r.status);
+  return r.json();
+}
+async function refresh() {
+  if (!API) return render();
+  if (!adminKey) return showLogin();
+  try { cache = await api(''); hideLogin(); render(); $('#clock').classList.remove('off'); } catch (e) { if (e.message.startsWith('http') || e.name === 'TypeError') { $('#clock').textContent = 'нет связи — повторяем…'; } }
+}
+function showLogin(msg) {
+  let el = $('#login');
+  if (!el) {
+    el = document.createElement('div'); el.id = 'login';
+    el.innerHTML = '<form class="login-box"><h2>Панель заказов</h2><p>Введите пароль, чтобы видеть заказы</p><input type="password" id="pw" autocomplete="current-password" placeholder="Пароль" required><p class="err" id="pwErr"></p><button class="btn btn-red" type="submit">Войти</button></form>';
+    document.body.appendChild(el);
+    el.querySelector('form').addEventListener('submit', (e) => { e.preventDefault(); adminKey = $('#pw').value; try { sessionStorage.setItem('tp_admin', adminKey); } catch {} refresh(); });
+  }
+  el.hidden = false; $('#pwErr').textContent = msg || ''; $('#pw').focus();
+}
+function hideLogin() { const el = $('#login'); if (el) el.hidden = true; }
+let filter = 'active', seen = new Set(load().map((o) => o.no)), firstRun = true;
+
+function stats(list) {
+  const today = new Date().toDateString();
+  const t = list.filter((o) => new Date(o.created).toDateString() === today && o.status !== -1);
+  $('#sNew').textContent = list.filter((o) => o.status === 0).length;
+  $('#sCount').textContent = t.length;
+  const sum = t.reduce((s, o) => s + (o.total || 0), 0);
+  $('#sSum').textContent = rub(sum);
+  $('#sAvg').textContent = rub(t.length ? sum / t.length : 0);
+  const n = list.filter((o) => o.status === 0).length;
+  document.title = n ? `(${n}) Новый заказ — Твоя пицца` : 'Заказы — Твоя пицца';
+}
+function render() {
+  const list = load();
+  stats(list);
+  const groups = [['active', 'В работе', (o) => o.status >= 0 && o.status < 3], ['0', 'Новые', (o) => o.status === 0], ['1', 'Готовятся', (o) => o.status === 1], ['2', 'В пути / к выдаче', (o) => o.status === 2], ['3', 'Выполнены', (o) => o.status === 3], ['-1', 'Отменены', (o) => o.status === -1], ['all', 'Все', () => true]];
+  $('#tabs').innerHTML = groups.map(([id, n, f]) => `<button class="tab" type="button" data-f="${id}" aria-pressed="${filter === id}">${n}<span class="c num">${list.filter(f).length}</span></button>`).join('');
+  const shown = list.filter(groups.find((g) => g[0] === filter)[2]);
+  $('#board').innerHTML = shown.length ? shown.map(card).join('') : `<div class="empty">${list.length ? 'В этой вкладке пусто.' : 'Заказов пока нет. Оформите заказ на сайте или нажмите «+ Тестовый заказ».'}</div>`;
+  const fresh = list.filter((o) => !seen.has(o.no));
+  if (fresh.length && !firstRun) { toast(`Новый заказ №${fresh[0].no} — ${rub(fresh[0].total)}`); fresh.forEach((o) => document.querySelector(`[data-no="${o.no}"]`)?.classList.add('fresh')); }
+  fresh.forEach((o) => seen.add(o.no));
+  firstRun = false;
+}
+function card(o) {
+  const deliv = o.mode === 'delivery', st = deliv ? ST_D : ST_P, nx = deliv ? NEXT_D : NEXT_P;
+  const label = o.status === -1 ? 'Отменён' : st[o.status];
+  const flags = [
+    o.preorder ? `<span class="flag warn">Предзаказ к ${hhmm(o.eta)}</span>` : `<span class="flag">К ${hhmm(o.eta)}</span>`,
+    `<span class="flag ${o.pay === 'cash' ? 'warn' : ''}">${PAY[o.pay] || o.pay}${o.pay === 'cash' && o.change ? ' · сдача с ' + rub(+o.change) : ''}</span>`,
+    `<span class="flag">Уведомления: ${NOTIFY[o.notify] || '—'}</span>`,
+    o.bday ? '<span class="flag warn">День рождения −15% — проверить документ</span>' : '',
+    o.disc && o.disc.sum && !o.bday ? `<span class="flag">Скидка ${o.disc.pct}%</span>` : '',
+  ].join('');
+  return `<article class="order" data-no="${o.no}" style="--st:${COLORS[o.status]}">
+    <div class="o-top"><div><h3>№${o.no}</h3><small>принят в ${hhmm(o.created)} · ${deliv ? 'доставка' : 'самовывоз'}</small></div><span class="pill">${label}</span></div>
+    <div class="cust"><b>${esc(o.name) || 'Без имени'}</b><a class="num" href="tel:${esc((o.phone || '').replace(/[^\d+]/g, ''))}">${esc(o.phone)}</a><span style="color:var(--dim)">${deliv ? esc(o.addr || AREA_NAMES[o.area]) : 'Самовывоз: Молодёжный пер., 22'}</span></div>
+    <div class="items">${(o.items || []).map((l) => `<div class="ln"><span>${esc(l.name)} × ${l.qty}<small>${esc(l.size)}${l.mods && l.mods.length ? ' · ' + l.mods.map((m) => ({ nogarlic: 'без чесн. соуса', noonion: 'без лука', notomato: 'без томатов', cut8: 'на 8 кусков' })[m] || m).join(', ') : ''}</small></span><span class="num">${rub(l.sum)}</span></div>`).join('')}
+      ${deliv ? `<div class="ln"><span>Доставка</span><span class="num">${o.fee == null ? 'по тарифу' : o.fee ? rub(o.fee) : '0 ₽'}</span></div>` : ''}
+      <div class="ln tot"><span>Итого</span><span class="num">${rub(o.total)}</span></div></div>
+    <div class="flags">${flags}</div>
+    ${o.note ? `<div class="note">${esc(o.note)}</div>` : ''}
+    <div class="acts">
+      ${o.status >= 0 && o.status < 3 ? `<button class="btn ${o.status === 0 ? 'btn-red' : 'btn-green'}" type="button" data-next="${o.no}">${nx[o.status]}</button>` : ''}
+      ${o.status >= 0 && o.status < 3 ? `<button class="btn" type="button" data-cancel="${o.no}">Отменить</button>` : ''}
+      ${o.status === 3 || o.status === -1 ? `<button class="btn" type="button" data-del="${o.no}">Убрать из списка</button>` : ''}
+    </div>
+  </article>`;
+}
+$('#tabs').addEventListener('click', (e) => { const b = e.target.closest('[data-f]'); if (b) { filter = b.dataset.f; render(); } });
+$('#board').addEventListener('click', (e) => {
+  const n = e.target.closest('[data-next]'), c = e.target.closest('[data-cancel]'), d = e.target.closest('[data-del]');
+  const no = +(n || c || d)?.dataset[n ? 'next' : c ? 'cancel' : 'del'];
+  if (!no) return;
+  let list = load(); const o = list.find((x) => x.no === no); if (!o) return;
+  if (c && !confirm(`Отменить заказ №${no}?`)) return;
+  const next = n ? Math.min(3, o.status + 1) : c ? -1 : null;
+  if (API) {
+    (n || c ? api('?id=' + o.id, { method: 'PATCH', body: JSON.stringify({ status: next }) }) : api('?id=' + o.id, { method: 'DELETE' }))
+      .then(() => { if (n) toast(`№${no}: ${(o.mode === 'delivery' ? ST_D : ST_P)[next]} — клиент увидит это на сайте`); if (c) toast(`№${no} отменён`); refresh(); })
+      .catch((er) => { if (er.message !== 'auth') toast('Не сохранилось — проверьте интернет'); });
+    return;
+  }
+  if (n) { o.status = next; toast(`№${no}: ${(o.mode === 'delivery' ? ST_D : ST_P)[o.status]} — клиент увидит это на сайте`); }
+  if (c) { o.status = -1; toast(`№${no} отменён`); }
+  if (d) list = list.filter((x) => x.no !== no);
+  store(list); render();
+});
+$('#demoOrder').addEventListener('click', () => {
+  const now = new Date();
+  const o = { no: 1000 + Math.floor(Math.random() * 9000), created: now.toISOString(), eta: new Date(now.getTime() + 40 * 60000).toISOString(), status: 0, mode: 'delivery', area: 'km116', addr: '116 км, ул. Центральная, 5, кв. 12', name: 'Тестовый клиент', phone: '+7 (900) 123-45-67', pay: 'cash', change: '2000', notify: 'wa', note: 'Позвонить за 5 минут', total: 1140, fee: 0, disc: { sum: 0 },
+    items: [{ name: 'Пепперони', size: '32 см', qty: 1, sum: 630, mods: ['nogarlic'] }, { name: 'Наггетсы', size: '9 шт', qty: 1, sum: 190, mods: [] }, { name: 'Картошка фри', size: '150 г', qty: 1, sum: 185, mods: [] }] };
+  o.total = o.items.reduce((s, l) => s + l.sum, 0);
+  if (API) { fetch(API, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(o) }).then(refresh); return; }
+  store([o, ...load()]); render();
+});
+let toastT;
+function toast(m) { const t = $('#toast'); t.textContent = m; t.classList.add('on'); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('on'), 2600); }
+setInterval(() => { $('#clock').textContent = 'онлайн · ' + new Date().toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit', second: '2-digit' }); }, 1000);
+window.addEventListener('storage', (e) => { if (!API && e.key === KEY) render(); });
+setInterval(refresh, API ? 5000 : 2000);
+refresh();
+</script>
+</body>
+</html>

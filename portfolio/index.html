@@ -3,90 +3,103 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#0E0D0C">
-  <title>Портфолио — сайты, приложения в Telegram, AI-визуал</title>
-  <meta name="description" content="Сайты, приложения для записи и заказов в Telegram и AI-визуал для малого бизнеса — под ключ.">
+  <meta name="theme-color" content="#0A0A0C">
+  <title>Студия 2D — сайты, рилсы, приложения в Telegram</title>
+  <meta name="description" content="Студия 2D: сайты, рилсы и приложения для записи и заказов в Telegram для малого бизнеса — под ключ.">
+  <link rel="icon" href="img/2d-mark-96.png">
   <style>
-    :root { --bg:#0E0D0C; --card:#181614; --line:#2E2A25; --text:#F3EEE6; --muted:#A39888; --gold:#C9A86A; --gold2:#E6CF9F; --ink:#1A140B;
-      --serif: Georgia, "Times New Roman", serif; --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; }
+    /* 2D brand: black, white, and the logo gradient violet -> magenta -> orange */
+    :root { --bg:#0A0A0C; --card:#141418; --line:#26262D; --text:#F4F4F6; --muted:#9C9CA8; --v:#8B3CF7; --m:#E23BE0; --o:#FFA62B; --ink:#0A0A0C;
+      --grad: linear-gradient(90deg, var(--v), var(--m) 55%, var(--o));
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body { background: var(--bg); color: var(--text); font: 16px/1.55 var(--sans); }
-    a { color: var(--gold2); }
+    a { color: #D9B8FF; }
     .wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
-    header.top { position: sticky; top: 0; z-index: 10; background: rgba(14,13,12,.9); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
-    header.top .wrap { display: flex; justify-content: space-between; align-items: center; height: 56px; gap: 12px; }
-    .logo { font: 600 18px var(--serif); color: var(--gold2); text-decoration: none; white-space: nowrap; }
+    header.top { position: sticky; top: 0; z-index: 10; background: rgba(10,10,12,.9); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+    header.top .wrap { display: flex; justify-content: space-between; align-items: center; height: 58px; gap: 12px; }
+    .logo { display: flex; align-items: center; gap: 10px; font: 800 18px var(--sans); color: var(--text); text-decoration: none; white-space: nowrap; letter-spacing: -.01em; }
+    .logo img { width: 34px; height: 34px; border-radius: 9px; }
     nav a { color: var(--muted); text-decoration: none; font-size: 14px; margin-left: 14px; }
-    nav a:hover { color: var(--gold2); }
-    @media (max-width: 640px) { nav a:not(.btn-sm) { display: none; } }
-    .btn { display: inline-block; background: linear-gradient(180deg, var(--gold2), var(--gold)); color: var(--ink); font-weight: 700; text-decoration: none; border-radius: 14px; padding: 14px 22px; }
+    nav a:hover { color: var(--text); }
+    @media (max-width: 700px) { nav a:not(.btn-sm) { display: none; } }
+    .btn { display: inline-block; background: var(--grad); color: #fff; font-weight: 700; text-decoration: none; border-radius: 14px; padding: 14px 22px; }
     .btn.ghost { background: none; border: 1px solid var(--line); color: var(--text); font-weight: 600; }
-    .btn-sm { background: linear-gradient(180deg, var(--gold2), var(--gold)); color: var(--ink) !important; font-weight: 700; border-radius: 10px; padding: 7px 12px; }
+    .btn-sm { background: var(--grad); color: #fff !important; font-weight: 700; border-radius: 10px; padding: 7px 12px; }
+    .gt { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
 
-    .hero { padding-top: 64px; padding-bottom: 40px; }
-    .tag { display: inline-block; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(201,168,106,.5); border-radius: 20px; padding: 4px 12px; }
-    h1 { font: 500 clamp(34px, 6vw, 58px)/1.08 var(--serif); margin: 18px 0 16px; max-width: 800px; }
+    .hero { padding-top: 60px; padding-bottom: 40px; }
+    .tag { display: inline-block; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: #E9D5FF; border: 1px solid rgba(139,60,247,.6); border-radius: 20px; padding: 4px 12px; }
+    h1 { font: 800 clamp(34px, 6vw, 60px)/1.05 var(--sans); letter-spacing: -.03em; margin: 18px 0 16px; max-width: 820px; }
     .lead { color: var(--muted); font-size: 18px; max-width: 640px; margin-bottom: 26px; }
     .row { display: flex; gap: 10px; flex-wrap: wrap; }
 
     section { padding: 48px 0; border-top: 1px solid var(--line); }
-    h2 { font: 500 clamp(26px, 4vw, 36px)/1.15 var(--serif); margin-bottom: 8px; }
+    h2 { font: 800 clamp(26px, 4vw, 38px)/1.12 var(--sans); letter-spacing: -.02em; margin-bottom: 8px; }
     .sub { color: var(--muted); margin-bottom: 26px; max-width: 680px; }
 
-    .grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
     .card { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 20px; }
-    .price { color: var(--gold2); font: 600 24px var(--serif); margin: 6px 0 10px; }
+    .price { font: 800 24px var(--sans); margin: 6px 0 10px; }
     .card ul { list-style: none; color: var(--muted); font-size: 15px; }
     .card li { padding: 4px 0 4px 22px; position: relative; }
-    .card li::before { content: "✓"; position: absolute; left: 0; color: var(--gold); }
-    .card.best { border-color: var(--gold); }
-    .card .k { font-size: 12px; color: var(--gold); letter-spacing: .1em; text-transform: uppercase; }
+    .card li::before { content: "✓"; position: absolute; left: 0; color: var(--m); }
+    .card.best { border-color: var(--m); box-shadow: 0 0 0 1px rgba(226,59,224,.35) inset; }
+    .card .k { font-size: 12px; color: #E9D5FF; letter-spacing: .1em; text-transform: uppercase; }
 
     .shots { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
     .shot { background: var(--card); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; }
     .shot img { width: 100%; aspect-ratio: 9/14; object-fit: cover; object-position: top; display: block; background: #111; }
-    .shot.wide img { aspect-ratio: 4/3; }
     .shot .in { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
-    .shot b { font: 600 18px var(--serif); }
+    .shot b { font: 700 18px var(--sans); letter-spacing: -.01em; }
     .shot p { color: var(--muted); font-size: 14px; flex: 1; }
     .links { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
-    .links a { font-size: 14px; text-decoration: none; border: 1px solid var(--line); border-radius: 10px; padding: 7px 10px; }
-    .links a.tg { background: linear-gradient(180deg, var(--gold2), var(--gold)); color: var(--ink); border: 0; font-weight: 700; }
+    .links a { font-size: 14px; text-decoration: none; border: 1px solid var(--line); border-radius: 10px; padding: 7px 10px; color: var(--text); }
+    .links a.tg { background: var(--grad); color: #fff; border: 0; font-weight: 700; }
     .chips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 18px; }
     .chips a { text-decoration: none; font-size: 14px; border: 1px solid var(--line); border-radius: 20px; padding: 8px 14px; color: var(--text); }
+
+    .reels { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+    @media (min-width: 900px) { .reels { grid-template-columns: repeat(5, 1fr); } }
+    .reel { background: var(--card); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; }
+    .reel video { width: 100%; aspect-ratio: 9/16; display: block; background: #000; object-fit: cover; }
+    .reel .in { padding: 12px 14px 14px; }
+    .reel b { font: 700 16px var(--sans); }
+    .reel p { color: var(--muted); font-size: 13px; margin-top: 4px; }
+    .badge { display: inline-block; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--line); border-radius: 8px; padding: 2px 7px; margin-top: 8px; }
 
     .ba { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
     .ba figure { position: relative; }
     .ba img { width: 100%; border-radius: 16px; display: block; aspect-ratio: 4/5; object-fit: cover; }
-    .ba figcaption { position: absolute; top: 10px; left: 10px; background: rgba(0,0,0,.65); color: var(--gold2); font-size: 12px; padding: 4px 10px; border-radius: 10px; }
+    .ba figcaption { position: absolute; top: 10px; left: 10px; background: rgba(0,0,0,.65); color: #fff; font-size: 12px; padding: 4px 10px; border-radius: 10px; }
     .gallery { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin-top: 14px; }
     .gallery img { width: 100%; border-radius: 16px; aspect-ratio: 4/5; object-fit: cover; display: block; }
-    video { width: 100%; max-width: 360px; border-radius: 18px; border: 1px solid var(--line); background: #000; }
+    .solo { width: 100%; max-width: 360px; border-radius: 18px; border: 1px solid var(--line); background: #000; }
 
     .steps { counter-reset: s; display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
     .step { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 18px; }
-    .step::before { counter-increment: s; content: counter(s); display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--gold); color: var(--gold); margin-bottom: 8px; }
+    .step::before { counter-increment: s; content: counter(s); display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--grad); color: #fff; font-weight: 700; margin-bottom: 8px; }
     .step p { color: var(--muted); font-size: 14px; }
 
     .cta { text-align: center; padding-top: 56px; padding-bottom: 70px; }
     .cta p { color: var(--muted); margin: 10px auto 22px; max-width: 520px; }
-    footer { border-top: 1px solid var(--line); color: #6F685F; font-size: 13px; padding: 20px 0 30px; }
+    footer { border-top: 1px solid var(--line); color: #6E6E78; font-size: 13px; padding: 20px 0 30px; }
   </style>
 </head>
 <body>
-<!-- ✏️ Поменяйте под себя: имя, Telegram-ник, город (ищите «Дмитрий» и «Yriubabin») -->
+<!-- ✏️ Контакт студии: @Two2Dclub (ищите «Two2Dclub») -->
 <header class="top"><div class="wrap">
-  <a class="logo" href="#">Дмитрий · студия</a>
-  <nav><a href="#uslugi">Услуги</a><a href="#apps">Приложения</a><a href="#sites">Сайты</a><a href="#ai">AI-визуал</a><a class="btn-sm" href="https://t.me/Yriubabin">Написать</a></nav>
+  <a class="logo" href="#"><img src="img/2d-mark-96.png" alt="">Студия 2D</a>
+  <nav><a href="#uslugi">Услуги</a><a href="#reels">Рилсы</a><a href="#apps">Приложения</a><a href="#sites">Сайты</a><a href="#ai">AI-визуал</a><a class="btn-sm" href="https://t.me/Two2Dclub">Написать</a></nav>
 </div></header>
 
 <main>
   <div class="wrap hero">
-    <span class="tag">Под ключ для малого бизнеса</span>
-    <h1>Сайты, приложения в Telegram и AI-визуал, которые приводят клиентов</h1>
-    <p class="lead">Делаю для салонов, студий, кафе и магазинов всё сразу: сайт, запись или заказ прямо в Telegram и визуал для соцсетей. Быстро — от 5 дней. Понятно — без технических слов.</p>
-    <div class="row"><a class="btn" href="https://t.me/Yriubabin">Обсудить проект</a><a class="btn ghost" href="#apps">Посмотреть работы</a></div>
+    <span class="tag">Студия 2D · под ключ для малого бизнеса</span>
+    <h1>Сайты, <span class="gt">рилсы</span> и приложения в Telegram, которые приводят клиентов</h1>
+    <p class="lead">Делаем для салонов, студий, кафе, магазинов и брендов всё сразу: сайт, запись или заказ прямо в Telegram и ролики для соцсетей из ваших же фото, без съёмок. Быстро — от 5 дней. Понятно — без технических слов.</p>
+    <div class="row"><a class="btn" href="https://t.me/Two2Dclub">Обсудить проект</a><a class="btn ghost" href="#reels">Посмотреть работы</a></div>
   </div>
 
   <section id="uslugi"><div class="wrap">
@@ -95,10 +108,29 @@
     <div class="grid">
       <div class="card"><div class="k">Старт</div><div class="price">от 15 000 ₽</div>
         <ul><li>Сайт-визитка: услуги, цены, отзывы, карта</li><li>Кнопки «Записаться» и «Написать»</li><li>Оформление в фирменном стиле (AI-визуал)</li><li>Готово за 5 дней</li></ul></div>
+      <div class="card"><div class="k">Рилсы</div><div class="price">от 5 000 ₽ за ролик</div>
+        <ul><li>Моушен-ролик 10–20 секунд из ваших фото, без съёмок</li><li>Своя музыка и звуки — без проблем с авторскими правами</li><li>Версии для Reels, ленты и сайта</li><li>Серия роликов на месяц — дешевле</li></ul></div>
       <div class="card best"><div class="k">Запись в Telegram</div><div class="price">от 25 000 ₽</div>
         <ul><li>Приложение внутри Telegram: запись или заказ в 2 нажатия</li><li>Работает с YCLIENTS / DIKIDI — ничего не меняете</li><li>Кнопка в канале и боте</li><li>Админ-панель: меняете цены и акции сами</li></ul></div>
       <div class="card"><div class="k">Под ключ</div><div class="price">от 45 000 ₽</div>
-        <ul><li>Сайт + приложение в Telegram + визуал</li><li>Оформление канала / VK</li><li>4 недели поддержки после запуска</li><li>Подключение к боту и обучение</li></ul></div>
+        <ul><li>Сайт + приложение в Telegram + рилсы</li><li>Оформление канала / VK</li><li>4 недели поддержки после запуска</li><li>Подключение к боту и обучение</li></ul></div>
+    </div>
+  </div></section>
+
+  <section id="reels"><div class="wrap">
+    <h2>Рилсы и моушен</h2>
+    <p class="sub">Ролики из фото, которые у бизнеса уже есть: каталог, меню, скриншоты сервиса. Одна сквозная идея, движение в бит музыки и звук, написанный нами. Нажмите на ролик, чтобы включить звук.</p>
+    <div class="reels">
+      <div class="reel"><video src="img/reels/darkrain.mp4" poster="img/reels/darkrain.jpg" controls preload="none" playsinline></video>
+        <div class="in"><b>Ювелирный бренд: «Вытяни свою карту»</b><p>Серия по мотивам таро: карта переворачивается и открывает украшения с ценами.</p><span class="badge">концепт</span></div></div>
+      <div class="reel"><video src="img/reels/myfuture.mp4" poster="img/reels/myfuture.jpg" controls preload="none" playsinline></video>
+        <div class="in"><b>Браслеты по знакам зодиака</b><p>Подвеска переворачивается как монета и показывает знаки, потом крупный план эмали и серебра.</p><span class="badge">концепт</span></div></div>
+      <div class="reel"><video src="img/reels/pizza.mp4" poster="img/reels/pizza.jpg" controls preload="none" playsinline></video>
+        <div class="in"><b>Пиццерия: промо для ВК</b><p>Пицца крутится, режется на 8 кусков и становится меткой на карте доставки. В одном стиле с сайтом.</p></div></div>
+      <div class="reel"><video src="img/reels/signal.mp4" poster="img/reels/signal.jpg" controls preload="none" playsinline></video>
+        <div class="in"><b>B2B-сервис: поиск клиентов</b><p>Точка-«сигнал» собирает источники и раскрывается в карточку клиента — сложный сервис за 20 секунд.</p><span class="badge">концепт</span></div></div>
+      <div class="reel"><video src="img/reels/commboost.mp4" poster="img/reels/commboost.jpg" controls preload="none" playsinline></video>
+        <div class="in"><b>ИИ-аналитика звонков</b><p>Волна звонка превращается в оценку менеджера, сводку для руководителя и рост конверсии.</p><span class="badge">концепт</span></div></div>
     </div>
   </div></section>
 
@@ -145,8 +177,12 @@
 
   <section id="sites"><div class="wrap">
     <h2>Сайты</h2>
-    <p class="sub">Быстрые сайты для бизнеса, у которого есть отзывы, но нет сайта: услуги, цены, отзывы, карта и кнопка записи. Демо-сайты — откройте и полистайте.</p>
+    <p class="sub">Быстрые сайты для бизнеса, у которого есть отзывы, но нет сайта: услуги, цены, отзывы, карта и кнопка записи или заказа. Демо-сайты — откройте и полистайте.</p>
     <div class="shots">
+      <div class="shot"><img src="img/site-tvoya-pizza.jpg" alt="Демо-сайт доставки пиццы" loading="lazy"><div class="in"><b>Доставка пиццы «Твоя пицца»</b><p>Меню с ценами, корзина, схема доставки по посёлкам и панель заказов для кухни.</p><div class="links"><a href="sites/tvoya-pizza/?demo">Открыть сайт</a></div></div></div>
+      <div class="shot"><img src="img/site-beruniy.jpg" alt="Демо-сайт шоурума одежды" loading="lazy"><div class="in"><b>Шоурум одежды M.Beruniy</b><p>Куртка в 3D крутится и меняет цвет, каталог с ценами и размерами.</p><div class="links"><a href="sites/beruniy/">Открыть сайт</a></div></div></div>
+      <div class="shot"><img src="img/site-joylovin.jpg" alt="Демо-сайт бренда вечерних платьев" loading="lazy"><div class="in"><b>Бренд вечерних платьев Joylovin</b><p>Лукбук, подбор размера и запись на примерку.</p><div class="links"><a href="sites/joylovin/">Открыть сайт</a></div></div></div>
+      <div class="shot"><img src="img/site-12procent.jpg" alt="Демо-сайт парикмахерской" loading="lazy"><div class="in"><b>Дом парикмахеров «12%»</b><p>Кудрявый метод и окрашивания, запись через YCLIENTS.</p><div class="links"><a href="sites/12procent/">Открыть сайт</a></div></div></div>
       <div class="shot"><img src="img/site-lev.jpg" alt="Демо-сайт барбершопа" loading="lazy"><div class="in"><b>Барбершоп «Лев»</b><p>Мужская стрижка, бренд с характером, цены и отзывы с 2ГИС.</p><div class="links"><a href="sites/lev/">Открыть сайт</a></div></div></div>
       <div class="shot"><img src="img/site-honey-money.jpg" alt="Демо-сайт студии маникюра" loading="lazy"><div class="in"><b>Студия маникюра и бровей</b><p>Нежный стиль, пакеты услуг и запись онлайн.</p><div class="links"><a href="sites/honey-money/">Открыть сайт</a></div></div></div>
       <div class="shot"><img src="img/site-elizarova.jpg" alt="Демо-сайт студии красоты" loading="lazy"><div class="in"><b>Студия красоты и барбершоп</b><p>Две услуги в одном месте, прайс и запись.</p><div class="links"><a href="sites/elizarova/">Открыть сайт</a></div></div></div>
@@ -156,7 +192,7 @@
 
   <section id="ai"><div class="wrap">
     <h2>AI-визуал</h2>
-    <p class="sub">Из обычных фото делаю рекламные карточки, обложки и ролики — для объявлений, соцсетей и презентаций. Пример: бизнес-центр.</p>
+    <p class="sub">Из обычных фото делаем рекламные карточки, обложки и ролики — для объявлений, соцсетей и презентаций. Пример: бизнес-центр.</p>
     <div class="ba">
       <figure><img src="img/ai-before.jpg" alt="Исходное фото" loading="lazy"><figcaption>Было: фото</figcaption></figure>
       <figure><img src="img/ai-1.jpg" alt="Рекламная карточка" loading="lazy"><figcaption>Стало: карточка</figcaption></figure>
@@ -167,10 +203,10 @@
       <img src="img/ai-4.jpg" alt="Карточка «Всё продумано для ежедневной эксплуатации»" loading="lazy">
     </div>
     <h2 style="font-size:22px;margin:30px 0 12px">Рилс «Угадай цену»</h2>
-    <video src="img/reel.mp4" poster="img/reel-poster.jpg" controls preload="none" playsinline></video>
+    <video class="solo" src="img/reel.mp4" poster="img/reel-poster.jpg" controls preload="none" playsinline></video>
     <h2 style="font-size:22px;margin:30px 0 6px">Промо-ролик ЖК «Лумен»</h2>
     <p class="sub">Концепт: весь ролик — облёты, двор, вход — создан нейросетями. Так можно показать ЖК, которого ещё нет.</p>
-    <video src="img/reel-lumen.mp4" poster="img/reel-lumen-poster.jpg" controls preload="none" playsinline></video>
+    <video class="solo" src="img/reel-lumen.mp4" poster="img/reel-lumen-poster.jpg" controls preload="none" playsinline></video>
   </div></section>
 
   <section><div class="wrap">
@@ -178,19 +214,19 @@
     <p class="sub">Всё быстро и прозрачно — вы видите результат до оплаты основной суммы.</p>
     <div class="steps">
       <div class="step"><b>Разговор</b><p>15 минут: что у вас сейчас, где теряются клиенты.</p></div>
-      <div class="step"><b>Бесплатный макет</b><p>Показываю, как это будет выглядеть именно у вас.</p></div>
-      <div class="step"><b>Запуск за 5–7 дней</b><p>Предоплата 50%, делаю, показываю, правлю.</p></div>
-      <div class="step"><b>Поддержка</b><p>Подключаю к боту и каналу, учу менять контент самим.</p></div>
+      <div class="step"><b>Бесплатный макет</b><p>Показываем, как это будет выглядеть именно у вас: макет сайта или короткий ролик на ваших товарах.</p></div>
+      <div class="step"><b>Запуск за 5–7 дней</b><p>Предоплата 50%, делаем, показываем, правим.</p></div>
+      <div class="step"><b>Поддержка</b><p>Подключаем к боту и каналу, учим менять контент самим.</p></div>
     </div>
   </div></section>
 
   <div class="wrap cta">
     <h2>Посмотрим, что можно сделать для вас?</h2>
-    <p>Напишите название вашего бизнеса — пришлю бесплатный макет за 1–2 дня.</p>
-    <a class="btn" href="https://t.me/Yriubabin">Написать в Telegram</a>
+    <p>Напишите название вашего бизнеса — пришлём бесплатный макет или ролик-образец за 1–2 дня.</p>
+    <a class="btn" href="https://t.me/Two2Dclub">Написать в Telegram</a>
   </div>
 </main>
 
-<footer><div class="wrap">Дмитрий · Самара · работаю удалённо по всей России. Демо-работы сделаны как примеры и не являются официальными сайтами и приложениями указанных компаний.</div></footer>
+<footer><div class="wrap">Студия 2D · Самара · работаем удалённо по всей России · <a href="https://t.me/Two2Dclub">@Two2Dclub</a>. Демо-работы и концепты сделаны как примеры и не являются официальными сайтами, приложениями и рекламой указанных компаний.</div></footer>
 </body>
 </html>
