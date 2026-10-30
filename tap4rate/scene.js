@@ -262,8 +262,8 @@
     await anim(220, k => phone.position.copy(lerpV(p1, p2, k)), inout);
     haptic('medium');
     rings.forEach((m, i) => anim(1100, k => {
-      const kk = Math.max(0, Math.min(1, k * 1.3 - i * .18));
-      m.scale.setScalar(.05 + kk * 1.25); m.material.opacity = kk > 0 ? (1 - kk) * .9 : 0;
+      const kk = Math.max(0, Math.min(1, k * (1 + i * .18) - i * .18));
+      m.scale.setScalar(.05 + kk * 1.25); m.material.opacity = kk > 0 && kk < 1 ? (1 - kk) * .9 : 0;
     }, k => k));
     await wait(380);
     Art.screen('review', cfg.name, scrCv); scrTex.needsUpdate = true;
