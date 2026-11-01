@@ -119,7 +119,7 @@
           <button type="button" data-link="${D.reviews}">⭐ Отзывы клиентов</button>
           <button type="button" data-link="https://t.me/${D.manager}">💬 Менеджер</button>
         </div>
-        <p class="foot">Концепт приложения для Tap4Rate. Цены — из канала Project2Profit.<br>Заказы в демо никуда не уходят без вашего подтверждения.</p>
+        <p class="foot">Tap4Rate · NFC-стенды для отзывов<br>Отправка по всей России: СДЭК, Яндекс, OZON, Почта</p>
       </div>`;
     Stage.mount($('#stage'), 'stand');
     Stage.setCard(cardCfg());
@@ -142,7 +142,7 @@
       <h2 class="h2 nomt">Карточка открылась сама</h2>
       <p class="muted">Без приложений и поиска: сразу «Оценить место» в Яндекс Картах или 2ГИС. Попробуйте поставить оценку:</p>
       <div class="rate">${[1, 2, 3, 4, 5].map(i => `<button type="button" data-r="${i}">★</button>`).join('')}</div>
-      <p class="muted small" id="rmsg">В рабочей версии чип ведёт на настоящую карточку заведения.</p>
+      <p class="muted small" id="rmsg">Чип на вашем стенде ведёт прямо на карточку вашего заведения.</p>
       <button type="button" class="btn" id="rclose">Понятно</button>`, () => { Stage.reset(); const b = $('#tap'); if (b) b.disabled = false; });
     const s = $('#sheet');
     s.querySelectorAll('[data-r]').forEach(b => b.onclick = () => {
@@ -278,7 +278,7 @@
           <button type="button" data-link="${D.reviews}">⭐ Отзывы клиентов</button>
           <button type="button" data-link="https://t.me/${D.manager}">💬 Менеджер</button>
         </div>
-        <p class="foot">Концепт приложения для Tap4Rate. Цены — из канала Project2Profit.</p>
+        <p class="foot">Tap4Rate · NFC-стенды для отзывов</p>
       </div>`;
     Stage.mount($('#stage'), 'stack');
     $('#tobiz').onclick = () => go('home');
@@ -368,8 +368,8 @@
       view.querySelectorAll('[data-dl]').forEach(x => x.classList.toggle('on', x === b));
     });
     $('#policy').onclick = () => sheet(`<div class="grab"></div><h2 class="h2 nomt">Персональные данные</h2>
-      <p class="muted">Имя, контакт и город нужны только для связи по заказу и доставки. Не передаём третьим лицам, кроме службы доставки. Удалим по первой просьбе.</p>
-      <p class="muted small">В рабочей версии здесь будет полный текст политики — его стоит согласовать с юристом.</p>
+      <p class="muted">Имя, контакт и город нужны только для связи по заказу и доставки. Приложение не хранит их на сервере: заказ уходит сообщением менеджеру Tap4Rate в Telegram.</p>
+      <p class="muted">Данные не передаём третьим лицам, кроме службы доставки для отправки заказа. Чтобы удалить переписку и данные, напишите менеджеру @${D.manager}.</p>
       <button type="button" class="btn" onclick="document.getElementById('sheet').dispatchEvent(new Event('close'))">Понятно</button>`);
     cta(`Оформить · ${rub(total())}`, checkout);
   }
@@ -396,14 +396,14 @@
       <div class="grab"></div>
       <div class="done-ic">✓</div>
       <h2 class="h2 nomt center">Заказ собран</h2>
-      <p class="muted center">Менеджер подтвердит наличие и пришлёт реквизиты. В рабочей версии заказ сразу падает в бот Tap4Rate — без переписок.</p>
+      <p class="muted center">Нажмите кнопку — откроется чат с менеджером, текст заказа уже будет вставлен. Менеджер подтвердит наличие и пришлёт реквизиты.</p>
       <pre class="order">${esc(text)}</pre>
       <button type="button" class="btn" id="send">Отправить менеджеру</button>
-      <p class="muted small center">Текст скопируется — останется вставить в чат @${D.manager}.</p>`);
+      <p class="muted small center">Если текст не вставился сам — он уже скопирован, просто вставьте его в чат @${D.manager}.</p>`);
     $('#send').onclick = async () => {
       try { await navigator.clipboard.writeText(text); toast('Текст заказа скопирован'); } catch (e) {}
       haptic('ok');
-      setTimeout(() => openLink(`https://t.me/${D.manager}`), 400);
+      setTimeout(() => openLink(`https://t.me/${D.manager}?text=${encodeURIComponent(text)}`), 400);
     };
   }
 

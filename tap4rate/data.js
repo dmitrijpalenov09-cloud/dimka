@@ -1,5 +1,5 @@
 // Tap4Rate (Эмиль, @wyhax_nfc) — товары и цены из канала Project2Profit.
-// В рабочей версии заказы уходят в бот/таблицу Эмиля, оплата — через ЮKassa или перевод.
+// Заказ уходит менеджеру сообщением в Telegram (t.me/<менеджер>?text=…), оплата — по реквизитам от менеджера.
 window.T4R = {
   manager: 'wyhax_nfc',
   reviews: 'https://t.me/Tap4Rate_reviews',
