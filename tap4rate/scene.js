@@ -224,7 +224,7 @@
     resize();
     rig.visible = mode === 'stand';
     stack.visible = mode === 'stack';
-    if (mode === 'stack') { camTo.set(0, 4.6, 8.2); lookTo.set(0, .7, 0); }
+    if (mode === 'stack') { camTo.set(0, 3.9, 6.9); lookTo.set(0, .7, 0); }
     else { camTo.set(0, .3, 7.9); lookTo.set(0, .05, 0); }
     camera.position.copy(camTo); look.copy(lookTo);
   };
@@ -302,7 +302,7 @@
     }
     pool.forEach((g, i) => { g.visible = i < stackWant; if (i >= stackWant) g.userData.born = 0; });
     lookTo.set(0, .4 + stackWant * .035, 0);
-    camTo.set(0, 4.6 + stackWant * .05, 8.2);
+    camTo.set(0, 3.9 + stackWant * .05, 6.9 + stackWant * .02);
   };
 
   // ---------- размер и цикл ----------

@@ -67,7 +67,7 @@
     ({ home, make, opt, cart })[tab]();
     window.scrollTo(0, 0);
     if (push !== false) history.replaceState(null, '', '#' + tab);
-    if (inTG) tab === 'home' ? tg.BackButton.hide() : tg.BackButton.show();
+    if (inTG) tab === 'opt' ? tg.BackButton.hide() : tg.BackButton.show();
   }
   document.querySelectorAll('#tabs button').forEach(b => b.addEventListener('click', () => { haptic(); go(b.dataset.tab); }));
 
@@ -84,7 +84,7 @@
         <button type="button" class="tapbtn" id="tap"><span class="pulse"></span>Приложить телефон</button>
       </section>
       <div class="pad">
-        <div class="eyebrow">Tap4Rate · NFC-стенды</div>
+        <div class="eyebrow">для владельцев заведений</div>
         <h1 class="title">Отзыв на картах <em>за одно касание</em></h1>
         <p class="lead">Стенд на кассу: гость прикладывает телефон — и сразу открывается ваша карточка в Яндекс Картах или 2ГИС. Без QR, камеры и поиска.</p>
         <div class="chips">
@@ -114,7 +114,6 @@
             <span class="pprice">${rub(p.price)}${p.old ? `<s>${rub(p.old)}</s>` : ''}</span>
           </button>`).join('')}
         </div>
-        <button type="button" class="biz" id="toopt"><b>Хотите продавать стенды в своём городе?</b><span>Опт от 475 ₽/шт и Starter Pack →</span></button>
 
         <div class="links">
           <button type="button" data-link="${D.reviews}">⭐ Отзывы клиентов</button>
@@ -132,7 +131,6 @@
     const g = $('#guests'), calc = () => { $('#gv').textContent = g.value; $('#rv').textContent = Math.round(g.value * 30 / 50); };
     g.oninput = calc; calc();
     view.querySelectorAll('[data-p]').forEach(b => b.onclick = () => { S.draft.product = b.dataset.p; save('t4r_draft', S.draft); go('make'); });
-    $('#toopt').onclick = () => go('opt');
     view.querySelectorAll('[data-link]').forEach(b => b.onclick = () => openLink(b.dataset.link));
     cta('Собрать свой стенд →', () => go('make'));
   }
@@ -240,11 +238,16 @@
   // ---------- Опт ----------
   function opt() {
     view.innerHTML = `
-      <div class="stage mid" id="stage"><div class="stage-ui"><span class="hint" id="shint"></span></div></div>
+      <div class="stage tall" id="stage"><div class="stage-ui"><span class="hint" id="shint"></span></div></div>
       <div class="pad">
-        <div class="eyebrow">для перепродажи</div>
-        <h1 class="title sm">NFC-карты <em>с подставками</em></h1>
-        <p class="lead">Чистые карты для тех, кто продаёт стенды бизнесам. Инструкция по прошивке в комплекте, чипы проверены перед отправкой.</p>
+        <div class="eyebrow">Tap4Rate · опт</div>
+        <h1 class="title">NFC-стенды <em>оптом</em> для перепродажи</h1>
+        <p class="lead">Карты с акриловыми подставками для тех, кто продаёт стенды кафе, салонам и магазинам. Чем больше партия — тем ниже цена.</p>
+        <div class="chips">
+          <span>📦 от 3 шт</span><span>🚀 отправка в день оплаты</span><span>✅ чипы проверены</span><span>📘 инструкция по прошивке</span>
+        </div>
+
+        <h2 class="h2">Посчитайте партию</h2>
 
         <div class="qtybox">
           <button type="button" data-q="-1">−</button>
@@ -261,9 +264,25 @@
             <div><b>${esc(s.name)}</b><p>${esc(s.text)}</p></div>
             <div class="pack-buy"><span>${rub(s.price)}</span><button type="button" class="pill" data-s="${s.id}">В корзину</button></div>
           </div>`).join('')}
-        <p class="foot">100+ шт — цена индивидуально, напишите менеджеру.</p>
+
+        <h2 class="h2">Как работают наши партнёры</h2>
+        <div class="steps">
+          <div><b>1</b><span>Берёте партию карт с подставками — от 3 штук</span></div>
+          <div><b>2</b><span>Находите кафе, салоны, барбершопы, магазины в своём городе</span></div>
+          <div><b>3</b><span>Прошиваете ссылку заведения по нашей инструкции и ставите стенд на кассу</span></div>
+        </div>
+        <p class="foot">100+ шт — цена индивидуально, напишите менеджеру.<br>Цена перепродажи зависит от договорённости — расчёт выше пример, а не обещание дохода.</p>
+
+        <button type="button" class="biz" id="tobiz"><b>Вы владелец заведения?</b><span>Готовый стенд с вашим названием — от 2 490 ₽ →</span></button>
+        <div class="links">
+          <button type="button" data-link="${D.reviews}">⭐ Отзывы клиентов</button>
+          <button type="button" data-link="https://t.me/${D.manager}">💬 Менеджер</button>
+        </div>
+        <p class="foot">Концепт приложения для Tap4Rate. Цены — из канала Project2Profit.</p>
       </div>`;
     Stage.mount($('#stage'), 'stack');
+    $('#tobiz').onclick = () => go('home');
+    view.querySelectorAll('[data-link]').forEach(b => b.onclick = () => openLink(b.dataset.link));
     const upd = () => {
       const q = S.qty, t = tierFor(q);
       $('#qv').textContent = q; $('#qr').value = q;
@@ -404,7 +423,7 @@
     s.classList.remove('on');
     setTimeout(() => { s.hidden = true; s.innerHTML = ''; }, 280);
     const fn = onSheetClose; onSheetClose = null; fn && fn();
-    if (inTG && S.tab === 'home') tg.BackButton.hide();
+    if (inTG && S.tab === 'opt') tg.BackButton.hide();
     return true;
   }
   $('#sheet').addEventListener('close', closeSheet);
@@ -416,13 +435,13 @@
       tg.setHeaderColor && tg.setHeaderColor('#0A0B0E');
       tg.setBackgroundColor && tg.setBackgroundColor('#0A0B0E');
       tg.disableVerticalSwipes && tg.disableVerticalSwipes();
-      tg.BackButton.onClick(() => { if (!closeSheet()) go('home'); });
+      tg.BackButton.onClick(() => { if (!closeSheet()) go('opt'); });
     } catch (e) {}
   }
   if (!inTG) document.body.classList.add('web');
   badge();
   const start = (location.hash || '').slice(1);
-  const run = () => go(['home', 'make', 'opt', 'cart'].includes(start) ? start : 'home', false);
+  const run = () => go(['home', 'make', 'opt', 'cart'].includes(start) ? start : 'opt', false);
   // ждём шрифты, чтобы надписи на 3D-карте нарисовались фирменным шрифтом
   (document.fonts && document.fonts.load ? Promise.race([
     Promise.all([document.fonts.load('800 70px Unbounded'), document.fonts.load('600 30px Inter'), document.fonts.load('700 30px Inter')]),
